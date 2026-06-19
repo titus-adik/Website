@@ -172,79 +172,55 @@
             color: #1e3c72;
         }
 
-        /* ===== HERO ===== */
-        .hero {
-            padding: 80px 0 60px;
-            background: linear-gradient(135deg, #f0f4f8 0%, #dae5f0 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+        /* ===== HERO SECTION WITH FULL BACKGROUND ===== */
+.hero {
+    position: relative;
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #0b1e33; /* Fallback color */
+}
 
-        /* ===== UPDATED: Background graph from Canva ===== */
-        .hero .bg-graph {
-            position: absolute;
-            right: -30px;
-            bottom: -30px;
-            opacity: 0.08;
-            pointer-events: none;
-            user-select: none;
-            line-height: 1;
-            width: 500px;
-            height: 350px;
-        }
+/* ===== BACKGROUND VIDEO OR IMAGE ===== */
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Covers the entire area */
+    z-index: 0;
+}
 
-        .hero .bg-graph img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+/* ===== CONTENT ON TOP ===== */
+.hero .container {
+    position: relative;
+    z-index: 2; /* Text and buttons above overlay */
+    text-align: center;
+    color: #fff; /* White text for readability */
+    padding: 20px;
+}
 
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 16px;
-            color: #0b1e33;
-            position: relative;
-        }
+/* ===== DARK OVERLAY FOR TEXT READABILITY ===== */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    z-index: 1; /* Sits between background and content */
+}
 
-        .hero .highlight {
-            color: #1e3c72;
-            border-bottom: 4px solid #1e3c72;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #2c3e50;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            position: relative;
-        }
-
-        .hero .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            position: relative;
-        }
-
-        .hero .trust-badge {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            font-size: 0.85rem;
-            color: #3d4e62;
-            position: relative;
-        }
-
-        .hero .trust-badge span {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 70vh; /* Slightly smaller on mobile */
+    }
+}
         /* ===== SECTIONS ===== */
         section {
             padding: 70px 0;
@@ -889,85 +865,30 @@
         </div>
     </header>
 
-    <!-- ===== HERO ===== -->
-    <section class="hero">
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <!-- Background Video (add this BEFORE .container) -->
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="videos/your-background-video.mp4" type="video/mp4">
+        <!-- Fallback image if video doesn't load -->
+        <img src="images/background/your-background-image.jpg" alt="Scire Research background">
+    </video>
 
-        /* ===== HERO SECTION WITH FULL BACKGROUND ===== */
-.hero {
-    position: relative;
-    min-height: 100vh; /* Makes the hero section full viewport height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden; /* Prevents any overflow from the background */
-    background: #0b1e33; /* Fallback color */
-}
-
-/* ===== BACKGROUND VIDEO OR IMAGE ===== */
-.bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* This is the key — it covers the entire area */
-    z-index: 0; /* Places it behind the content */
-}
-
-/* ===== CONTENT ON TOP ===== */
-.hero .container {
-    position: relative;
-    z-index: 1; /* Places text and buttons on top of the background */
-    text-align: center;
-    color: #fff; /* Ensure text is readable */
-    padding: 20px;
-}
-
-/* ===== DARK OVERLAY FOR TEXT READABILITY ===== */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
-    z-index: 1; /* Overlay sits between background and content */
-}
-
-.hero .container {
-    z-index: 2; /* Content sits above the overlay */
-}
-
-/* ===== RESPONSIVE ADJUSTMENTS ===== */
-@media (max-width: 768px) {
-    .hero {
-        min-height: 70vh; /* Slightly smaller on mobile */
-    }
-}
-        <div class="container">
-            <!-- ===== UPDATED: Background graph from Canva ===== -->
-            <div class="bg-graph">
-                <img src=" images/background/graph-trend.png" alt="Rising trend graph"
-                    loading="lazy">
-            </div>
-
-            <h1>Turning <span class="highlight">Data</span> into Decisions</h1>
-            <p>Evidence-based research, data analytics, and decision intelligence for businesses, NGOs, and
-                organizations across Kenya and beyond.</p>
-            <div class="btn-group">
-                <a href="#contact" class="btn">Get a Free Consultation</a>
-                <a href="#services" class="btn btn-outline">Explore Services</a>
-            </div>
-            <div class="trust-badge">
-                <span>✅ 200+ Client Accounts Analyzed</span>
-                <span>✅ 30%+ Data Error Reduction</span>
-                <span>✅ GCP Certified</span>
-                <span title="Selected for BeGreen (UNICEF/Generation Unlimited) among top 1.6% of applicants">✅ Top 1.6%
-                    Selected (BeGreen)</span>
-            </div>
+    <div class="container">
+        <h1>Turning <span class="highlight">Data</span> into Decisions</h1>
+        <p>Evidence-based research, data analytics, and decision intelligence for businesses, NGOs, and organizations across Kenya and beyond.</p>
+        <div class="btn-group">
+            <a href="#contact" class="btn">Get a Free Consultation</a>
+            <a href="#services" class="btn btn-outline">Explore Services</a>
         </div>
-    </section>
+        <div class="trust-badge">
+            <span>✅ 200+ Client Accounts Analyzed</span>
+            <span>✅ 30%+ Data Error Reduction</span>
+            <span>✅ GCP Certified</span>
+            <span title="Selected for BeGreen (UNICEF/Generation Unlimited) among top 1.6% of applicants">✅ Top 1.6% Selected (BeGreen)</span>
+        </div>
+    </div>
+</section>
 
     <!-- ===== SERVICES ===== -->
     <section id="services">
