@@ -774,52 +774,88 @@ header {
             color: #4a5b6e;
         }
 
-/* ===== BLOG ICONS (Updated - Images Fill Containers) ===== */
+/* ===== BLOG ===== */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Exactly 3 columns like services */
+    gap: 30px;
+    max-width: 1020px;
+    margin: 0 auto;
+}
+
+.blog-card {
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #eaeef3;
+    width: 100%;
+    max-width: 320px; /* Fixed max width like services */
+    margin: 0 auto;
+}
+
+.blog-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Blog Icons - Fixed Size (like service icons) ===== */
 .blog-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 160px;
-    height: 120px;
-    margin: 0 auto 16px;
+    max-width: 276px;
+    min-height: 160px;
+    margin: 0 auto 12px;
     background: #f0f4f8;
     border-radius: 12px;
-    overflow: hidden; /* Ensures image stays inside rounded corners */
-    padding: 0; /* Remove padding to allow full coverage */
+    padding: 10px;
 }
 
 .blog-icon img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Fills the container completely */
+    height: 160px;
+    object-fit: cover;
     display: block;
-    transition: transform 0.3s;
+    border-radius: 8px;
 }
 
-.blog-card:hover .blog-icon img {
-    transform: scale(1.05);
+/* ===== Blog Card Typography ===== */
+.blog-card h3 {
+    font-size: 1.2rem;
+    margin: 12px 0 8px;
+    color: #1e3c72;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-    .blog-icon {
-        max-width: 120px;
-        height: 100px;
-    }
+.blog-card p {
+    color: #4a5b6e;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    line-height: 1.5;
 }
 
-@media (max-width: 480px) {
-    .blog-icon {
-        max-width: 140px;
-        height: 110px;
-    }
+/* ===== Read More Link ===== */
+.blog-card .read-more {
+    display: inline-block;
+    color: #1e3c72;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s, transform 0.2s;
 }
 
-/* ===== RESPONSIVE ===== */
+.blog-card .read-more:hover {
+    color: #4a7ab5;
+    transform: translateX(4px);
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 1024px) {
     .blog-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
         max-width: 700px;
     }
 }
@@ -831,30 +867,28 @@ header {
         max-width: 100%;
     }
     .blog-icon {
-        max-width: 120px;
-        height: 100px;
+        max-width: 200px;
+        min-height: 120px;
     }
     .blog-icon img {
-        width: 60px;
-        height: 60px;
+        height: 120px;
     }
 }
 
 @media (max-width: 480px) {
     .blog-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* 1 column on mobile */
         max-width: 100%;
     }
     .blog-card {
         max-width: 100%;
     }
     .blog-icon {
-        max-width: 140px;
-        height: 110px;
+        max-width: 240px;
+        min-height: 140px;
     }
     .blog-icon img {
-        width: 70px;
-        height: 70px;
+        height: 140px;
     }
 }
         /* ===== FAQ ===== */
@@ -1498,7 +1532,7 @@ header {
         </div>
     </section>
 
-   <!-- ===== BLOG ===== -->
+ <!-- ===== BLOG ===== -->
 <section id="blog" class="section-alt">
     <div class="container">
         <h2 class="section-title">Latest Insights</h2>
@@ -1508,7 +1542,7 @@ header {
             <!-- Blog Post 1: Domestic Borrowing -->
             <div class="blog-card">
                 <div class="blog-icon">
-                    <img src="images/blog/borrowing.png" alt="Domestic Borrowing icon" loading="lazy">
+                    <img src="images/blog/borrowing.png" alt="Domestic Borrowing icon" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='📊'; this.parentElement.style.fontSize='4.5rem'; this.parentElement.style.lineHeight='1';">
                 </div>
                 <h3>Domestic Borrowing &amp; Growth</h3>
                 <p>Analyzing the effects of domestic government borrowing on economic growth in Kenya using ARDL and threshold regression.</p>
@@ -1518,7 +1552,7 @@ header {
             <!-- Blog Post 2: AI Fact-Checking -->
             <div class="blog-card">
                 <div class="blog-icon">
-                    <img src="images/blog/ai-factcheck.png" alt="AI Fact-Checking icon" loading="lazy">
+                    <img src="images/blog/ai-factcheck.png" alt="AI Fact-Checking icon" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='🤖'; this.parentElement.style.fontSize='4.5rem'; this.parentElement.style.lineHeight='1';">
                 </div>
                 <h3>AI Fact-Checking in Kenya</h3>
                 <p>Why verifying AI-generated claims with real local data matters for decision-making in East Africa.</p>
@@ -1528,7 +1562,7 @@ header {
             <!-- Blog Post 3: M&E for NGOs -->
             <div class="blog-card">
                 <div class="blog-icon">
-                    <img src="images/blog/monitoring.png" alt="Monitoring & Evaluation icon" loading="lazy">
+                    <img src="images/blog/monitoring.png" alt="Monitoring & Evaluation icon" loading="lazy" onerror="this.style.display='none'; this.parentElement.textContent='📋'; this.parentElement.style.fontSize='4.5rem'; this.parentElement.style.lineHeight='1';">
                 </div>
                 <h3>M&amp;E for NGOs</h3>
                 <p>How monitoring and evaluation frameworks can help NGOs measure impact and secure donor funding.</p>
