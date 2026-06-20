@@ -774,34 +774,7 @@ header {
             color: #4a5b6e;
         }
 
-       /* ===== BLOG ===== */
-.blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
-    max-width: 1020px;
-    margin: 0 auto;
-}
-
-.blog-card {
-    background: #fff;
-    padding: 30px 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-    border: 1px solid #eaeef3;
-    width: 100%;
-    max-width: 320px;
-    margin: 0 auto;
-}
-
-.blog-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-}
-
-/* ===== BLOG ICONS (Matches Services Style) ===== */
+/* ===== BLOG ICONS (Updated - Images Fill Containers) ===== */
 .blog-icon {
     display: flex;
     align-items: center;
@@ -812,14 +785,14 @@ header {
     margin: 0 auto 16px;
     background: #f0f4f8;
     border-radius: 12px;
-    padding: 15px;
-    transition: background 0.3s;
+    overflow: hidden; /* Ensures image stays inside rounded corners */
+    padding: 0; /* Remove padding to allow full coverage */
 }
 
 .blog-icon img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Fills the container completely */
     display: block;
     transition: transform 0.3s;
 }
@@ -828,30 +801,19 @@ header {
     transform: scale(1.05);
 }
 
-.blog-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    color: #0b1e33;
-    line-height: 1.3;
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .blog-icon {
+        max-width: 120px;
+        height: 100px;
+    }
 }
 
-.blog-card p {
-    font-size: 0.9rem;
-    color: #3d4e62;
-    margin-bottom: 16px;
-    line-height: 1.5;
-}
-
-.blog-card .read-more {
-    display: inline-block;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: #1e3c72;
-    transition: color 0.3s;
-}
-
-.blog-card .read-more:hover {
-    color: #4a7ab5;
+@media (max-width: 480px) {
+    .blog-icon {
+        max-width: 140px;
+        height: 110px;
+    }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -1536,14 +1498,7 @@ header {
         </div>
     </section>
 
-    <!-- ===== BLOG ===== -->
-    <section id="blog" class="section-alt">
-        <div class="container">
-            <h2 class="section-title">Latest Insights</h2>
-            <p class="section-subtitle">Thoughts on research, data, and decision-making in Kenya.</p>
-
-            <div class="blog-grid">
-               <!-- ===== BLOG ===== -->
+   <!-- ===== BLOG ===== -->
 <section id="blog" class="section-alt">
     <div class="container">
         <h2 class="section-title">Latest Insights</h2>
@@ -1582,9 +1537,6 @@ header {
         </div>
     </div>
 </section>
-            </div>
-        </div>
-    </section>
 
     <!-- ===== FAQ ===== -->
     <section id="faq">
