@@ -263,25 +263,25 @@
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
         }
 
+/* ===== FIX: Service icons at larger size ===== */
 .card .icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 260px;
+    min-height: 200px; /* Increased from 160px */
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     background: #f0f4f8;
     border-radius: 12px;
-    padding: 20px;
+    padding: 15px;
 }
 
 .card .icon img {
     width: 100% !important;
-    max-width: 400px !important;
-    height: 260px !important;
+    max-width: 320px !important; /* Increased from 276px */
+    height: 200px !important; /* Increased from 160px */
     object-fit: contain;
     display: block;
-    border-radius: 8px; /* Optional: rounded corners */
 }
 
     
