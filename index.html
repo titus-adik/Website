@@ -102,77 +102,209 @@
         }
 
         /* ===== HEADER ===== */
-        header {
-            background: #fff;
-            padding: 16px 0;
-            border-bottom: 1px solid #eaeef3;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
+header {
+    background: #fff;
+    padding: 16px 0;
+    border-bottom: 1px solid #eaeef3;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
 
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
+/* ===== LOGO ===== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
 
-        .logo svg {
-            height: 45px;
-            width: auto;
-            flex-shrink: 0;
-        }
+.logo svg {
+    height: 45px;
+    width: auto;
+    flex-shrink: 0;
+}
 
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
 
-        .logo-text .main {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #1e3c72;
-            letter-spacing: -0.5px;
-        }
+.logo-text .main {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1e3c72;
+    letter-spacing: -0.5px;
+}
 
-        .logo-text .main span {
-            color: #4a7ab5;
-        }
+.logo-text .main span {
+    color: #4a7ab5;
+}
 
-        .logo-text .tagline {
-            font-size: 0.7rem;
-            font-weight: 400;
-            color: #4a5b6e;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
+.logo-text .tagline {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #4a5b6e;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
 
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+/* ===== DESKTOP NAVIGATION ===== */
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
-        nav a {
-            font-weight: 500;
-            color: #2c3e50;
-        }
+.desktop-nav a {
+    font-weight: 500;
+    color: #2c3e50;
+}
 
-        nav a:hover {
-            color: #1e3c72;
-        }
+.desktop-nav a:hover {
+    color: #1e3c72;
+}
 
+/* ===== HAMBURGER MENU ===== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 101;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #1e3c72;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger animation when active */
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ===== MOBILE MENU OVERLAY ===== */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 350px;
+    height: 100%;
+    background: #1e3c72;
+    z-index: 1000;
+    transition: right 0.4s ease;
+    padding: 60px 30px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+}
+
+.mobile-menu-overlay.open {
+    right: 0;
+}
+
+.mobile-menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.mobile-menu-close:hover {
+    opacity: 1;
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.mobile-nav a {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: color 0.3s;
+}
+
+.mobile-nav a:hover {
+    color: #4a7ab5;
+}
+
+.mobile-nav .btn {
+    display: inline-block;
+    margin-top: 10px;
+    text-align: center;
+    background: #fff;
+    color: #1e3c72;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.mobile-nav .btn:hover {
+    background: #eaeef3;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .logo-text .main {
+        font-size: 1.2rem;
+    }
+    
+    .logo-text .tagline {
+        font-size: 0.55rem;
+    }
+    
+    .logo svg {
+        height: 35px;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-menu-overlay {
+        display: none;
+    }
+}
         /* ===== HERO SLIDER ===== */
 .hero {
     position: relative;
@@ -999,17 +1131,17 @@
 
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header>
-        <div class="container">
+   <!-- ===== HEADER ===== -->
+<header>
+    <div class="container">
+        <div class="header-content">
+            <!-- Logo -->
             <div class="logo">
                 <svg width="45" height="45" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <line x1="62" y1="62" x2="82" y2="82" stroke="#e67e22" stroke-width="6" stroke-linecap="round" />
                     <circle cx="45" cy="45" r="28" fill="none" stroke="#1a5276" stroke-width="5" />
-                    <path d="M35,25 Q45,35 35,45 Q25,55 35,65" fill="none" stroke="#e67e22" stroke-width="2.5"
-                        stroke-linecap="round" />
-                    <path d="M55,25 Q45,35 55,45 Q65,55 55,65" fill="none" stroke="#148f8f" stroke-width="2.5"
-                        stroke-linecap="round" />
+                    <path d="M35,25 Q45,35 35,45 Q25,55 35,65" fill="none" stroke="#e67e22" stroke-width="2.5" stroke-linecap="round" />
+                    <path d="M55,25 Q45,35 55,45 Q65,55 55,65" fill="none" stroke="#148f8f" stroke-width="2.5" stroke-linecap="round" />
                     <circle cx="45" cy="45" r="3" fill="#e67e22" />
                 </svg>
                 <div class="logo-text">
@@ -1017,7 +1149,9 @@
                     <span class="tagline">Evidence for Better Decision-Making</span>
                 </div>
             </div>
-            <nav>
+
+            <!-- Navigation (Desktop) -->
+            <nav class="desktop-nav">
                 <a href="#services">Services</a>
                 <a href="#clients">Clients</a>
                 <a href="#team">Team</a>
@@ -1025,8 +1159,29 @@
                 <a href="#faq">FAQ</a>
                 <a href="#contact" class="btn btn-small">Contact</a>
             </nav>
+
+            <!-- Hamburger Menu (Mobile) -->
+            <div class="hamburger" id="hamburger" role="button" aria-label="Toggle menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
-    </header>
+    </div>
+</header>
+
+<!-- ===== MOBILE MENU (Offcanvas) ===== -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+    <div class="mobile-menu-close" id="closeMenu">✕</div>
+    <nav class="mobile-nav">
+        <a href="#services">Services</a>
+        <a href="#clients">Clients</a>
+        <a href="#team">Team</a>
+        <a href="blog.html">Insights</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="btn btn-small">Contact</a>
+    </nav>
+</div>
 
     <!-- ===== HERO ===== -->
 <section class="hero">
@@ -1615,6 +1770,54 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize with the first slide
         showSlide(0);
         startAutoRotate();
+    });
+</script>
+
+    <script>
+    // ===== MOBILE MENU TOGGLE =====
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const body = document.body;
+
+        // Open menu
+        function openMenu() {
+            hamburger.classList.add('active');
+            mobileMenu.classList.add('open');
+            body.style.overflow = 'hidden'; // Prevent scroll
+        }
+
+        // Close menu
+        function closeMenuFunc() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('open');
+            body.style.overflow = ''; // Restore scroll
+        }
+
+        // Toggle on hamburger click
+        hamburger.addEventListener('click', function() {
+            if (mobileMenu.classList.contains('open')) {
+                closeMenuFunc();
+            } else {
+                openMenu();
+            }
+        });
+
+        // Close on close button click
+        closeMenu.addEventListener('click', closeMenuFunc);
+
+        // Close on link click (optional)
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenuFunc);
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                closeMenuFunc();
+            }
+        });
     });
 </script>
     
