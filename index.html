@@ -1391,6 +1391,64 @@ header {
     </nav>
 </div>
 
+    <!-- ===== HERO WITH VIDEO SLIDESHOW ===== -->
+<section class="hero">
+    <!-- Video 1 -->
+    <video class="bg-video" id="video1" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 1; transition: opacity 1.5s ease;">
+        <source src="videos/background-video-1.mp4" type="video/mp4">
+        <img src="images/background/graph-trend.png" alt="Data visualization background" style="width: 100%; height: 100%; object-fit: cover;">
+    </video>
+    
+    <!-- Video 2 -->
+    <video class="bg-video" id="video2" autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0; transition: opacity 1.5s ease;">
+        <source src="videos/background-video-2.mp4" type="video/mp4">
+        <img src="images/background/field-research.jpg" alt="Field research background" style="width: 100%; height: 100%; object-fit: cover;">
+    </video>
+    
+    <!-- Overlay -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1;"></div>
+
+    <div class="container" style="position: relative; z-index: 2; text-align: center; color: #fff; padding: 20px; max-width: 900px;">
+        <!-- Text Slider -->
+        <div class="hero-slider">
+            <!-- Slide 1 -->
+            <div class="hero-slide active">
+                <h1>Turning <span class="highlight">Data</span> into Decisions</h1>
+                <p>Evidence-based research, data analytics, and decision intelligence for businesses, NGOs, and organizations across Kenya and beyond.</p>
+                <div class="btn-group">
+                    <a href="#contact" class="btn">Get a Free Consultation</a>
+                    <a href="#services" class="btn">Explore Services</a>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="hero-slide">
+                <h1>Your trusted <span class="highlight">RESEARCH PARTNER.</span></h1>
+                <p>We provide real-world verification through field research, primary data collection, and rigorous analysis.</p>
+                <div class="btn-group">
+                    <a href="#services" class="btn">Our Services</a>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+            </div>
+                <!-- Slide 3 -->
+                <div class="hero-slide">
+                    <h1>Evidence for <span class="highlight">Better Decisions</span></h1>
+                    <p>Research services designed to give you reliable, actionable insights that drive impact.</p>
+                    <div class="btn-group">
+                        <a href="#about" class="btn">Why Choose Us</a>
+                        <a href="#contact" class="btn">Let's Talk</a>
+                    </div>
+                </div>
+            <!-- Slide 4 - Vision Focused -->
+            <div class="hero-slide">
+                <h1>Building Africa's <span class="highlight">Verified Data Infrastructure</span></h1>
+                <p>From research services to a global AI innovation hub. We're building the foundation for Africa's data-driven future.</p>
+                <div class="btn-group">
+                    <a href="vision.html" class="btn">Explore Our <span class="highlight"> Vision</a>
+                    <a href="#services" class="btn">Our Services</a>
+                </div>
+            </div>
+        </div>
 <!-- Trust Badges (Static - always visible) -->
 <div class="trust-badge" style="display: flex; justify-content: center; gap: 20px 30px; flex-wrap: wrap; font-size: 0.9rem; color: #b0c4de; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 30px; margin-top: 40px; align-items: center;">
     <span style="display: inline-flex; align-items: center; gap: 6px;">✅ 200+ Client Accounts Analyzed</span>
@@ -1399,7 +1457,15 @@ header {
     <span style="display: inline-flex; align-items: center; gap: 6px;" title="Selected for BeGreen (UNICEF/Generation Unlimited) among top 1.6% of applicants">✅ Top 1.6% Selected (BeGreen)</span>
     <span style="display: inline-flex; align-items: center; gap: 6px; color: #7aafd4;">🚀 Building Africa's AI Future</span>
 </div>
-    
+        <!-- Slider Dots (Navigation) -->
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+        </div>
+    </div>
+</section>
+
 <!-- ===== SERVICES ===== -->
 <section id="services">
     <div class="container">
