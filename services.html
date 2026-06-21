@@ -80,39 +80,6 @@
             color: #fff;
         }
 
-        .btn-primary {
-            background: #1e3c72;
-            color: #fff;
-            padding: 14px 40px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            background: #2a5298;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #1e3c72;
-            padding: 14px 40px;
-            border-radius: 30px;
-            font-weight: 500;
-            transition: all 0.3s;
-            display: inline-block;
-            border: 2px solid #1e3c72;
-        }
-
-        .btn-secondary:hover {
-            background: #1e3c72;
-            color: #fff;
-            transform: translateY(-3px);
-        }
-
         /* ===== HEADER ===== */
         header {
             background: #fff;
@@ -527,45 +494,6 @@
             background: #f4f7fa;
         }
 
-        /* ===== FEATURES SECTION ===== */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-            max-width: 1020px;
-            margin: 0 auto;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 25px 20px;
-            background: #fff;
-            border-radius: 12px;
-            border: 1px solid #eaeef3;
-            transition: transform 0.2s;
-        }
-
-        .feature-item:hover {
-            transform: translateY(-4px);
-        }
-
-        .feature-item .icon {
-            font-size: 2.2rem;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .feature-item h4 {
-            font-size: 1rem;
-            color: #1e3c72;
-            margin-bottom: 4px;
-        }
-
-        .feature-item p {
-            font-size: 0.85rem;
-            color: #4a5b6e;
-        }
-
         /* ===== CTA SECTION ===== */
         .cta-section {
             background: linear-gradient(135deg, #0b1e33, #1e3c72);
@@ -665,10 +593,6 @@
                 grid-template-columns: repeat(2, 1fr);
                 max-width: 700px;
             }
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-                max-width: 700px;
-            }
         }
 
         @media (max-width: 768px) {
@@ -679,10 +603,6 @@
                 font-size: 1rem;
             }
             .services-grid {
-                grid-template-columns: 1fr;
-                max-width: 100%;
-            }
-            .features-grid {
                 grid-template-columns: 1fr;
                 max-width: 100%;
             }
@@ -772,7 +692,7 @@
     <section class="page-header">
         <div class="container">
             <h1>Our <span>Research Services</span></h1>
-            <p>Comprehensive research solutions designed to give you reliable, actionable insights — from market research to medical studies.</p>
+            <p>Comprehensive research solutions designed to give you reliable, actionable insights — from market research to AI innovation.</p>
             <div class="breadcrumb">
                 <a href="index.html">Home</a> / <span>Services</span>
             </div>
@@ -780,7 +700,7 @@
     </section>
 
     <!-- ===== CORE RESEARCH SERVICES ===== -->
-    <section>
+    <section id="core-services">
         <div class="container">
             <div class="service-divider">
                 <h3>📊 Core Research Services</h3>
@@ -789,55 +709,67 @@
 
             <div class="services-grid">
                 <!-- Market Research -->
-                <div class="service-card">
-                    <span class="icon">📈</span>
+                <div class="service-card" id="market-research">
+                    <div class="icon">
+                        <img src="images/icons/market-research.png" alt="Market Research icon" loading="lazy" style="width: 80px; height: 80px; object-fit: contain;">
+                    </div>
                     <h3>Market Research</h3>
-                    <p>Consumer surveys, competitor analysis, market sizing, and customer satisfaction studies to help you understand your audience and make data-driven decisions.</p>
+                    <p>Consumer surveys, competitor analysis, market sizing, and customer satisfaction studies to help you understand your audience.</p>
                     <span class="tag">Business</span>
                     <a href="#" class="read-more">Learn more →</a>
                 </div>
 
                 <!-- Data Analysis -->
-                <div class="service-card">
-                    <span class="icon">📊</span>
+                <div class="service-card" id="data-analysis">
+                    <div class="icon">
+                        <img src="images/icons/data-analysis.png" alt="Data Analysis icon" loading="lazy" style="width: 80px; height: 80px; object-fit: contain;">
+                    </div>
                     <h3>Data Analysis</h3>
-                    <p>Data cleaning, statistical analysis using R, Python, STATA, and Excel — plus visualization and report writing to uncover actionable insights.</p>
+                    <p>Data cleaning, statistical analysis using R, Python, STATA, and Excel — plus visualization and report writing.</p>
                     <span class="tag">All Sectors</span>
                     <a href="#" class="read-more">Learn more →</a>
                 </div>
 
                 <!-- Monitoring & Evaluation -->
-                <div class="service-card">
-                    <span class="icon">📋</span>
+                <div class="service-card" id="monitoring-evaluation">
+                    <div class="icon">
+                        <img src="images/icons/monitoring-evaluation.png" alt="Monitoring & Evaluation icon" loading="lazy" style="width: 80px; height: 80px; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.textContent='📋'; this.parentElement.style.fontSize='3rem';">
+                    </div>
                     <h3>Monitoring &amp; Evaluation</h3>
-                    <p>Baseline surveys, mid-term evaluations, end-line assessments, and impact studies for programs and projects across all sectors.</p>
+                    <p>Baseline surveys, mid-term evaluations, end-line assessments, and impact studies for programs and projects.</p>
                     <span class="tag">NGOs &amp; Donors</span>
                     <a href="#" class="read-more">Learn more →</a>
                 </div>
 
                 <!-- Medical & Pharma Research -->
-                <div class="service-card">
-                    <span class="icon">🏥</span>
+                <div class="service-card" id="medical-research">
+                    <div class="icon">
+                        <img src="images/icons/medical-research.png" alt="Medical Research icon" loading="lazy" style="width: 80px; height: 80px; object-fit: contain;">
+                    </div>
                     <h3>Medical &amp; Pharma Research</h3>
-                    <p>Clinical research support, pharmaceutical data analysis, patient surveys, and GCP-compliant studies for healthcare organizations.</p>
+                    <p>Clinical research support, pharmaceutical data analysis, patient surveys, and GCP-compliant studies.</p>
                     <span class="tag">Healthcare</span>
                     <a href="#" class="read-more">Learn more →</a>
                 </div>
 
                 <!-- Professional Training -->
-                <div class="service-card">
-                    <span class="icon">🎓</span>
+                <div class="service-card" id="training">
+                    <div class="icon">
+                        <img src="images/icons/professional-training.png" alt="Professional Training icon" loading="lazy" style="width: 80px; height: 80px; object-fit: contain;">
+                    </div>
                     <h3>Professional Training</h3>
-                    <p>Hands-on courses in research methods, data analysis (R, Python, STATA, Excel), and M&E frameworks for capacity building.</p>
+                    <p>Hands-on courses in research methods, data analysis (R, Python, STATA, Excel), and M&E frameworks.</p>
                     <span class="tag">Capacity Building</span>
                     <a href="#" class="read-more">Learn more →</a>
                 </div>
 
                 <!-- Research Writing & Support -->
-                <div class="service-card">
-                    <span class="icon">✍️</span>
+                <div class="service-card" id="research-writing">
+                    <div class="icon">
+                        <img src="images/icons/research-writing.png" alt="Research Writing icon" loading="lazy" style="width: 80px; height: 80px; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.textContent='✍️'; this.parentElement.style.fontSize='3rem';">
+                    </div>
                     <h3>Research Writing &amp; Support</h3>
-                    <p>Thesis writing, proposal development, grant writing, abstract preparation, and publication support for researchers and academics.</p>
+                    <p>Thesis writing, proposal development, grant writing, abstract preparation, and publication support.</p>
                     <span class="tag">Academics</span>
                     <a href="#" class="read-more">Learn more →</a>
                 </div>
@@ -846,7 +778,7 @@
     </section>
 
     <!-- ===== INNOVATION & AI SERVICES ===== -->
-    <section class="section-alt">
+    <section id="innovation-services" class="section-alt">
         <div class="container">
             <div class="service-divider">
                 <h3>🚀 Innovation &amp; AI Services</h3>
@@ -855,61 +787,36 @@
 
             <div class="services-grid">
                 <!-- AI Fact-Checking -->
-                <div class="service-card" style="border-color: #4a7ab5; background: linear-gradient(135deg, #fff, #f0f7ff);">
-                    <span class="icon">🔍</span>
+                <div class="service-card" id="ai-verification" style="border-color: #4a7ab5; background: linear-gradient(135deg, #fff, #f0f7ff);">
+                    <div class="icon">
+                        <img src="images/icons/ai-fact-checking.png" alt="AI Fact-Checking icon" loading="lazy" style="width: 80px; height: 80px; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.textContent='🔍'; this.parentElement.style.fontSize='3rem';">
+                    </div>
                     <h3>AI Fact-Checking</h3>
-                    <p><strong>AI generates. We verify.</strong> We take AI-generated claims, research, or data and validate them with real field research. Our team conducts surveys, interviews, and data verification to confirm what's true—and correct what's not.</p>
+                    <p><strong>AI generates. We verify.</strong> We take AI-generated claims and validate them with real field research through surveys, interviews, and data verification.</p>
                     <span class="tag tag-innovation">🔬 Innovation</span>
                     <a href="#" class="read-more">Learn more →</a>
                 </div>
 
                 <!-- Proprietary Dataset Development -->
-                <div class="service-card" style="border-color: #4a7ab5; background: linear-gradient(135deg, #fff, #f0f7ff);">
-                    <span class="icon">🧠</span>
+                <div class="service-card" id="dataset-development" style="border-color: #4a7ab5; background: linear-gradient(135deg, #fff, #f0f7ff);">
+                    <div class="icon">
+                        <img src="images/icons/dataset-development.png" alt="Dataset Development icon" loading="lazy" style="width: 80px; height: 80px; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.textContent='🧠'; this.parentElement.style.fontSize='3rem';">
+                    </div>
                     <h3>Proprietary Dataset Development</h3>
-                    <p>Building Africa's most verified, high-quality datasets for AI training—starting with healthcare, agriculture, and economics. Our advantage? We collect and verify the data ourselves.</p>
+                    <p>Building Africa's most verified, high-quality datasets for AI training—starting with healthcare, agriculture, and economics.</p>
                     <span class="tag tag-innovation">📊 Data Advantage</span>
                     <a href="#" class="read-more">Learn more →</a>
                 </div>
 
                 <!-- Data Science Consulting -->
-                <div class="service-card" style="border-color: #4a7ab5; background: linear-gradient(135deg, #fff, #f0f7ff);">
-                    <span class="icon">💡</span>
+                <div class="service-card" id="data-science" style="border-color: #4a7ab5; background: linear-gradient(135deg, #fff, #f0f7ff);">
+                    <div class="icon">
+                        <img src="images/icons/data-science.png" alt="Data Science Consulting icon" loading="lazy" style="width: 80px; height: 80px; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.textContent='💡'; this.parentElement.style.fontSize='3rem';">
+                    </div>
                     <h3>Data Science Consulting</h3>
-                    <p>Advanced analytics, predictive modeling, and AI strategy for organizations ready to embrace the future. We help you leverage data for competitive advantage.</p>
+                    <p>Advanced analytics, predictive modeling, and AI strategy for organizations ready to embrace the future.</p>
                     <span class="tag tag-innovation">💡 Strategic</span>
                     <a href="#" class="read-more">Learn more →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== WHY CHOOSE OUR SERVICES ===== -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">Why Choose Our Services?</h2>
-            <p class="section-subtitle">We combine world-class expertise with deep local knowledge to deliver research you can trust.</p>
-
-            <div class="features-grid">
-                <div class="feature-item">
-                    <span class="icon">👨‍🔬</span>
-                    <h4>Pharmacist + Statistician Team</h4>
-                    <p>Unique partnership combining clinical expertise with data science for full-spectrum research.</p>
-                </div>
-                <div class="feature-item">
-                    <span class="icon">🏛️</span>
-                    <h4>NASCOP &amp; BeGreen Experience</h4>
-                    <p>Health data validation for Kenya's Ministry of Health and business verification for a UNICEF program.</p>
-                </div>
-                <div class="feature-item">
-                    <span class="icon">📊</span>
-                    <h4>200+ Clients Analyzed</h4>
-                    <p>Proven experience managing and analyzing large datasets, achieving a 30%+ error reduction.</p>
-                </div>
-                <div class="feature-item">
-                    <span class="icon">🔬</span>
-                    <h4>AI &amp; GCP Certified</h4>
-                    <p>ALX AI certification and CITI GCP credentials for ethical, modern research.</p>
                 </div>
             </div>
         </div>
