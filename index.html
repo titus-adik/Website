@@ -8,143 +8,13 @@
     <meta name="description"
         content="Scire Research is building the foundation for Africa's data-driven future — verified data infrastructure, AI-powered intelligence, and global research partnerships from Kenya.">
 
-    <!-- ===== FAVICON ===== -->
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cline x1='62' y1='62' x2='82' y2='82' stroke='%23e67e22' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='28' fill='none' stroke='%231a5276' stroke-width='5'/%3E%3Cpath d='M35,25 Q45,35 35,45 Q25,55 35,65' fill='none' stroke='%23e67e22' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M55,25 Q45,35 55,45 Q65,55 55,65' fill='none' stroke='%23148f8f' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='3' fill='%23e67e22'/%3E%3C/svg%3E">
 
     <style>
-/* ===== WHO WE SERVE - RESPONSIVE ===== */
-.serve-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1020px;
-    margin: 0 auto;
-}
-
-.serve-item {
-    background: #fff;
-    padding: 25px 20px;
-    border-radius: 12px;
-    border-left: 4px solid #1e3c72;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    transition: transform 0.2s;
-}
-
-.serve-item:hover {
-    transform: translateY(-4px);
-}
-
-.serve-item h4 {
-    font-size: 1.1rem;
-    color: #1e3c72;
-    margin-bottom: 6px;
-}
-
-.serve-item p {
-    color: #3d4e62;
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
-.serve-item .badge {
-    display: inline-block;
-    margin-top: 8px;
-    font-size: 0.65rem;
-    background: #e3edfb;
-    color: #1e3c72;
-    padding: 2px 12px;
-    border-radius: 12px;
-}
-
-/* ===== RESPONSIVE BREAKPOINTS ===== */
-@media (max-width: 1024px) {
-    .serve-grid {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 700px;
-        gap: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .serve-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        max-width: 100%;
-    }
-    .serve-item {
-        padding: 18px 15px;
-    }
-    .serve-item h4 {
-        font-size: 0.95rem;
-    }
-    .serve-item p {
-        font-size: 0.85rem;
-    }
-    .serve-item .badge {
-        font-size: 0.6rem;
-        padding: 2px 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .serve-grid {
-        grid-template-columns: 1fr;
-        max-width: 100%;
-        gap: 15px;
-    }
-    .serve-item {
-        padding: 20px 16px;
-        border-left-width: 3px;
-    }
-    .serve-item h4 {
-        font-size: 1rem;
-    }
-    .serve-item p {
-        font-size: 0.85rem;
-    }
-}
-        
-/* ===== PROCESS SECTION ===== */
-@media (max-width: 1024px) {
-    .process-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .process-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 15px !important;
-    }
-    .process-step {
-        padding: 15px 12px !important;
-    }
-    .process-step .number {
-        width: 45px !important;
-        height: 45px !important;
-        font-size: 1.1rem !important;
-    }
-    .process-step h4 {
-        font-size: 0.9rem !important;
-    }
-    .process-step p {
-        font-size: 0.8rem !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .process-grid {
-        grid-template-columns: 1fr !important;
-        max-width: 350px !important;
-        margin: 0 auto !important;
-    }
-    .process-step {
-        padding: 20px 15px !important;
-    }
-}
-        
-        /* ===== RESET & BASE ===== */
+        /* ============================================================ */
+        /* RESET & BASE                                                 */
+        /* ============================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -182,7 +52,9 @@
             color: #4a7ab5;
         }
 
-        /* ===== BUTTONS ===== */
+        /* ============================================================ */
+        /* BUTTONS                                                      */
+        /* ============================================================ */
         .btn {
             display: inline-block;
             background: #1e3c72;
@@ -237,7 +109,9 @@
             margin: 0 auto 50px;
         }
 
-        /* ===== HEADER - ENCLOSED ON HERO ===== */
+        /* ============================================================ */
+        /* HEADER - ENCLOSED ON HERO                                    */
+        /* ============================================================ */
         header {
             position: absolute;
             top: 20px;
@@ -272,7 +146,9 @@
             gap: 10px;
         }
 
-        /* ===== LOGO - VERTICAL STACK ===== */
+        /* ============================================================ */
+        /* LOGO - VERTICAL STACK                                        */
+        /* ============================================================ */
         .logo {
             display: flex;
             align-items: center;
@@ -313,7 +189,9 @@
             white-space: nowrap;
         }
 
-        /* ===== DESKTOP NAV ===== */
+        /* ============================================================ */
+        /* DESKTOP NAV                                                  */
+        /* ============================================================ */
         .desktop-nav {
             display: flex;
             align-items: center;
@@ -333,7 +211,9 @@
             color: #fff;
         }
 
-        /* ===== SCROLLED STATE ===== */
+        /* ============================================================ */
+        /* SCROLLED STATE                                               */
+        /* ============================================================ */
         header.scrolled .header-enclosed {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -376,7 +256,9 @@
             background: #1e3c72;
         }
 
-        /* ===== HAMBURGER ===== */
+        /* ============================================================ */
+        /* HAMBURGER                                                    */
+        /* ============================================================ */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -407,7 +289,9 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
-        /* ===== MOBILE MENU - SLIDE FROM RIGHT ===== */
+        /* ============================================================ */
+        /* MOBILE MENU - SLIDE FROM RIGHT                               */
+        /* ============================================================ */
         .mobile-menu-overlay {
             position: fixed;
             top: 0;
@@ -478,7 +362,9 @@
             background: #eaeef3;
         }
 
-        /* ===== RESPONSIVE - HEADER ===== */
+        /* ============================================================ */
+        /* RESPONSIVE - HEADER                                          */
+        /* ============================================================ */
         @media (max-width: 768px) {
             .desktop-nav {
                 display: none;
@@ -510,7 +396,9 @@
             }
         }
 
-        /* ===== HERO SLIDER ===== */
+        /* ============================================================ */
+        /* HERO SLIDER                                                  */
+        /* ============================================================ */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -687,7 +575,9 @@
             }
         }
 
-        /* ===== SECTIONS ===== */
+        /* ============================================================ */
+        /* SECTIONS                                                     */
+        /* ============================================================ */
         section {
             padding: 70px 0;
         }
@@ -696,7 +586,9 @@
             background: #f4f7fa;
         }
 
-        /* ===== SLIDE ANIMATIONS ===== */
+        /* ============================================================ */
+        /* SLIDE ANIMATIONS                                             */
+        /* ============================================================ */
         .slide-header {
             opacity: 0;
             transform: translateY(40px);
@@ -724,7 +616,9 @@
             }
         }
 
-        /* ===== SERVICES ===== */
+        /* ============================================================ */
+        /* SERVICES                                                     */
+        /* ============================================================ */
         .service-card {
             background: #fff;
             padding: 30px 20px;
@@ -777,20 +671,6 @@
             margin-bottom: 15px;
         }
 
-        .service-card .read-more {
-            color: #1e3c72;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-block;
-            transition: color 0.2s, transform 0.2s;
-        }
-
-        .service-card .read-more:hover {
-            color: #4a7ab5;
-            transform: translateX(4px);
-        }
-
-        /* ===== SERVICES GRID ===== */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -838,96 +718,9 @@
             }
         }
 
-        /* ===== INNOVATION CARDS ===== */
-        .innovation-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            max-width: 1020px;
-            margin: 0 auto;
-        }
-
-        .innovation-card {
-            background: #fff;
-            padding: 25px 20px;
-            border-radius: 12px;
-            border: 1px solid #eaeef3;
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            width: 100%;
-            max-width: 240px;
-            margin: 0 auto;
-        }
-
-        .innovation-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-        }
-
-        .innovation-card .icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: 200px;
-            min-height: 120px;
-            margin: 0 auto 12px;
-            background: #f0f4f8;
-            border-radius: 12px;
-            padding: 10px;
-        }
-
-        .innovation-card .icon img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            display: block;
-            border-radius: 8px;
-        }
-
-        .innovation-card h4 {
-            font-size: 1.05rem;
-            color: #0b1e33;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .innovation-card p {
-            font-size: 0.85rem;
-            color: #4a5b6e;
-            line-height: 1.5;
-        }
-
-        @media (max-width: 1024px) {
-            .innovation-grid {
-                grid-template-columns: repeat(2, 1fr);
-                max-width: 700px;
-            }
-            .innovation-card {
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .innovation-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .innovation-grid {
-                grid-template-columns: 1fr;
-                max-width: 100%;
-            }
-            .innovation-card {
-                max-width: 100%;
-            }
-        }
-
-        /* ===== PRODUCT CARDS ===== */
+        /* ============================================================ */
+        /* PRODUCT CARDS                                                */
+        /* ============================================================ */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1037,17 +830,111 @@
             }
         }
 
-        /* ===== WHO WE SERVE ===== */
+        /* ============================================================ */
+        /* INNOVATION CARDS                                             */
+        /* ============================================================ */
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1020px;
+            margin: 0 auto;
+        }
+
+        .innovation-card {
+            background: #fff;
+            padding: 25px 20px;
+            border-radius: 12px;
+            border: 1px solid #eaeef3;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 240px;
+            margin: 0 auto;
+        }
+
+        .innovation-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .innovation-card .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 200px;
+            min-height: 120px;
+            margin: 0 auto 12px;
+            background: #f0f4f8;
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        .innovation-card .icon img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .innovation-card h4 {
+            font-size: 1.05rem;
+            color: #0b1e33;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .innovation-card p {
+            font-size: 0.85rem;
+            color: #4a5b6e;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 1024px) {
+            .innovation-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 700px;
+            }
+            .innovation-card {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .innovation-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .innovation-grid {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+            }
+            .innovation-card {
+                max-width: 100%;
+            }
+        }
+
+        /* ============================================================ */
+        /* WHO WE SERVE - RESPONSIVE                                    */
+        /* ============================================================ */
         .serve-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            text-align: center;
+            max-width: 1020px;
+            margin: 0 auto;
         }
 
         .serve-item {
             background: #fff;
-            padding: 30px 20px;
+            padding: 25px 20px;
             border-radius: 12px;
             border-left: 4px solid #1e3c72;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -1059,45 +946,179 @@
         }
 
         .serve-item h4 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
+            font-size: 1.1rem;
+            color: #1e3c72;
+            margin-bottom: 6px;
         }
 
         .serve-item p {
             color: #3d4e62;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
-        /* ===== PROCESS ===== */
-        .process-steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px 40px;
-            margin-top: 30px;
+        .serve-item .badge {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.65rem;
+            background: #e3edfb;
+            color: #1e3c72;
+            padding: 2px 12px;
+            border-radius: 12px;
         }
 
-        .step {
-            display: flex;
+        @media (max-width: 1024px) {
+            .serve-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 700px;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .serve-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                max-width: 100%;
+            }
+            .serve-item {
+                padding: 18px 15px;
+            }
+            .serve-item h4 {
+                font-size: 0.95rem;
+            }
+            .serve-item p {
+                font-size: 0.85rem;
+            }
+            .serve-item .badge {
+                font-size: 0.6rem;
+                padding: 2px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .serve-grid {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+                gap: 15px;
+            }
+            .serve-item {
+                padding: 20px 16px;
+                border-left-width: 3px;
+            }
+            .serve-item h4 {
+                font-size: 1rem;
+            }
+            .serve-item p {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* ============================================================ */
+        /* PROCESS - RESPONSIVE                                         */
+        /* ============================================================ */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 20px 15px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #4a7ab5;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
+        }
+
+        .process-step .number {
+            display: inline-flex;
             align-items: center;
-            gap: 12px;
-            font-weight: 500;
-        }
-
-        .step .num {
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             background: #1e3c72;
             color: #fff;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 1.4rem;
             font-weight: 700;
-            flex-shrink: 0;
+            margin-bottom: 12px;
         }
 
-        /* ===== STATS ===== */
+        .process-step h4 {
+            font-size: 1rem;
+            color: #1e3c72;
+            margin-bottom: 6px;
+        }
+
+        .process-step p {
+            font-size: 0.85rem;
+            color: #4a5b6e;
+            line-height: 1.5;
+        }
+
+        .process-step .phase-tag {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.7rem;
+            color: #4a7ab5;
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            .process-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 15px !important;
+            }
+            .process-step {
+                padding: 15px 12px !important;
+            }
+            .process-step .number {
+                width: 45px !important;
+                height: 45px !important;
+                font-size: 1.1rem !important;
+            }
+            .process-step h4 {
+                font-size: 0.9rem !important;
+            }
+            .process-step p {
+                font-size: 0.8rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .process-grid {
+                grid-template-columns: 1fr !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+            }
+            .process-step {
+                padding: 20px 15px !important;
+                max-width: 100% !important;
+            }
+        }
+
+        /* ============================================================ */
+        /* STATS                                                        */
+        /* ============================================================ */
         .stats {
             background: #1e3c72;
             color: #fff;
@@ -1122,7 +1143,9 @@
             opacity: 0.85;
         }
 
-        /* ===== VISION TEASER ===== */
+        /* ============================================================ */
+        /* VISION TEASER                                                */
+        /* ============================================================ */
         #vision-teaser {
             position: relative;
             color: #fff;
@@ -1160,34 +1183,188 @@
             text-align: center;
         }
 
-        /* ===== WHY CHOOSE US ===== */
+        @media (max-width: 768px) {
+            #vision-teaser {
+                padding: 50px 0;
+                min-height: 400px;
+            }
+            #vision-teaser h2 {
+                font-size: 2rem !important;
+            }
+            #vision-teaser p {
+                font-size: 1rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #vision-teaser {
+                padding: 40px 0;
+                min-height: 350px;
+            }
+            #vision-teaser h2 {
+                font-size: 1.6rem !important;
+            }
+        }
+
+        /* ============================================================ */
+        /* WHY CHOOSE US                                                */
+        /* ============================================================ */
         .why-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1020px;
+            margin: 0 auto;
         }
 
-        .why-item {
+        .why-card {
+            background: #fff;
+            padding: 30px 22px;
+            border-radius: 16px;
             text-align: center;
-            padding: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            border-bottom: 4px solid #1e3c72;
         }
 
-        .why-item .icon {
-            font-size: 2.4rem;
-            margin-bottom: 10px;
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
         }
 
-        .why-item h4 {
-            font-size: 1.1rem;
-            margin-bottom: 6px;
+        .why-card .why-icon {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            display: block;
         }
 
-        .why-item p {
+        .why-card h4 {
+            font-size: 1.05rem;
+            color: #1e3c72;
+            margin-bottom: 8px;
+        }
+
+        .why-card p {
             font-size: 0.9rem;
-            color: #3d4e62;
+            color: #4a5b6e;
+            line-height: 1.6;
+            margin: 0;
         }
 
-        /* ===== TESTIMONIALS ===== */
+        .why-card p strong {
+            color: #1e3c72;
+        }
+
+        .why-card.highlight {
+            border-bottom-color: #4a7ab5;
+        }
+
+        .why-card.featured {
+            background: linear-gradient(135deg, #0b1e33, #1e3c72);
+            border-bottom-color: #7aafd4;
+        }
+
+        .why-card.featured h4 {
+            color: #fff;
+        }
+
+        .why-card.featured p {
+            color: #b0c4de;
+        }
+
+        .why-card.featured p strong {
+            color: #7aafd4;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px 50px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eaeef3;
+        }
+
+        .trust-badges span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #1e3c72;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1024px) {
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 700px;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                max-width: 100%;
+            }
+            .why-card {
+                padding: 20px 16px;
+            }
+            .why-card .why-icon {
+                font-size: 2.2rem;
+                margin-bottom: 8px;
+            }
+            .why-card h4 {
+                font-size: 0.95rem;
+            }
+            .why-card p {
+                font-size: 0.85rem;
+            }
+            .trust-badges {
+                gap: 15px 25px;
+            }
+            .trust-badges span {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+                gap: 15px;
+            }
+            .why-card {
+                padding: 22px 18px;
+                border-bottom-width: 3px;
+            }
+            .why-card .why-icon {
+                font-size: 2.5rem;
+                margin-bottom: 10px;
+            }
+            .why-card h4 {
+                font-size: 1rem;
+            }
+            .why-card p {
+                font-size: 0.85rem;
+            }
+            .trust-badges {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding-top: 20px;
+                margin-top: 30px;
+            }
+            .trust-badges span {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* ============================================================ */
+        /* TESTIMONIALS                                                 */
+        /* ============================================================ */
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1218,7 +1395,9 @@
             color: #4a5b6e;
         }
 
-        /* ===== BLOG ===== */
+        /* ============================================================ */
+        /* BLOG                                                         */
+        /* ============================================================ */
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1331,7 +1510,9 @@
             }
         }
 
-        /* ===== FAQ ===== */
+        /* ============================================================ */
+        /* FAQ                                                          */
+        /* ============================================================ */
         .faq-grid {
             max-width: 800px;
             margin: 0 auto;
@@ -1375,7 +1556,9 @@
             display: block;
         }
 
-        /* ===== CONTACT ===== */
+        /* ============================================================ */
+        /* CONTACT                                                      */
+        /* ============================================================ */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1471,7 +1654,9 @@
             border: 1px solid #f5c6cb;
         }
 
-        /* ===== CTA ===== */
+        /* ============================================================ */
+        /* CTA                                                          */
+        /* ============================================================ */
         .cta {
             background: linear-gradient(135deg, #0b1e33, #1e3c72);
             color: #fff;
@@ -1515,7 +1700,9 @@
             color: #fff;
         }
 
-        /* ===== FOOTER ===== */
+        /* ============================================================ */
+        /* FOOTER                                                       */
+        /* ============================================================ */
         footer {
             background: #0b1e33;
             color: #b0c4de;
@@ -1561,17 +1748,15 @@
             height: 20px;
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ============================================================ */
+        /* RESPONSIVE - GENERAL                                         */
+        /* ============================================================ */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
             }
             .section-title {
                 font-size: 1.8rem;
-            }
-            .process-steps {
-                flex-direction: column;
-                align-items: center;
             }
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -1580,16 +1765,6 @@
             .cta .contact-info {
                 flex-direction: column;
                 gap: 10px;
-            }
-            #vision-teaser {
-                padding: 50px 0;
-                min-height: 400px;
-            }
-            #vision-teaser h2 {
-                font-size: 2rem !important;
-            }
-            #vision-teaser p {
-                font-size: 1rem !important;
             }
         }
 
@@ -1612,20 +1787,15 @@
             .innovation-grid {
                 grid-template-columns: 1fr;
             }
-            #vision-teaser {
-                padding: 40px 0;
-                min-height: 350px;
-            }
-            #vision-teaser h2 {
-                font-size: 1.6rem !important;
-            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- ===== HEADER - ENCLOSED ON HERO ===== -->
+    <!-- ============================================================ -->
+    <!-- HEADER - ENCLOSED ON HERO                                    -->
+    <!-- ============================================================ -->
     <header id="mainHeader">
         <div class="container">
             <div class="header-enclosed">
@@ -1666,7 +1836,9 @@
         </div>
     </header>
 
-    <!-- ===== MOBILE MENU - SLIDE FROM RIGHT ===== -->
+    <!-- ============================================================ -->
+    <!-- MOBILE MENU - SLIDE FROM RIGHT                               -->
+    <!-- ============================================================ -->
     <div class="mobile-menu-overlay" id="mobileMenu">
         <div class="mobile-menu-close" id="closeMenu">✕</div>
         <nav class="mobile-nav">
@@ -1679,7 +1851,9 @@
         </nav>
     </div>
 
-    <!-- ===== HERO ===== -->
+    <!-- ============================================================ -->
+    <!-- HERO                                                         -->
+    <!-- ============================================================ -->
     <section class="hero">
         <!-- Video 1 -->
         <video class="bg-video" id="video1" muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 1; transition: opacity 1.5s ease; filter: brightness(1.3) contrast(1.1);">
@@ -1758,7 +1932,9 @@
         </div>
     </section>
 
-    <!-- ===== SERVICES ===== -->
+    <!-- ============================================================ -->
+    <!-- SERVICES                                                     -->
+    <!-- ============================================================ -->
     <section id="services" style="padding: 80px 0; background: #fafbfc;">
 
         <!-- Section Header -->
@@ -1783,68 +1959,35 @@
                 </div>
 
                 <div class="services-grid">
-                    <!-- Market Research -->
                     <div class="service-card">
-                        <div class="icon">
-                            <img src="images/icons/market-research.png" alt="Market Research">
-                        </div>
+                        <div class="icon"><img src="images/icons/market-research.png" alt="Market Research"></div>
                         <h4>Market Research</h4>
                         <p>Consumer surveys, competitor analysis, and market sizing—so you understand your audience before you invest.</p>
-                       
                     </div>
-
-                    <!-- Data Analysis -->
                     <div class="service-card">
-                        <div class="icon">
-                            <img src="images/icons/data-analysis.png" alt="Data Analysis">
-                        </div>
+                        <div class="icon"><img src="images/icons/data-analysis.png" alt="Data Analysis"></div>
                         <h4>Data Analysis</h4>
                         <p>Statistical analysis using R, Python, and STATA—turning raw data into clear, actionable insights.</p>
-                        
                     </div>
-
-                    <!-- Monitoring & Evaluation -->
                     <div class="service-card">
-                        <div class="icon">
-                            <img src="images/icons/monitoring-evaluation.png" alt="Monitoring & Evaluation">
-                        </div>
+                        <div class="icon"><img src="images/icons/monitoring-evaluation.png" alt="Monitoring & Evaluation"></div>
                         <h4>Monitoring &amp; Evaluation</h4>
                         <p>Baseline surveys, impact evaluations, and donor reporting—proving your program's impact with hard data.</p>
-                       
-                        
                     </div>
-
-                    <!-- Medical Research -->
                     <div class="service-card">
-                        <div class="icon">
-                            <img src="images/icons/medical-research.png" alt="Medical Research">
-                        </div>
+                        <div class="icon"><img src="images/icons/medical-research.png" alt="Medical Research"></div>
                         <h4>Medical &amp; Pharma Research</h4>
                         <p>Clinical research support, GCP-compliant studies, and pharmaceutical data analysis—with real Kenyan data.</p>
-                       
-                        
                     </div>
-
-                    <!-- Professional Training -->
                     <div class="service-card">
-                        <div class="icon">
-                            <img src="images/icons/professional-training.png" alt="Professional Training">
-                        </div>
+                        <div class="icon"><img src="images/icons/professional-training.png" alt="Professional Training"></div>
                         <h4>Professional Training</h4>
                         <p>Hands-on courses in research methods, data analysis (R, Python, STATA), and M&E frameworks.</p>
-                       
-                        
                     </div>
-
-                    <!-- Research Writing -->
                     <div class="service-card">
-                        <div class="icon">
-                            <img src="images/icons/research-writing.png" alt="Research Writing">
-                        </div>
+                        <div class="icon"><img src="images/icons/research-writing.png" alt="Research Writing"></div>
                         <h4>Research Writing &amp; Support</h4>
                         <p>Thesis writing, grant proposals, abstracts, and publication support—from idea to submission.</p>
-                       
-                        
                     </div>
                 </div>
 
@@ -1871,31 +2014,20 @@
                 </div>
 
                 <div class="product-grid">
-                    <!-- Product 1 -->
                     <div class="product-card">
-                        <div class="icon">
-                            <img src="images/icons/verified-datasets.png" alt="Verified African Datasets">
-                        </div>
+                        <div class="icon"><img src="images/icons/verified-datasets.png" alt="Verified African Datasets"></div>
                         <h4>Verified African Datasets</h4>
                         <p>Curated, cleaned, and verified datasets for healthcare, agriculture, and finance—built from the ground up.</p>
                         <span class="tag">Coming Soon</span>
                     </div>
-
-                    <!-- Product 2 -->
                     <div class="product-card">
-                        <div class="icon">
-                            <img src="images/icons/ai-platform.png" alt="AI Research Intelligence Platform">
-                        </div>
+                        <div class="icon"><img src="images/icons/ai-platform.png" alt="AI Research Intelligence Platform"></div>
                         <h4>AI Research Intelligence Platform</h4>
                         <p>AI tools for research validation, data analysis, and decision intelligence—built on our verified datasets.</p>
                         <span class="tag">In Development</span>
                     </div>
-
-                    <!-- Product 3 -->
                     <div class="product-card">
-                        <div class="icon">
-                            <img src="images/icons/compliance-auditor.png" alt="AI Sovereignty Compliance Auditor">
-                        </div>
+                        <div class="icon"><img src="images/icons/compliance-auditor.png" alt="AI Sovereignty Compliance Auditor"></div>
                         <h4>AI Sovereignty Compliance Auditor</h4>
                         <p>Automated tool to audit and certify AI systems for Kenya's data localization and sovereignty requirements.</p>
                         <span class="tag">In Development</span>
@@ -1921,38 +2053,23 @@
                 </div>
 
                 <div class="innovation-grid">
-                    <!-- Card 1 -->
                     <div class="innovation-card">
-                        <div class="icon">
-                            <img src="images/icons/ai-research-lab.png" alt="AI Research Lab">
-                        </div>
+                        <div class="icon"><img src="images/icons/ai-research-lab.png" alt="AI Research Lab"></div>
                         <h4>AI Research Lab</h4>
                         <p>Building proprietary AI models trained on African data.</p>
                     </div>
-
-                    <!-- Card 2 -->
                     <div class="innovation-card">
-                        <div class="icon">
-                            <img src="images/icons/fellowship.png" alt="Fellowship Program">
-                        </div>
+                        <div class="icon"><img src="images/icons/fellowship.png" alt="Fellowship Program"></div>
                         <h4>Fellowship Program</h4>
                         <p>Training the next generation of African AI researchers.</p>
                     </div>
-
-                    <!-- Card 3 -->
                     <div class="innovation-card">
-                        <div class="icon">
-                            <img src="images/icons/incubator.png" alt="Startup Incubator">
-                        </div>
+                        <div class="icon"><img src="images/icons/incubator.png" alt="Startup Incubator"></div>
                         <h4>Startup Incubator</h4>
                         <p>Supporting AI startups building on our verified data.</p>
                     </div>
-
-                    <!-- Card 4 -->
                     <div class="innovation-card">
-                        <div class="icon">
-                            <img src="images/icons/global-partnerships.png" alt="Global Research Partnerships">
-                        </div>
+                        <div class="icon"><img src="images/icons/global-partnerships.png" alt="Global Research Partnerships"></div>
                         <h4>Global Research Partnerships</h4>
                         <p>Collaborating with universities and institutions worldwide.</p>
                     </div>
@@ -1977,238 +2094,125 @@
             </div>
         </div>
     </section>
-<!-- ===== WHO WE SERVE ===== -->
-<section id="clients" class="section-alt">
-    <div class="container">
-        <h2 class="section-title">Who We Serve</h2>
-        <p class="section-subtitle">From research clients to global partners — we tailor our work to meet the unique needs of each audience.</p>
 
-        <div class="serve-grid">
+    <!-- ============================================================ -->
+    <!-- WHO WE SERVE - SINGLE, PHONE-FRIENDLY VERSION                -->
+    <!-- ============================================================ -->
+    <section id="clients" class="section-alt">
+        <div class="container">
+            <h2 class="section-title">Who We Serve</h2>
+            <p class="section-subtitle">From research clients to global partners — we tailor our work to meet the unique needs of each audience.</p>
 
-            <!-- 1. Researchers & Academics -->
-            <div class="serve-item">
-                <h4>For Researchers &amp; Academics</h4>
-                <p>Data analysis, AI fact-checking, research writing, publication support, and collaborative research.</p>
-            </div>
-
-            <!-- 2. Businesses -->
-            <div class="serve-item">
-                <h4>For Businesses</h4>
-                <p>Market research, customer insights, competitor analysis, and data-driven strategy to help you grow.</p>
-            </div>
-
-            <!-- 3. NGOs & Donors -->
-            <div class="serve-item">
-                <h4>For NGOs &amp; Donors</h4>
-                <p>M&E frameworks, impact evaluations, baseline &amp; endline surveys, and donor reporting.</p>
-            </div>
-
-            <!-- 4. Government & Policy Makers -->
-            <div class="serve-item" style="border-left-color: #4a7ab5;">
-                <h4>For Government &amp; Policy Makers</h4>
-                <p>Policy research, data validation, compliance auditing, and AI sovereignty tools for government agencies.</p>
-
-            </div>
-
-            <!-- 5. Tech Companies & AI Startups -->
-            <div class="serve-item" style="border-left-color: #4a7ab5;">
-                <h4>For Tech Companies &amp; AI Startups</h4>
-                <p>Verified datasets, AI fact-checking, data science consulting, and compliance auditing for the AI economy.</p>
-
-            </div>
-
-            <!-- 6. Healthcare Organizations -->
-            <div class="serve-item" style="border-left-color: #4a7ab5;">
-                <h4>For Healthcare Organizations</h4>
-                <p>Clinical research support, pharmaceutical data analysis, patient surveys, and GCP-compliant studies.</p>
-
-            </div>
-
-            <!-- 7. International Development Partners -->
-            <div class="serve-item">
-                <h4>For International Development Partners</h4>
-                <p>Impact evaluations, data collection, field research, and AI-powered decision intelligence for global programs.</p>
-
-            </div>
-
-            <!-- 8. Research Institutions & Think Tanks -->
-            <div class="serve-item" style="border-left-color: #4a7ab5;">
-                <h4>For Research Institutions &amp; Think Tanks</h4>
-                <p>Collaborative research, data sharing, joint publications, and AI research partnerships.</p>
-
-            </div>
-
-            <!-- 9. Investors & Funders -->
-            <div class="serve-item">
-                <h4>For Investors &amp; Funders</h4>
-                <p>Due diligence research, market intelligence, and data-driven investment insights to inform your decisions.</p>
-
-            </div>
-
-        </div>
-    </div>
-</section>
-   <!-- ===== WHO WE SERVE ===== -->
-<section id="clients" class="section-alt">
-    <div class="container">
-        <h2 class="section-title">Who We Serve</h2>
-        <p class="section-subtitle">From research clients to global partners — we tailor our work to meet the unique needs of each audience.</p>
-
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1020px; margin: 0 auto;">
-
-            <!-- === RESEARCH CLIENTS === -->
-            <div style="background: #fff; padding: 25px 20px; border-radius: 12px; border-left: 4px solid #1e3c72; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s;" 
-                 onmouseover="this.style.transform='translateY(-4px)';" 
-                 onmouseout="this.style.transform='translateY(0)';">
-                <h4 style="font-size: 1.1rem; color: #1e3c72; margin-bottom: 6px;">For Researchers &amp; Academics</h4>
-                <p style="color: #3d4e62; font-size: 0.9rem;">Data analysis, AI fact-checking, research writing, publication support, and collaborative research.</p>
-            </div>
-
-            <div style="background: #fff; padding: 25px 20px; border-radius: 12px; border-left: 4px solid #1e3c72; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s;" 
-                 onmouseover="this.style.transform='translateY(-4px)';" 
-                 onmouseout="this.style.transform='translateY(0)';">
-                <h4 style="font-size: 1.1rem; color: #1e3c72; margin-bottom: 6px;">For Businesses</h4>
-                <p style="color: #3d4e62; font-size: 0.9rem;">Market research, customer insights, competitor analysis, and data-driven strategy to help you grow.</p>
-            </div>
-
-            <div style="background: #fff; padding: 25px 20px; border-radius: 12px; border-left: 4px solid #1e3c72; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s;" 
-                 onmouseover="this.style.transform='translateY(-4px)';" 
-                 onmouseout="this.style.transform='translateY(0)';">
-                <h4 style="font-size: 1.1rem; color: #1e3c72; margin-bottom: 6px;">For NGOs &amp; Donors</h4>
-                <p style="color: #3d4e62; font-size: 0.9rem;">M&E frameworks, impact evaluations, baseline &amp; endline surveys, and donor reporting.</p>
-            </div>
-
-            <!-- === GOVERNMENT & POLICY === -->
-            <div style="background: #fff; padding: 25px 20px; border-radius: 12px; border-left: 4px solid #4a7ab5; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s;" 
-                 onmouseover="this.style.transform='translateY(-4px)';" 
-                 onmouseout="this.style.transform='translateY(0)';">
-                <h4 style="font-size: 1.1rem; color: #1e3c72; margin-bottom: 6px;">For Government &amp; Policy Makers</h4>
-                <p style="color: #3d4e62; font-size: 0.9rem;">Policy research, data validation, compliance auditing, and AI sovereignty tools for government agencies.</p>
-                <span style="display: inline-block; margin-top: 6px; font-size: 0.65rem; background: #e3edfb; color: #1e3c72; padding: 2px 12px; border-radius: 12px;">Trusted by Kenya's Ministry of Health</span>
-            </div>
-
-            <!-- === TECH & AI STARTUPS === -->
-            <div style="background: #fff; padding: 25px 20px; border-radius: 12px; border-left: 4px solid #4a7ab5; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s;" 
-                 onmouseover="this.style.transform='translateY(-4px)';" 
-                 onmouseout="this.style.transform='translateY(0)';">
-                <h4 style="font-size: 1.1rem; color: #1e3c72; margin-bottom: 6px;">For Tech Companies &amp; AI Startups</h4>
-                <p style="color: #3d4e62; font-size: 0.9rem;">Verified datasets, AI fact-checking, data science consulting, and compliance auditing for the AI economy.</p>
-                <span style="display: inline-block; margin-top: 6px; font-size: 0.65rem; background: #e3edfb; color: #1e3c72; padding: 2px 12px; border-radius: 12px;">Building Africa's Data Infrastructure</span>
-            </div>
-
-            <!-- === HEALTHCARE === -->
-            <div style="background: #fff; padding: 25px 20px; border-radius: 12px; border-left: 4px solid #4a7ab5; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s;" 
-                 onmouseover="this.style.transform='translateY(-4px)';" 
-                 onmouseout="this.style.transform='translateY(0)';">
-                <h4 style="font-size: 1.1rem; color: #1e3c72; margin-bottom: 6px;">For Healthcare Organizations</h4>
-                <p style="color: #3d4e62; font-size: 0.9rem;">Clinical research support, pharmaceutical data analysis, patient surveys, and GCP-compliant studies.</p>
-                <span style="display: inline-block; margin-top: 6px; font-size: 0.65rem; background: #e3edfb; color: #1e3c72; padding: 2px 12px; border-radius: 12px;">Pharmacist + Statistician Team</span>
-            </div>
-
-            <!-- === INTERNATIONAL DEVELOPMENT === -->
-            <div style="background: #fff; padding: 25px 20px; border-radius: 12px; border-left: 4px solid #1e3c72; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s;" 
-                 onmouseover="this.style.transform='translateY(-4px)';" 
-                 onmouseout="this.style.transform='translateY(0)';">
-                <h4 style="font-size: 1.1rem; color: #1e3c72; margin-bottom: 6px;">For International Development Partners</h4>
-                <p style="color: #3d4e62; font-size: 0.9rem;">Impact evaluations, data collection, field research, and AI-powered decision intelligence for global programs.</p>
-                <span style="display: inline-block; margin-top: 6px; font-size: 0.65rem; background: #e3edfb; color: #1e3c72; padding: 2px 12px; border-radius: 12px;">Trusted by UNICEF</span>
-            </div>
-
-            <!-- === RESEARCH INSTITUTIONS === -->
-            <div style="background: #fff; padding: 25px 20px; border-radius: 12px; border-left: 4px solid #4a7ab5; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s;" 
-                 onmouseover="this.style.transform='translateY(-4px)';" 
-                 onmouseout="this.style.transform='translateY(0)';">
-                <h4 style="font-size: 1.1rem; color: #1e3c72; margin-bottom: 6px;">For Research Institutions &amp; Think Tanks</h4>
-                <p style="color: #3d4e62; font-size: 0.9rem;">Collaborative research, data sharing, joint publications, and AI research partnerships.</p>
-                <span style="display: inline-block; margin-top: 6px; font-size: 0.65rem; background: #e3edfb; color: #1e3c72; padding: 2px 12px; border-radius: 12px;">Global Research Partnerships</span>
-            </div>
-
-            <!-- === INVESTORS & FUNDERS === -->
-            <div style="background: #fff; padding: 25px 20px; border-radius: 12px; border-left: 4px solid #1e3c72; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s;" 
-                 onmouseover="this.style.transform='translateY(-4px)';" 
-                 onmouseout="this.style.transform='translateY(0)';">
-                <h4 style="font-size: 1.1rem; color: #1e3c72; margin-bottom: 6px;">For Investors &amp; Funders</h4>
-                <p style="color: #3d4e62; font-size: 0.9rem;">Due diligence research, market intelligence, and data-driven investment insights to inform your decisions.</p>
-                <span style="display: inline-block; margin-top: 6px; font-size: 0.65rem; background: #e3edfb; color: #1e3c72; padding: 2px 12px; border-radius: 12px;">Evidence for Better Decisions</span>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ===== OUR PROCESS ===== -->
-<section style="padding: 80px 0; background: #fafbfc;">
-    <div class="container">
-        <h2 class="section-title">Our Process</h2>
-        <p class="section-subtitle">A clear, transparent approach to delivering research that makes an impact — from your first call to actionable insights.</p>
-
-        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; position: relative;">
-
-            <!-- Connecting Line (Desktop) -->
-            <div style="position: absolute; top: 40px; left: 10%; right: 10%; height: 2px; background: linear-gradient(to right, #4a7ab5, #1e3c72, #4a7ab5); z-index: 0; display: none;"></div>
-            <div style="display: none;" class="process-line"></div>
-
-            <!-- Step 1 -->
-            <div style="position: relative; z-index: 1; text-align: center; padding: 20px 15px; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border-top: 4px solid #4a7ab5; transition: all 0.3s ease;" 
-                 onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.10)';" 
-                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.05)';">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: #1e3c72; color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;">1</div>
-                <h4 style="font-size: 1rem; color: #1e3c72; margin-bottom: 6px;">Consult &amp; Define</h4>
-                <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">We listen to your needs, understand your problem, and align on goals. This is where we scope the project and define success.</p>
-                <span style="display: inline-block; margin-top: 10px; font-size: 0.7rem; color: #4a7ab5; font-weight: 600;">Discovery Phase</span>
-            </div>
-
-            <!-- Step 2 -->
-            <div style="position: relative; z-index: 1; text-align: center; padding: 20px 15px; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border-top: 4px solid #4a7ab5; transition: all 0.3s ease;" 
-                 onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.10)';" 
-                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.05)';">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: #2a5298; color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;">2</div>
-                <h4 style="font-size: 1rem; color: #1e3c72; margin-bottom: 6px;">Proposal &amp; Plan</h4>
-                <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">We deliver a clear proposal with timeline, budget, and methodology. You know exactly what to expect before we start.</p>
-                <span style="display: inline-block; margin-top: 10px; font-size: 0.7rem; color: #4a7ab5; font-weight: 600;">Planning Phase</span>
-            </div>
-
-            <!-- Step 3 -->
-            <div style="position: relative; z-index: 1; text-align: center; padding: 20px 15px; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border-top: 4px solid #4a7ab5; transition: all 0.3s ease;" 
-                 onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.10)';" 
-                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.05)';">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: #3a6a9b; color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;">3</div>
-                <h4 style="font-size: 1rem; color: #1e3c72; margin-bottom: 6px;">Collect &amp; Verify</h4>
-                <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">We gather real data through field research, surveys, and interviews — then verify every data point for accuracy and reliability.</p>
-                <span style="display: inline-block; margin-top: 10px; font-size: 0.7rem; color: #4a7ab5; font-weight: 600;">Field Research</span>
-            </div>
-
-            <!-- Step 4 -->
-            <div style="position: relative; z-index: 1; text-align: center; padding: 20px 15px; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border-top: 4px solid #4a7ab5; transition: all 0.3s ease;" 
-                 onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.10)';" 
-                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.05)';">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: #4a7ab5; color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;">4</div>
-                <h4 style="font-size: 1rem; color: #1e3c72; margin-bottom: 6px;">Analyze &amp; Interpret</h4>
-                <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">We use advanced tools (R, Python, STATA) to analyze your data — turning raw numbers into clear, actionable insights.</p>
-                <span style="display: inline-block; margin-top: 10px; font-size: 0.7rem; color: #4a7ab5; font-weight: 600;">Data Analysis</span>
-            </div>
-
-            <!-- Step 5 -->
-            <div style="position: relative; z-index: 1; text-align: center; padding: 20px 15px; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border-top: 4px solid #4a7ab5; transition: all 0.3s ease;" 
-                 onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.10)';" 
-                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.05)';">
-                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: #1e3c72; color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;">5</div>
-                <h4 style="font-size: 1rem; color: #1e3c72; margin-bottom: 6px;">Report &amp; Recommend</h4>
-                <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">We deliver a clear, decision-ready report with visualizations, recommendations, and actionable next steps for your organization.</p>
-                <span style="display: inline-block; margin-top: 10px; font-size: 0.7rem; color: #4a7ab5; font-weight: 600;">Delivery Phase</span>
+            <div class="serve-grid">
+                <div class="serve-item">
+                    <h4>For Researchers &amp; Academics</h4>
+                    <p>Data analysis, AI fact-checking, research writing, publication support, and collaborative research.</p>
+                </div>
+                <div class="serve-item">
+                    <h4>For Businesses</h4>
+                    <p>Market research, customer insights, competitor analysis, and data-driven strategy to help you grow.</p>
+                </div>
+                <div class="serve-item">
+                    <h4>For NGOs &amp; Donors</h4>
+                    <p>M&E frameworks, impact evaluations, baseline &amp; endline surveys, and donor reporting.</p>
+                </div>
+                <div class="serve-item" style="border-left-color: #4a7ab5;">
+                    <h4>For Government &amp; Policy Makers</h4>
+                    <p>Policy research, data validation, compliance auditing, and AI sovereignty tools for government agencies.</p>
+                    <span class="badge">Trusted by Kenya's Ministry of Health</span>
+                </div>
+                <div class="serve-item" style="border-left-color: #4a7ab5;">
+                    <h4>For Tech Companies &amp; AI Startups</h4>
+                    <p>Verified datasets, AI fact-checking, data science consulting, and compliance auditing for the AI economy.</p>
+                    <span class="badge">Building Africa's Data Infrastructure</span>
+                </div>
+                <div class="serve-item" style="border-left-color: #4a7ab5;">
+                    <h4>For Healthcare Organizations</h4>
+                    <p>Clinical research support, pharmaceutical data analysis, patient surveys, and GCP-compliant studies.</p>
+                    <span class="badge">Pharmacist + Statistician Team</span>
+                </div>
+                <div class="serve-item">
+                    <h4>For International Development Partners</h4>
+                    <p>Impact evaluations, data collection, field research, and AI-powered decision intelligence for global programs.</p>
+                    <span class="badge">Trusted by UNICEF</span>
+                </div>
+                <div class="serve-item" style="border-left-color: #4a7ab5;">
+                    <h4>For Research Institutions &amp; Think Tanks</h4>
+                    <p>Collaborative research, data sharing, joint publications, and AI research partnerships.</p>
+                    <span class="badge">Global Research Partnerships</span>
+                </div>
+                <div class="serve-item">
+                    <h4>For Investors &amp; Funders</h4>
+                    <p>Due diligence research, market intelligence, and data-driven investment insights to inform your decisions.</p>
+                    <span class="badge">Evidence for Better Decisions</span>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Call to Action -->
-        <div style="text-align: center; margin-top: 50px;">
-            <p style="color: #4a5b6e; font-size: 1rem; margin-bottom: 15px;">Ready to start your project? Let's talk.</p>
-            <a href="#contact" style="background: #1e3c72; color: #fff; padding: 14px 45px; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s; box-shadow: 0 4px 20px rgba(30, 60, 114, 0.3);" 
-               onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(30, 60, 114, 0.4)';" 
-               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(30, 60, 114, 0.3)';">Schedule a Free Consultation →</a>
+    <!-- ============================================================ -->
+    <!-- OUR PROCESS - PHONE-FRIENDLY                                 -->
+    <!-- ============================================================ -->
+    <section style="padding: 80px 0; background: #fafbfc;">
+        <div class="container">
+            <h2 class="section-title">Our Process</h2>
+            <p class="section-subtitle">A clear, transparent approach to delivering research that makes an impact — from your first call to actionable insights.</p>
+
+            <div class="process-grid">
+                <!-- Step 1 -->
+                <div class="process-step">
+                    <div class="number">1</div>
+                    <h4>Consult &amp; Define</h4>
+                    <p>We listen to your needs, understand your problem, and align on goals. This is where we scope the project and define success.</p>
+                    <span class="phase-tag">Discovery Phase</span>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step">
+                    <div class="number" style="background: #2a5298;">2</div>
+                    <h4>Proposal &amp; Plan</h4>
+                    <p>We deliver a clear proposal with timeline, budget, and methodology. You know exactly what to expect before we start.</p>
+                    <span class="phase-tag">Planning Phase</span>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step">
+                    <div class="number" style="background: #3a6a9b;">3</div>
+                    <h4>Collect &amp; Verify</h4>
+                    <p>We gather real data through field research, surveys, and interviews — then verify every data point for accuracy and reliability.</p>
+                    <span class="phase-tag">Field Research</span>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-step">
+                    <div class="number" style="background: #4a7ab5;">4</div>
+                    <h4>Analyze &amp; Interpret</h4>
+                    <p>We use advanced tools (R, Python, STATA) to analyze your data — turning raw numbers into clear, actionable insights.</p>
+                    <span class="phase-tag">Data Analysis</span>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="process-step">
+                    <div class="number">5</div>
+                    <h4>Report &amp; Recommend</h4>
+                    <p>We deliver a clear, decision-ready report with visualizations, recommendations, and actionable next steps for your organization.</p>
+                    <span class="phase-tag">Delivery Phase</span>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="color: #4a5b6e; font-size: 1rem; margin-bottom: 15px;">Ready to start your project? Let's talk.</p>
+                <a href="#contact" style="background: #1e3c72; color: #fff; padding: 14px 45px; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s; box-shadow: 0 4px 20px rgba(30, 60, 114, 0.3);" 
+                   onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(30, 60, 114, 0.4)';" 
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(30, 60, 114, 0.3)';">Schedule a Free Consultation →</a>
+            </div>
         </div>
-    </div>
-</section>
-    <!-- ===== STATS ===== -->
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- STATS                                                        -->
+    <!-- ============================================================ -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
@@ -2232,7 +2236,9 @@
         </div>
     </section>
 
-    <!-- ===== VISION TEASER ===== -->
+    <!-- ============================================================ -->
+    <!-- VISION TEASER                                                -->
+    <!-- ============================================================ -->
     <section id="vision-teaser">
         <video class="bg-video" autoplay muted loop playsinline>
             <source src="videos/vision-background.mp4" type="video/mp4">
@@ -2249,15 +2255,15 @@
             </p>
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin: 40px 0;">
                 <div style="text-align: center; flex: 1; min-width: 150px; background: rgba(255, 255, 255, 0.08); padding: 20px 15px; border-radius: 12px; backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
-
+                    <div style="font-size: 2.5rem; font-weight: 700; color: #7aafd4; display: block; margin-bottom: 8px;">📊</div>
                     <div style="font-size: 0.95rem; color: #d0ddea; font-weight: 500;">Verified Data Infrastructure</div>
                 </div>
                 <div style="text-align: center; flex: 1; min-width: 150px; background: rgba(255, 255, 255, 0.08); padding: 20px 15px; border-radius: 12px; backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
-
+                    <div style="font-size: 2.5rem; font-weight: 700; color: #7aafd4; display: block; margin-bottom: 8px;">🤖</div>
                     <div style="font-size: 0.95rem; color: #d0ddea; font-weight: 500;">AI-Powered Research Intelligence</div>
                 </div>
                 <div style="text-align: center; flex: 1; min-width: 150px; background: rgba(255, 255, 255, 0.08); padding: 20px 15px; border-radius: 12px; backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
-
+                    <div style="font-size: 2.5rem; font-weight: 700; color: #7aafd4; display: block; margin-bottom: 8px;">🌍</div>
                     <div style="font-size: 0.95rem; color: #d0ddea; font-weight: 500;">Global Research Partnerships</div>
                 </div>
             </div>
@@ -2267,42 +2273,59 @@
         </div>
     </section>
 
-    <!-- ===== WHY CHOOSE US ===== -->
-    <section id="about">
+    <!-- ============================================================ -->
+    <!-- WHY CHOOSE US                                                -->
+    <!-- ============================================================ -->
+    <section id="about" style="padding: 70px 0; background: #f4f7fa;">
         <div class="container">
             <h2 class="section-title">Why Choose Us</h2>
-            <p class="section-subtitle">Your research partner with the right qualifications and experience — and a bold vision for the future.</p>
+            <p class="section-subtitle">The right team, the right experience, and a bold vision for Africa's data future.</p>
+
             <div class="why-grid">
-                <div class="why-item">
- 
-                    <h4>Exemptional Expertise</h4>
-                    <p>We are a research collective—a team of experienced researchers, data analysts, and subject-matter experts drawn from Kenya's top institutions and beyond. Each project is matched with the right mix of skills: clinical knowledge, statistical expertise, policy insight, and technological innovation. Our strength is our ability to assemble the right minds for the right problem.</p>
+                <div class="why-card">
+                    <span class="why-icon">👥</span>
+                    <h4>Expert Research Collective</h4>
+                    <p>A team of experienced researchers, data analysts, and subject-matter experts drawn from Kenya's top institutions — each project matched with the right mix of skills.</p>
                 </div>
-                <div class="why-item">
-
-                    <h4>NASCOP &amp; BeGreen Experience</h4>
-                    <p>Health data validation for Kenya's Ministry of Health and business verification for a UNICEF program.</p>
+                <div class="why-card">
+                    <span class="why-icon">📊</span>
+                    <h4>Proven Track Record</h4>
+                    <p>200+ client accounts analyzed, with a <strong>30%+ reduction in data errors</strong> — delivering accuracy and efficiency at scale.</p>
                 </div>
-                <div class="why-item">
-
-                    <h4>200+ Clients Analyzed</h4>
-                    <p>Proven experience managing and analyzing large datasets as a Loan Officer, achieving a 30%+ error reduction.</p>
+                <div class="why-card highlight">
+                    <span class="why-icon">🏛️</span>
+                    <h4>Government &amp; Institutional Experience</h4>
+                    <p>Health data validation for <strong>Kenya's Ministry of Health (NASCOP)</strong> and business verification for <strong>UNICEF's BeGreen program</strong>.</p>
                 </div>
-                <div class="why-item">
-
+                <div class="why-card highlight">
+                    <span class="why-icon">🔬</span>
                     <h4>AI &amp; GCP Certified</h4>
-                    <p>ALX AI certification and CITI GCP credentials for ethical, modern research.</p>
+                    <p>ALX AI certification and CITI GCP credentials for <strong>ethical, modern research</strong> — ensuring compliance and quality.</p>
                 </div>
-                <div class="why-item">
-
+                <div class="why-card">
+                    <span class="why-icon">🌍</span>
+                    <h4>Field Research &amp; Data Validation</h4>
+                    <p>We collect real data from real Kenyans — field surveys, interviews, and on-the-ground verification across the country. Our local knowledge ensures accurate, context-aware insights.</p>
+                </div>
+                <div class="why-card featured">
+                    <span class="why-icon">🚀</span>
                     <h4>Building Africa's Data Future</h4>
-                    <p>We're not just conducting research—we're building the infrastructure for Africa's AI-driven future.</p>
+                    <p>We're not just conducting research—we're building the <strong>infrastructure for Africa's AI-driven future</strong>, from verified datasets to global partnerships.</p>
                 </div>
+            </div>
+
+            <div class="trust-badges">
+                <span>✅ 200+ Client Accounts Analyzed</span>
+                <span>✅ 30%+ Data Error Reduction</span>
+                <span>✅ GCP Certified</span>
+                <span>✅ Top 1.6% Selected (BeGreen)</span>
             </div>
         </div>
     </section>
 
-    <!-- ===== TESTIMONIALS ===== -->
+    <!-- ============================================================ -->
+    <!-- TESTIMONIALS                                                 -->
+    <!-- ============================================================ -->
     <section>
         <div class="container">
             <h2 class="section-title">What Our Clients Say</h2>
@@ -2322,7 +2345,9 @@
         </div>
     </section>
 
-    <!-- ===== BLOG ===== -->
+    <!-- ============================================================ -->
+    <!-- BLOG                                                         -->
+    <!-- ============================================================ -->
     <section id="blog" class="section-alt">
         <div class="container">
             <h2 class="section-title">Latest Insights</h2>
@@ -2356,91 +2381,70 @@
         </div>
     </section>
 
-   <!-- ===== FAQ ===== -->
-<section id="faq">
-    <div class="container">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">Everything you need to know about working with Scire Research — from our process to our vision.</p>
+    <!-- ============================================================ -->
+    <!-- FAQ                                                          -->
+    <!-- ============================================================ -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know about working with Scire Research — from our process to our vision.</p>
 
-        <div class="faq-grid">
-
-            <!-- === What We Do === -->
-            <div class="faq-item active">
-                <h4>What types of research do you handle? <span class="toggle">−</span></h4>
-                <p>We handle market research, data analysis, M&E for NGOs, medical and pharmaceutical research, AI fact-checking, and professional training. Our team has deep expertise across healthcare, agriculture, finance, and international development.</p>
+            <div class="faq-grid">
+                <div class="faq-item active">
+                    <h4>What types of research do you handle? <span class="toggle">−</span></h4>
+                    <p>We handle market research, data analysis, M&E for NGOs, medical and pharmaceutical research, AI fact-checking, and professional training. Our team has deep expertise across healthcare, agriculture, finance, and international development.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Who do you work with? <span class="toggle">+</span></h4>
+                    <p>We work with NGOs, businesses, government agencies, academic institutions, and development partners across Kenya and internationally. Recent partners include UNICEF, Kenya's Ministry of Health, and leading businesses across East Africa.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What does the process look like? <span class="toggle">+</span></h4>
+                    <p>We follow a transparent 5-step process: <strong>Consult &amp; Define</strong> (understand your needs), <strong>Proposal &amp; Plan</strong> (scope and timeline), <strong>Collect &amp; Verify</strong> (field research and data collection), <strong>Analyze &amp; Interpret</strong> (rigorous analysis), and <strong>Report &amp; Recommend</strong> (clear, actionable insights).</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How long does a typical project take? <span class="toggle">+</span></h4>
+                    <p>Timelines vary depending on scope. A market research study might take 2–4 weeks, while a comprehensive M&E evaluation could take 3–6 months. We provide a clear timeline in our proposal before we start.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How much do your services cost? <span class="toggle">+</span></h4>
+                    <p>We provide custom quotes based on project scope, complexity, and timeline. We offer competitive rates and can work within your budget. Contact us for a free initial consultation and quote.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Who will be working on my project? <span class="toggle">+</span></h4>
+                    <p>Every project is led by our experienced research team, with direct oversight from our founders. We assemble the right mix of skills — from field researchers to data analysts — based on your specific needs.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How do you ensure data quality? <span class="toggle">+</span></h4>
+                    <p>We follow rigorous quality assurance protocols at every stage — from field data collection (using verified tools like ODK and Kobo Toolbox) to analysis (using R, Python, and STATA). Our team is GCP certified, and we have a proven track record of reducing data errors by over 30%.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How do you ensure data confidentiality? <span class="toggle">+</span></h4>
+                    <p>We are GCP certified and follow strict data protection protocols. All client data is handled with the highest level of confidentiality. Non-disclosure agreements (NDAs) are available upon request.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can you work with us remotely? <span class="toggle">+</span></h4>
+                    <p>Yes. While we are based in Nairobi and conduct fieldwork across Kenya, we work with clients remotely through virtual meetings, email, and secure file sharing. We've successfully partnered with organizations across East Africa and internationally.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What sectors do you specialize in? <span class="toggle">+</span></h4>
+                    <p>We have deep expertise in healthcare, agriculture, finance, education, and international development. Our team has worked with Kenya's Ministry of Health (NASCOP), UNICEF, and leading businesses across these sectors.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can you share examples of your work? <span class="toggle">+</span></h4>
+                    <p>Yes. We have case studies and testimonials from our work with UNICEF, Kenya's Ministry of Health, and other clients. Contact us and we'll share relevant examples based on your sector and research needs.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you offer AI services? <span class="toggle">+</span></h4>
+                    <p>Yes. Beyond traditional research, we offer AI fact-checking, proprietary dataset development, and data science consulting. We're also building Africa's verified data infrastructure and an AI research intelligence platform. Learn more on our <a href="innovation-hub.html" style="color: #4a7ab5; text-decoration: underline;">Innovation Hub</a> page.</p>
+                </div>
             </div>
-
-            <!-- === Who We Work With === -->
-            <div class="faq-item">
-                <h4>Who do you work with? <span class="toggle">+</span></h4>
-                <p>We work with NGOs, businesses, government agencies, academic institutions, and development partners across Kenya and internationally. Recent partners include UNICEF, Kenya's Ministry of Health, and leading businesses across East Africa.</p>
-            </div>
-
-            <!-- === Process === -->
-            <div class="faq-item">
-                <h4>What does the process look like? <span class="toggle">+</span></h4>
-                <p>We follow a transparent 5-step process: <strong>Consult &amp; Define</strong> (understand your needs), <strong>Proposal &amp; Plan</strong> (scope and timeline), <strong>Collect &amp; Verify</strong> (field research and data collection), <strong>Analyze &amp; Interpret</strong> (rigorous analysis), and <strong>Report &amp; Recommend</strong> (clear, actionable insights).</p>
-            </div>
-
-            <!-- === Timelines === -->
-            <div class="faq-item">
-                <h4>How long does a typical project take? <span class="toggle">+</span></h4>
-                <p>Timelines vary depending on scope. A market research study might take 2–4 weeks, while a comprehensive M&E evaluation could take 3–6 months. We provide a clear timeline in our proposal before we start.</p>
-            </div>
-
-            <!-- === Cost === -->
-            <div class="faq-item">
-                <h4>How much do your services cost? <span class="toggle">+</span></h4>
-                <p>We provide custom quotes based on project scope, complexity, and timeline. We offer competitive rates and can work within your budget. Contact us for a free initial consultation and quote.</p>
-            </div>
-
-            <!-- === Team === -->
-            <div class="faq-item">
-                <h4>Who will be working on my project? <span class="toggle">+</span></h4>
-                <p>Every project is led by our experienced research team, with direct oversight from our founders. We assemble the right mix of skills — from field researchers to data analysts — based on your specific needs.</p>
-            </div>
-
-            <!-- === Quality === -->
-            <div class="faq-item">
-                <h4>How do you ensure data quality? <span class="toggle">+</span></h4>
-                <p>We follow rigorous quality assurance protocols at every stage — from field data collection (using verified tools like ODK and Kobo Toolbox) to analysis (using R, Python, and STATA). Our team is GCP certified, and we have a proven track record of reducing data errors by over 30%.</p>
-            </div>
-
-            <!-- === Confidentiality === -->
-            <div class="faq-item">
-                <h4>How do you ensure data confidentiality? <span class="toggle">+</span></h4>
-                <p>We are GCP certified and follow strict data protection protocols. All client data is handled with the highest level of confidentiality. Non-disclosure agreements (NDAs) are available upon request.</p>
-            </div>
-
-            <!-- === Remote Work === -->
-            <div class="faq-item">
-                <h4>Can you work with us remotely? <span class="toggle">+</span></h4>
-                <p>Yes. While we are based in Nairobi and conduct fieldwork across Kenya, we work with clients remotely through virtual meetings, email, and secure file sharing. We've successfully partnered with organizations across East Africa and internationally.</p>
-            </div>
-
-            <!-- === Sectors === -->
-            <div class="faq-item">
-                <h4>What sectors do you specialize in? <span class="toggle">+</span></h4>
-                <p>We have deep expertise in healthcare, agriculture, finance, education, and international development. Our team has worked with Kenya's Ministry of Health (NASCOP), UNICEF, and leading businesses across these sectors.</p>
-            </div>
-
-            <!-- === Examples === -->
-            <div class="faq-item">
-                <h4>Can you share examples of your work? <span class="toggle">+</span></h4>
-                <p>Yes. We have case studies and testimonials from our work with UNICEF, Kenya's Ministry of Health, and other clients. Contact us and we'll share relevant examples based on your sector and research needs.</p>
-            </div>
-
-            <!-- === AI & Innovation === -->
-            <div class="faq-item">
-                <h4>Do you offer AI services? <span class="toggle">+</span></h4>
-                <p>Yes. Beyond traditional research, we offer AI fact-checking, proprietary dataset development, and data science consulting. We're also building Africa's verified data infrastructure and an AI research intelligence platform. Learn more on our <a href="innovation-hub.html" style="color: #4a7ab5; text-decoration: underline;">Innovation Hub</a> page.</p>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-    <!-- ===== CONTACT ===== -->
+    <!-- ============================================================ -->
+    <!-- CONTACT                                                      -->
+    <!-- ============================================================ -->
     <section id="contact" class="section-alt">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
@@ -2522,7 +2526,9 @@
         </div>
     </section>
 
-    <!-- ===== CTA ===== -->
+    <!-- ============================================================ -->
+    <!-- CTA                                                          -->
+    <!-- ============================================================ -->
     <section class="cta">
         <div class="container">
             <h2>Ready to Make Data-Driven Decisions?</h2>
@@ -2536,7 +2542,9 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                       -->
+    <!-- ============================================================ -->
     <footer>
         <div class="container">
             <p>&copy; 2026 Scire Research. All rights reserved.</p>
@@ -2578,7 +2586,9 @@
         </div>
     </footer>
 
-    <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+    <!-- ============================================================ -->
+    <!-- FLOATING WHATSAPP BUTTON                                     -->
+    <!-- ============================================================ -->
     <a href="https://wa.me/254704813110" target="_blank" rel="noopener noreferrer"
        style="position:fixed; bottom:20px; right:20px; background:#25D366; color:white; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; box-shadow:0 4px 15px rgba(0,0,0,0.3); z-index:1000; text-decoration:none; transition: all 0.3s;"
        aria-label="Chat on WhatsApp">
@@ -2587,7 +2597,9 @@
         </svg>
     </a>
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
     <script>
         // ===== TRANSPARENT HEADER ON SCROLL =====
         document.addEventListener('DOMContentLoaded', function() {
