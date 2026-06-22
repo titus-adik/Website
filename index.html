@@ -116,278 +116,171 @@
             margin: 0 auto 50px;
         }
 
-        /* ===== HEADER - ENCLOSED ON HERO ===== */
-        header {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            padding: 0;
-        }
+  /* ===== HEADER - ENCLOSED ON HERO ===== */
+header {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 0;
+}
 
-        header .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-        .header-enclosed {
-            background: rgba(11, 30, 51, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 50px;
-            padding: 10px 25px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
+.header-enclosed {
+    background: rgba(11, 30, 51, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 10px 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
-        /* ===== LOGO - VERTICAL STACK ===== */
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
-        }
+/* ===== LOGO ===== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
 
-        .logo svg {
-            height: 35px;
-            width: auto;
-            flex-shrink: 0;
-        }
+.logo svg {
+    height: 35px;
+    width: auto;
+    flex-shrink: 0;
+}
 
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
 
-        .logo-text .main {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: -0.5px;
-            white-space: nowrap;
-        }
+.logo-text .main {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+}
+.logo-text .main span {
+    color: #7aafd4;
+}
+.logo-text .tagline {
+    font-size: 0.5rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
 
-        .logo-text .main span {
-            color: #7aafd4;
-        }
+/* ===== DESKTOP NAV ===== */
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
 
-        .logo-text .tagline {
-            font-size: 0.5rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.8);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
+.desktop-nav a {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.85rem;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+.desktop-nav a:hover {
+    color: #fff;
+}
+.desktop-nav .btn-small {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 6px 18px;
+    font-size: 0.8rem;
+    border-radius: 30px;
+}
+.desktop-nav .btn-small:hover {
+    background: #fff;
+    color: #1e3c72;
+    border-color: #fff;
+}
 
-        /* ===== DESKTOP NAV ===== */
-        .desktop-nav {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+/* ===== SCROLLED STATE ===== */
+header.scrolled .header-enclosed {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid #eaeef3;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+header.scrolled .logo-text .main {
+    color: #1e3c72;
+}
+header.scrolled .logo-text .main span {
+    color: #4a7ab5;
+}
+header.scrolled .logo-text .tagline {
+    color: #4a5b6e;
+}
+header.scrolled .desktop-nav a {
+    color: #2c3e50;
+}
+header.scrolled .desktop-nav a:hover {
+    color: #1e3c72;
+}
+header.scrolled .desktop-nav .btn-small {
+    color: #1e3c72;
+    border: 2px solid #1e3c72;
+}
+header.scrolled .desktop-nav .btn-small:hover {
+    background: #1e3c72;
+    color: #fff;
+}
 
-        .desktop-nav a {
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.85rem;
-            transition: color 0.2s;
-            white-space: nowrap;
-        }
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+    .header-enclosed {
+        padding: 8px 16px;
+        border-radius: 30px;
+    }
+    .logo-text .main {
+        font-size: 1rem;
+    }
+    .logo-text .tagline {
+        font-size: 0.4rem;
+    }
+    .logo svg {
+        height: 28px;
+    }
+}
 
-        .desktop-nav a:hover {
-            color: #fff;
-        }
-
-        /* ===== HAMBURGER ===== */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 5px;
-            z-index: 101;
-        }
-
-        .hamburger .bar {
-            display: block;
-            width: 28px;
-            height: 3px;
-            background: #fff;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger.active .bar:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active .bar:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-
-        /* ===== SCROLLED STATE ===== */
-        header.scrolled .header-enclosed {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid #eaeef3;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border-radius: 50px;
-        }
-
-        header.scrolled .logo-text .main {
-            color: #1e3c72;
-        }
-
-        header.scrolled .logo-text .main span {
-            color: #4a7ab5;
-        }
-
-        header.scrolled .logo-text .tagline {
-            color: #4a5b6e;
-        }
-
-        header.scrolled .desktop-nav a {
-            color: #2c3e50;
-        }
-
-        header.scrolled .desktop-nav a:hover {
-            color: #1e3c72;
-        }
-
-        header.scrolled .desktop-nav .btn-small {
-            color: #1e3c72;
-            border: 2px solid #1e3c72;
-        }
-
-        header.scrolled .desktop-nav .btn-small:hover {
-            background: #1e3c72;
-            color: #fff;
-        }
-
-        header.scrolled .hamburger .bar {
-            background: #1e3c72;
-        }
-
-        /* ===== MOBILE MENU - SLIDE FROM RIGHT ===== */
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 80%;
-            max-width: 350px;
-            height: 100%;
-            background: #1e3c72;
-            z-index: 1000;
-            transition: right 0.4s ease;
-            padding: 60px 30px;
-            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
-            overflow-y: auto;
-        }
-
-        .mobile-menu-overlay.open {
-            right: 0;
-        }
-
-        .mobile-menu-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            color: #fff;
-            cursor: pointer;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .mobile-menu-close:hover {
-            opacity: 1;
-        }
-
-        .mobile-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .mobile-nav a {
-            color: #fff;
-            font-size: 1.3rem;
-            font-weight: 500;
-            text-decoration: none;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: color 0.3s;
-        }
-
-        .mobile-nav a:hover {
-            color: #4a7ab5;
-        }
-
-        .mobile-nav .btn {
-            display: inline-block;
-            margin-top: 10px;
-            text-align: center;
-            background: #fff;
-            color: #1e3c72;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-        }
-
-        .mobile-nav .btn:hover {
-            background: #eaeef3;
-        }
-
-        /* ===== RESPONSIVE - HEADER ===== */
-        @media (max-width: 768px) {
-            .desktop-nav {
-                display: none;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .header-enclosed {
-                padding: 8px 16px;
-                border-radius: 30px;
-            }
-            .logo-text .main {
-                font-size: 1rem;
-            }
-            .logo-text .tagline {
-                font-size: 0.4rem;
-            }
-            .logo svg {
-                height: 28px;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .hamburger {
-                display: none;
-            }
-            .mobile-menu-overlay {
-                display: none;
-            }
-        }
+@media (min-width: 769px) {
+    .hamburger {
+        display: none;
+    }
+}
 
         /* ===== HERO SLIDER ===== */
         .hero {
@@ -1261,47 +1154,46 @@
 
 <body>
 
-    <!-- ===== HEADER - ENCLOSED ON HERO ===== -->
-    <header id="mainHeader">
-        <div class="container">
-            <div class="header-enclosed">
-                <div class="header-content">
-                    <!-- Logo -->
-                    <div class="logo">
-                        <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="62" y1="62" x2="82" y2="82" stroke="#e67e22" stroke-width="6" stroke-linecap="round" />
-                            <circle cx="45" cy="45" r="28" fill="none" stroke="#1a5276" stroke-width="5" />
-                            <path d="M35,25 Q45,35 35,45 Q25,55 35,65" fill="none" stroke="#e67e22" stroke-width="2.5" stroke-linecap="round" />
-                            <path d="M55,25 Q45,35 55,45 Q65,55 55,65" fill="none" stroke="#148f8f" stroke-width="2.5" stroke-linecap="round" />
-                            <circle cx="45" cy="45" r="3" fill="#e67e22" />
-                        </svg>
-                        <div class="logo-text">
-                            <span class="main">Scire <span>Research</span></span>
-                            <span class="tagline">Evidence for Better Decision-Making</span>
-                        </div>
+<!-- ===== HEADER - ENCLOSED ON HERO ===== -->
+<header id="mainHeader">
+    <div class="container">
+        <div class="header-enclosed">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="62" y1="62" x2="82" y2="82" stroke="#e67e22" stroke-width="6" stroke-linecap="round" />
+                        <circle cx="45" cy="45" r="28" fill="none" stroke="#1a5276" stroke-width="5" />
+                        <path d="M35,25 Q45,35 35,45 Q25,55 35,65" fill="none" stroke="#e67e22" stroke-width="2.5" stroke-linecap="round" />
+                        <path d="M55,25 Q45,35 55,45 Q65,55 55,65" fill="none" stroke="#148f8f" stroke-width="2.5" stroke-linecap="round" />
+                        <circle cx="45" cy="45" r="3" fill="#e67e22" />
+                    </svg>
+                    <div class="logo-text">
+                        <span class="main">Scire <span>Research</span></span>
+                        <span class="tagline">The Foundation for Africa's Data-Driven Future</span>
                     </div>
+                </div>
 
-                    <!-- Desktop Navigation -->
-                    <nav class="desktop-nav">
-                        <a href="#services">Services</a>
-                        <a href="#clients">Clients</a>
-                        <a href="blog.html">Insights</a>
-                        <a href="vision.html">Vision</a>
-                        <a href="#faq">FAQ</a>
-                        <a href="#contact" class="btn-small">Contact</a>
-                    </nav>
+                <!-- Navigation (Desktop) -->
+                <nav class="desktop-nav">
+                    <a href="#services">Services</a>
+                    <a href="#clients">Clients</a>
+                    <a href="blog.html">Insights</a>
+                    <a href="vision.html">Vision</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact" class="btn-small">Contact</a>
+                </nav>
 
-                    <!-- Hamburger -->
-                    <div class="hamburger" id="hamburger" role="button" aria-label="Toggle menu">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </div>
+                <!-- Hamburger -->
+                <div class="hamburger" id="hamburger" role="button" aria-label="Toggle menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
                 </div>
             </div>
         </div>
-    </header>
-
+    </div>
+</header>
     <!-- ===== MOBILE MENU - SLIDE FROM RIGHT ===== -->
     <div class="mobile-menu-overlay" id="mobileMenu">
         <div class="mobile-menu-close" id="closeMenu">✕</div>
