@@ -13,6 +13,45 @@
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cline x1='62' y1='62' x2='82' y2='82' stroke='%23e67e22' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='28' fill='none' stroke='%231a5276' stroke-width='5'/%3E%3Cpath d='M35,25 Q45,35 35,45 Q25,55 35,65' fill='none' stroke='%23e67e22' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M55,25 Q45,35 55,45 Q65,55 55,65' fill='none' stroke='%23148f8f' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='3' fill='%23e67e22'/%3E%3C/svg%3E">
 
     <style>
+/* ===== PROCESS SECTION ===== */
+@media (max-width: 1024px) {
+    .process-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+    .process-step {
+        padding: 15px 12px !important;
+    }
+    .process-step .number {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1.1rem !important;
+    }
+    .process-step h4 {
+        font-size: 0.9rem !important;
+    }
+    .process-step p {
+        font-size: 0.8rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .process-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 350px !important;
+        margin: 0 auto !important;
+    }
+    .process-step {
+        padding: 20px 15px !important;
+    }
+}
+        
         /* ===== RESET & BASE ===== */
         * {
             margin: 0;
@@ -1659,7 +1698,7 @@
                         </div>
                         <h4>Market Research</h4>
                         <p>Consumer surveys, competitor analysis, and market sizing—so you understand your audience before you invest.</p>
-                        <a href="services.html#market-research" class="read-more">Learn more →</a>
+                       
                     </div>
 
                     <!-- Data Analysis -->
@@ -1669,7 +1708,7 @@
                         </div>
                         <h4>Data Analysis</h4>
                         <p>Statistical analysis using R, Python, and STATA—turning raw data into clear, actionable insights.</p>
-                        <a href="services.html#data-analysis" class="read-more">Learn more →</a>
+                        
                     </div>
 
                     <!-- Monitoring & Evaluation -->
@@ -1679,7 +1718,8 @@
                         </div>
                         <h4>Monitoring &amp; Evaluation</h4>
                         <p>Baseline surveys, impact evaluations, and donor reporting—proving your program's impact with hard data.</p>
-                        <a href="services.html#m-e" class="read-more">Learn more →</a>
+                       
+                        
                     </div>
 
                     <!-- Medical Research -->
@@ -1689,7 +1729,8 @@
                         </div>
                         <h4>Medical &amp; Pharma Research</h4>
                         <p>Clinical research support, GCP-compliant studies, and pharmaceutical data analysis—with real Kenyan data.</p>
-                        <a href="services.html#medical" class="read-more">Learn more →</a>
+                       
+                        
                     </div>
 
                     <!-- Professional Training -->
@@ -1699,7 +1740,8 @@
                         </div>
                         <h4>Professional Training</h4>
                         <p>Hands-on courses in research methods, data analysis (R, Python, STATA), and M&E frameworks.</p>
-                        <a href="services.html#training" class="read-more">Learn more →</a>
+                       
+                        
                     </div>
 
                     <!-- Research Writing -->
@@ -1709,7 +1751,8 @@
                         </div>
                         <h4>Research Writing &amp; Support</h4>
                         <p>Thesis writing, grant proposals, abstracts, and publication support—from idea to submission.</p>
-                        <a href="services.html#writing" class="read-more">Learn more →</a>
+                       
+                        
                     </div>
                 </div>
 
@@ -1865,21 +1908,78 @@
         </div>
     </section>
 
-    <!-- ===== PROCESS ===== -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">Our Process</h2>
-            <p class="section-subtitle">A clear, transparent approach to delivering research that makes an impact.</p>
-            <div class="process-steps">
-                <div class="step"><span class="num">1</span> Consult &amp; Define</div>
-                <div class="step"><span class="num">2</span> Proposal &amp; Plan</div>
-                <div class="step"><span class="num">3</span> Collect &amp; Verify</div>
-                <div class="step"><span class="num">4</span> Analyze &amp; Interpret</div>
-                <div class="step"><span class="num">5</span> Report &amp; Recommend</div>
+<!-- ===== OUR PROCESS ===== -->
+<section style="padding: 80px 0; background: #fafbfc;">
+    <div class="container">
+        <h2 class="section-title">Our Process</h2>
+        <p class="section-subtitle">A clear, transparent approach to delivering research that makes an impact — from your first call to actionable insights.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; position: relative;">
+
+            <!-- Connecting Line (Desktop) -->
+            <div style="position: absolute; top: 40px; left: 10%; right: 10%; height: 2px; background: linear-gradient(to right, #4a7ab5, #1e3c72, #4a7ab5); z-index: 0; display: none;"></div>
+            <div style="display: none;" class="process-line"></div>
+
+            <!-- Step 1 -->
+            <div style="position: relative; z-index: 1; text-align: center; padding: 20px 15px; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border-top: 4px solid #4a7ab5; transition: all 0.3s ease;" 
+                 onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.10)';" 
+                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.05)';">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: #1e3c72; color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;">1</div>
+                <h4 style="font-size: 1rem; color: #1e3c72; margin-bottom: 6px;">Consult &amp; Define</h4>
+                <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">We listen to your needs, understand your problem, and align on goals. This is where we scope the project and define success.</p>
+                <span style="display: inline-block; margin-top: 10px; font-size: 0.7rem; color: #4a7ab5; font-weight: 600;">Discovery Phase</span>
+            </div>
+
+            <!-- Step 2 -->
+            <div style="position: relative; z-index: 1; text-align: center; padding: 20px 15px; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border-top: 4px solid #4a7ab5; transition: all 0.3s ease;" 
+                 onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.10)';" 
+                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.05)';">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: #2a5298; color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;">2</div>
+                <h4 style="font-size: 1rem; color: #1e3c72; margin-bottom: 6px;">Proposal &amp; Plan</h4>
+                <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">We deliver a clear proposal with timeline, budget, and methodology. You know exactly what to expect before we start.</p>
+                <span style="display: inline-block; margin-top: 10px; font-size: 0.7rem; color: #4a7ab5; font-weight: 600;">Planning Phase</span>
+            </div>
+
+            <!-- Step 3 -->
+            <div style="position: relative; z-index: 1; text-align: center; padding: 20px 15px; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border-top: 4px solid #4a7ab5; transition: all 0.3s ease;" 
+                 onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.10)';" 
+                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.05)';">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: #3a6a9b; color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;">3</div>
+                <h4 style="font-size: 1rem; color: #1e3c72; margin-bottom: 6px;">Collect &amp; Verify</h4>
+                <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">We gather real data through field research, surveys, and interviews — then verify every data point for accuracy and reliability.</p>
+                <span style="display: inline-block; margin-top: 10px; font-size: 0.7rem; color: #4a7ab5; font-weight: 600;">Field Research</span>
+            </div>
+
+            <!-- Step 4 -->
+            <div style="position: relative; z-index: 1; text-align: center; padding: 20px 15px; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border-top: 4px solid #4a7ab5; transition: all 0.3s ease;" 
+                 onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.10)';" 
+                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.05)';">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: #4a7ab5; color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;">4</div>
+                <h4 style="font-size: 1rem; color: #1e3c72; margin-bottom: 6px;">Analyze &amp; Interpret</h4>
+                <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">We use advanced tools (R, Python, STATA) to analyze your data — turning raw numbers into clear, actionable insights.</p>
+                <span style="display: inline-block; margin-top: 10px; font-size: 0.7rem; color: #4a7ab5; font-weight: 600;">Data Analysis</span>
+            </div>
+
+            <!-- Step 5 -->
+            <div style="position: relative; z-index: 1; text-align: center; padding: 20px 15px; background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); border-top: 4px solid #4a7ab5; transition: all 0.3s ease;" 
+                 onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.10)';" 
+                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.05)';">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: #1e3c72; color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;">5</div>
+                <h4 style="font-size: 1rem; color: #1e3c72; margin-bottom: 6px;">Report &amp; Recommend</h4>
+                <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">We deliver a clear, decision-ready report with visualizations, recommendations, and actionable next steps for your organization.</p>
+                <span style="display: inline-block; margin-top: 10px; font-size: 0.7rem; color: #4a7ab5; font-weight: 600;">Delivery Phase</span>
             </div>
         </div>
-    </section>
 
+        <!-- Call to Action -->
+        <div style="text-align: center; margin-top: 50px;">
+            <p style="color: #4a5b6e; font-size: 1rem; margin-bottom: 15px;">Ready to start your project? Let's talk.</p>
+            <a href="#contact" style="background: #1e3c72; color: #fff; padding: 14px 45px; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.3s; box-shadow: 0 4px 20px rgba(30, 60, 114, 0.3);" 
+               onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(30, 60, 114, 0.4)';" 
+               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(30, 60, 114, 0.3)';">Schedule a Free Consultation →</a>
+        </div>
+    </div>
+</section>
     <!-- ===== STATS ===== -->
     <section class="stats">
         <div class="container">
@@ -1921,15 +2021,15 @@
             </p>
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin: 40px 0;">
                 <div style="text-align: center; flex: 1; min-width: 150px; background: rgba(255, 255, 255, 0.08); padding: 20px 15px; border-radius: 12px; backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
-                    <div style="font-size: 2.5rem; font-weight: 700; color: #7aafd4; display: block; margin-bottom: 8px;">📊</div>
+
                     <div style="font-size: 0.95rem; color: #d0ddea; font-weight: 500;">Verified Data Infrastructure</div>
                 </div>
                 <div style="text-align: center; flex: 1; min-width: 150px; background: rgba(255, 255, 255, 0.08); padding: 20px 15px; border-radius: 12px; backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
-                    <div style="font-size: 2.5rem; font-weight: 700; color: #7aafd4; display: block; margin-bottom: 8px;">🤖</div>
+
                     <div style="font-size: 0.95rem; color: #d0ddea; font-weight: 500;">AI-Powered Research Intelligence</div>
                 </div>
                 <div style="text-align: center; flex: 1; min-width: 150px; background: rgba(255, 255, 255, 0.08); padding: 20px 15px; border-radius: 12px; backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
-                    <div style="font-size: 2.5rem; font-weight: 700; color: #7aafd4; display: block; margin-bottom: 8px;">🌍</div>
+
                     <div style="font-size: 0.95rem; color: #d0ddea; font-weight: 500;">Global Research Partnerships</div>
                 </div>
             </div>
@@ -1946,27 +2046,27 @@
             <p class="section-subtitle">Your research partner with the right qualifications and experience — and a bold vision for the future.</p>
             <div class="why-grid">
                 <div class="why-item">
-                    <div class="icon">👨‍🔬</div>
-                    <h4>Pharmacist + Statistician Team</h4>
-                    <p>Unique partnership combining clinical expertise with data science for full-spectrum research.</p>
+ 
+                    <h4>Exemptional Expertise</h4>
+                    <p>We are a research collective—a team of experienced researchers, data analysts, and subject-matter experts drawn from Kenya's top institutions and beyond. Each project is matched with the right mix of skills: clinical knowledge, statistical expertise, policy insight, and technological innovation. Our strength is our ability to assemble the right minds for the right problem.</p>
                 </div>
                 <div class="why-item">
-                    <div class="icon">🏛️</div>
+
                     <h4>NASCOP &amp; BeGreen Experience</h4>
                     <p>Health data validation for Kenya's Ministry of Health and business verification for a UNICEF program.</p>
                 </div>
                 <div class="why-item">
-                    <div class="icon">📊</div>
+
                     <h4>200+ Clients Analyzed</h4>
                     <p>Proven experience managing and analyzing large datasets as a Loan Officer, achieving a 30%+ error reduction.</p>
                 </div>
                 <div class="why-item">
-                    <div class="icon">🤖</div>
+
                     <h4>AI &amp; GCP Certified</h4>
                     <p>ALX AI certification and CITI GCP credentials for ethical, modern research.</p>
                 </div>
                 <div class="why-item">
-                    <div class="icon">🌍</div>
+
                     <h4>Building Africa's Data Future</h4>
                     <p>We're not just conducting research—we're building the infrastructure for Africa's AI-driven future.</p>
                 </div>
@@ -1981,12 +2081,12 @@
             <p class="section-subtitle">Real feedback from people we've worked with.</p>
             <div class="testimonial-grid">
                 <div class="testimonial-item">
-                    <p class="quote">"Titus was meticulous in verifying our entrepreneurs' data. His attention to detail and professionalism ensured the success of our verification process."</p>
+                    <p class="quote">"Scire Research delivered a seamless verification process for our entrepreneur program. Their systematic approach and field research capability gave us confidence in every data point."</p>
                     <p class="author">— BeGreen Program Coordinator</p>
                     <p class="source">UNICEF / Generation Unlimited</p>
                 </div>
                 <div class="testimonial-item">
-                    <p class="quote">"His work on our client data reduced errors significantly. He brought a level of accuracy and efficiency we hadn't seen before."</p>
+                    <p class="quote">"Since engaging Scire Research, our client data accuracy has improved dramatically. Their analytical rigor and attention to detail have become a benchmark for our operations."</p>
                     <p class="author">— Former Supervisor</p>
                     <p class="source">Umoja Fanisi Limited</p>
                 </div>
@@ -2004,8 +2104,8 @@
                     <div class="icon">
                         <img src="images/blog/borrowing.png" alt="Domestic Borrowing" onerror="this.style.display='none'; this.parentElement.textContent='📊'; this.parentElement.style.fontSize='4.5rem'; this.parentElement.style.lineHeight='1';">
                     </div>
-                    <h3>Domestic Borrowing &amp; Growth</h3>
-                    <p>Analyzing the effects of domestic government borrowing on economic growth in Kenya using ARDL and threshold regression.</p>
+                    <h3>Why Kenya's Borrowing Spree Matters for Your Business</h3>
+                    <p>Kenya's domestic debt is rising. Here's what it means for interest rates, investment, and your bottom line.</p>
                     <a href="post-domestic-borrowing.html" class="read-more">Read more →</a>
                 </div>
                 <div class="blog-card">
@@ -2021,38 +2121,96 @@
                         <img src="images/blog/monitoring.png" alt="Monitoring & Evaluation" onerror="this.style.display='none'; this.parentElement.textContent='📋'; this.parentElement.style.fontSize='4.5rem'; this.parentElement.style.lineHeight='1';">
                     </div>
                     <h3>M&amp;E for NGOs</h3>
-                    <p>How monitoring and evaluation frameworks can help NGOs measure impact and secure donor funding.</p>
+                    <p>Donors demand impact data. Most NGOs struggle to deliver it. Here's how to design M&E that tells a compelling story.</p>
                     <a href="post-ai-vs-field-research.html" class="read-more">Read more →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== FAQ ===== -->
-    <section id="faq">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <p class="section-subtitle">Quick answers to common questions about working with us.</p>
-            <div class="faq-grid">
-                <div class="faq-item active">
-                    <h4>What types of research do you handle? <span class="toggle">−</span></h4>
-                    <p>We handle market research, data analysis, M&E for NGOs, medical and pharmaceutical research, AI fact-checking, and professional training.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Do you work with NGOs and donors? <span class="toggle">+</span></h4>
-                    <p>Yes — we specialize in M&E frameworks, baseline/endline surveys, impact evaluations, and donor reporting.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>What tools do you use for data analysis? <span class="toggle">+</span></h4>
-                    <p>We use R, Python, STATA, Excel, ODK, Kobo Toolbox, and CommCare for data collection and analysis.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>How do you ensure data confidentiality? <span class="toggle">+</span></h4>
-                    <p>We are GCP certified and follow strict data protection protocols. All client data is handled with the highest level of confidentiality.</p>
-                </div>
+   <!-- ===== FAQ ===== -->
+<section id="faq">
+    <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know about working with Scire Research — from our process to our vision.</p>
+
+        <div class="faq-grid">
+
+            <!-- === What We Do === -->
+            <div class="faq-item active">
+                <h4>What types of research do you handle? <span class="toggle">−</span></h4>
+                <p>We handle market research, data analysis, M&E for NGOs, medical and pharmaceutical research, AI fact-checking, and professional training. Our team has deep expertise across healthcare, agriculture, finance, and international development.</p>
             </div>
+
+            <!-- === Who We Work With === -->
+            <div class="faq-item">
+                <h4>Who do you work with? <span class="toggle">+</span></h4>
+                <p>We work with NGOs, businesses, government agencies, academic institutions, and development partners across Kenya and internationally. Recent partners include UNICEF, Kenya's Ministry of Health, and leading businesses across East Africa.</p>
+            </div>
+
+            <!-- === Process === -->
+            <div class="faq-item">
+                <h4>What does the process look like? <span class="toggle">+</span></h4>
+                <p>We follow a transparent 5-step process: <strong>Consult &amp; Define</strong> (understand your needs), <strong>Proposal &amp; Plan</strong> (scope and timeline), <strong>Collect &amp; Verify</strong> (field research and data collection), <strong>Analyze &amp; Interpret</strong> (rigorous analysis), and <strong>Report &amp; Recommend</strong> (clear, actionable insights).</p>
+            </div>
+
+            <!-- === Timelines === -->
+            <div class="faq-item">
+                <h4>How long does a typical project take? <span class="toggle">+</span></h4>
+                <p>Timelines vary depending on scope. A market research study might take 2–4 weeks, while a comprehensive M&E evaluation could take 3–6 months. We provide a clear timeline in our proposal before we start.</p>
+            </div>
+
+            <!-- === Cost === -->
+            <div class="faq-item">
+                <h4>How much do your services cost? <span class="toggle">+</span></h4>
+                <p>We provide custom quotes based on project scope, complexity, and timeline. We offer competitive rates and can work within your budget. Contact us for a free initial consultation and quote.</p>
+            </div>
+
+            <!-- === Team === -->
+            <div class="faq-item">
+                <h4>Who will be working on my project? <span class="toggle">+</span></h4>
+                <p>Every project is led by our experienced research team, with direct oversight from our founders. We assemble the right mix of skills — from field researchers to data analysts — based on your specific needs.</p>
+            </div>
+
+            <!-- === Quality === -->
+            <div class="faq-item">
+                <h4>How do you ensure data quality? <span class="toggle">+</span></h4>
+                <p>We follow rigorous quality assurance protocols at every stage — from field data collection (using verified tools like ODK and Kobo Toolbox) to analysis (using R, Python, and STATA). Our team is GCP certified, and we have a proven track record of reducing data errors by over 30%.</p>
+            </div>
+
+            <!-- === Confidentiality === -->
+            <div class="faq-item">
+                <h4>How do you ensure data confidentiality? <span class="toggle">+</span></h4>
+                <p>We are GCP certified and follow strict data protection protocols. All client data is handled with the highest level of confidentiality. Non-disclosure agreements (NDAs) are available upon request.</p>
+            </div>
+
+            <!-- === Remote Work === -->
+            <div class="faq-item">
+                <h4>Can you work with us remotely? <span class="toggle">+</span></h4>
+                <p>Yes. While we are based in Nairobi and conduct fieldwork across Kenya, we work with clients remotely through virtual meetings, email, and secure file sharing. We've successfully partnered with organizations across East Africa and internationally.</p>
+            </div>
+
+            <!-- === Sectors === -->
+            <div class="faq-item">
+                <h4>What sectors do you specialize in? <span class="toggle">+</span></h4>
+                <p>We have deep expertise in healthcare, agriculture, finance, education, and international development. Our team has worked with Kenya's Ministry of Health (NASCOP), UNICEF, and leading businesses across these sectors.</p>
+            </div>
+
+            <!-- === Examples === -->
+            <div class="faq-item">
+                <h4>Can you share examples of your work? <span class="toggle">+</span></h4>
+                <p>Yes. We have case studies and testimonials from our work with UNICEF, Kenya's Ministry of Health, and other clients. Contact us and we'll share relevant examples based on your sector and research needs.</p>
+            </div>
+
+            <!-- === AI & Innovation === -->
+            <div class="faq-item">
+                <h4>Do you offer AI services? <span class="toggle">+</span></h4>
+                <p>Yes. Beyond traditional research, we offer AI fact-checking, proprietary dataset development, and data science consulting. We're also building Africa's verified data infrastructure and an AI research intelligence platform. Learn more on our <a href="innovation-hub.html" style="color: #4a7ab5; text-decoration: underline;">Innovation Hub</a> page.</p>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- ===== CONTACT ===== -->
     <section id="contact" class="section-alt">
