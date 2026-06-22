@@ -26,7 +26,7 @@
                 <p style="color: #4a5b6e; max-width: 550px; margin: 8px auto 0; font-size: 1rem;">Trusted research that powers better decisions—today.</p>
             </div>
 
-            <!-- 3-Column Grid - Matches services page styling -->
+            <!-- 3-Column Grid -->
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1020px; margin: 0 auto;">
 
                 <!-- Card 1: Market Research -->
@@ -155,42 +155,48 @@
                 <p style="color: #b0c4de; max-width: 600px; margin: 8px auto 30px; font-size: 1.05rem;">Building the foundation for Africa's data-driven future—starting now.</p>
             </div>
 
-            <!-- Product Cards - 3 columns -->
+            <!-- Product Cards - 3 columns with consistent sizing -->
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1020px; margin: 0 auto;">
 
                 <!-- Product 1 -->
-                <div style="background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); padding: 30px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; text-align: center;" 
+                <div style="background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); padding: 30px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; text-align: center; width: 100%; max-width: 320px; margin: 0 auto;" 
                      onmouseover="this.style.transform='translateY(-6px)'; this.style.background='rgba(255,255,255,0.12)'; this.style.borderColor='#4a7ab5';" 
                      onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.08)';">
-                    <img src="images/icons/verified-datasets.png" alt="Verified African Datasets" style="width: 50px; height: 50px; object-fit: contain; margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;">
-                    <h4 style="font-size: 1.05rem; color: #fff; margin-bottom: 8px; font-weight: 700;">Verified African Datasets</h4>
-                    <p style="font-size: 0.85rem; color: #b0c4de; line-height: 1.6; margin-bottom: 12px;">Curated, cleaned, and verified datasets for healthcare, agriculture, and finance—built from the ground up.</p>
-                    <span style="background: rgba(74, 122, 181, 0.3); padding: 2px 14px; border-radius: 12px; font-size: 0.65rem; color: #7aafd4;">Coming Soon</span>
+                    <div style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 276px; min-height: 160px; margin: 0 auto 12px; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 10px;">
+                        <img src="images/icons/verified-datasets.png" alt="Verified African Datasets" style="width: 100%; height: 160px; object-fit: cover; display: block; border-radius: 8px;">
+                    </div>
+                    <h4 style="font-size: 1.2rem; color: #fff; margin-bottom: 10px;">Verified African Datasets</h4>
+                    <p style="color: #b0c4de; font-size: 0.95rem; line-height: 1.7; margin-bottom: 15px;">Curated, cleaned, and verified datasets for healthcare, agriculture, and finance—built from the ground up.</p>
+                    <span style="background: rgba(74, 122, 181, 0.3); padding: 4px 16px; border-radius: 12px; font-size: 0.7rem; color: #7aafd4; display: inline-block;">Coming Soon</span>
                 </div>
 
                 <!-- Product 2 -->
-                <div style="background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); padding: 30px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; text-align: center;" 
+                <div style="background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); padding: 30px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; text-align: center; width: 100%; max-width: 320px; margin: 0 auto;" 
                      onmouseover="this.style.transform='translateY(-6px)'; this.style.background='rgba(255,255,255,0.12)'; this.style.borderColor='#4a7ab5';" 
                      onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.08)';">
-                    <img src="images/icons/ai-platform.png" alt="AI Research Intelligence Platform" style="width: 50px; height: 50px; object-fit: contain; margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;">
-                    <h4 style="font-size: 1.05rem; color: #fff; margin-bottom: 8px; font-weight: 700;">AI Research Intelligence Platform</h4>
-                    <p style="font-size: 0.85rem; color: #b0c4de; line-height: 1.6; margin-bottom: 12px;">AI tools for research validation, data analysis, and decision intelligence—built on our verified datasets.</p>
-                    <span style="background: rgba(74, 122, 181, 0.3); padding: 2px 14px; border-radius: 12px; font-size: 0.65rem; color: #7aafd4;">In Development</span>
+                    <div style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 276px; min-height: 160px; margin: 0 auto 12px; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 10px;">
+                        <img src="images/icons/ai-platform.png" alt="AI Research Intelligence Platform" style="width: 100%; height: 160px; object-fit: cover; display: block; border-radius: 8px;">
+                    </div>
+                    <h4 style="font-size: 1.2rem; color: #fff; margin-bottom: 10px;">AI Research Intelligence Platform</h4>
+                    <p style="color: #b0c4de; font-size: 0.95rem; line-height: 1.7; margin-bottom: 15px;">AI tools for research validation, data analysis, and decision intelligence—built on our verified datasets.</p>
+                    <span style="background: rgba(74, 122, 181, 0.3); padding: 4px 16px; border-radius: 12px; font-size: 0.7rem; color: #7aafd4; display: inline-block;">In Development</span>
                 </div>
 
                 <!-- Product 3 -->
-                <div style="background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); padding: 30px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; text-align: center;" 
+                <div style="background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); padding: 30px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; text-align: center; width: 100%; max-width: 320px; margin: 0 auto;" 
                      onmouseover="this.style.transform='translateY(-6px)'; this.style.background='rgba(255,255,255,0.12)'; this.style.borderColor='#4a7ab5';" 
                      onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255,255,255,0.06)'; this.style.borderColor='rgba(255,255,255,0.08)';">
-                    <img src="images/icons/compliance-auditor.png" alt="AI Sovereignty Compliance Auditor" style="width: 50px; height: 50px; object-fit: contain; margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;">
-                    <h4 style="font-size: 1.05rem; color: #fff; margin-bottom: 8px; font-weight: 700;">AI Sovereignty Compliance Auditor</h4>
-                    <p style="font-size: 0.85rem; color: #b0c4de; line-height: 1.6; margin-bottom: 12px;">Automated tool to audit and certify AI systems for Kenya's data localization and sovereignty requirements.</p>
-                    <span style="background: rgba(74, 122, 181, 0.3); padding: 2px 14px; border-radius: 12px; font-size: 0.65rem; color: #7aafd4;">In Development</span>
+                    <div style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 276px; min-height: 160px; margin: 0 auto 12px; background: rgba(255,255,255,0.05); border-radius: 12px; padding: 10px;">
+                        <img src="images/icons/compliance-auditor.png" alt="AI Sovereignty Compliance Auditor" style="width: 100%; height: 160px; object-fit: cover; display: block; border-radius: 8px;">
+                    </div>
+                    <h4 style="font-size: 1.2rem; color: #fff; margin-bottom: 10px;">AI Sovereignty Compliance Auditor</h4>
+                    <p style="color: #b0c4de; font-size: 0.95rem; line-height: 1.7; margin-bottom: 15px;">Automated tool to audit and certify AI systems for Kenya's data localization and sovereignty requirements.</p>
+                    <span style="background: rgba(74, 122, 181, 0.3); padding: 4px 16px; border-radius: 12px; font-size: 0.7rem; color: #7aafd4; display: inline-block;">In Development</span>
                 </div>
             </div>
 
             <!-- View Products Link -->
-            <div style="text-align: center; margin-top: 30px;">
+            <div style="text-align: center; margin-top: 35px;">
                 <a href="products.html" style="color: #7aafd4; font-weight: 600; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 30px; border: 2px solid rgba(255,255,255,0.2); border-radius: 30px; transition: all 0.3s;" 
                    onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='#7aafd4'; this.style.gap='14px';" 
                    onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.gap='8px';">Learn More About Our Products →</a>
@@ -211,48 +217,56 @@
                 <p style="color: #4a5b6e; max-width: 550px; margin: 8px auto 30px; font-size: 1rem;">Building Africa's AI future—from Kenya to the world.</p>
             </div>
 
-            <!-- Innovation Cards - 4 columns -->
+            <!-- Innovation Cards - 4 columns with consistent sizing -->
             <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1020px; margin: 0 auto;">
 
                 <!-- Card 1 -->
-                <div style="background: #fff; padding: 25px 20px; border-radius: 12px; border: 1px solid #eaeef3; text-align: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" 
+                <div style="background: #fff; padding: 30px 20px; border-radius: 12px; border: 1px solid #eaeef3; text-align: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05); width: 100%; max-width: 240px; margin: 0 auto;" 
                      onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 28px rgba(0,0,0,0.08)';" 
                      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.05)';">
-                    <img src="images/icons/ai-research-lab.png" alt="AI Research Lab" style="width: 45px; height: 45px; object-fit: contain; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto;">
-                    <h4 style="font-size: 1rem; color: #0b1e33; font-weight: 700;">AI Research Lab</h4>
+                    <div style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 200px; min-height: 120px; margin: 0 auto 12px; background: #f0f4f8; border-radius: 12px; padding: 10px;">
+                        <img src="images/icons/ai-research-lab.png" alt="AI Research Lab" style="width: 100%; height: 120px; object-fit: cover; display: block; border-radius: 8px;">
+                    </div>
+                    <h4 style="font-size: 1.05rem; color: #0b1e33; margin-bottom: 8px; font-weight: 700;">AI Research Lab</h4>
                     <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">Building proprietary AI models trained on African data.</p>
                 </div>
 
                 <!-- Card 2 -->
-                <div style="background: #fff; padding: 25px 20px; border-radius: 12px; border: 1px solid #eaeef3; text-align: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" 
+                <div style="background: #fff; padding: 30px 20px; border-radius: 12px; border: 1px solid #eaeef3; text-align: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05); width: 100%; max-width: 240px; margin: 0 auto;" 
                      onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 28px rgba(0,0,0,0.08)';" 
                      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.05)';">
-                    <img src="images/icons/fellowship.png" alt="Fellowship Program" style="width: 45px; height: 45px; object-fit: contain; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto;">
-                    <h4 style="font-size: 1rem; color: #0b1e33; font-weight: 700;">Fellowship Program</h4>
+                    <div style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 200px; min-height: 120px; margin: 0 auto 12px; background: #f0f4f8; border-radius: 12px; padding: 10px;">
+                        <img src="images/icons/fellowship.png" alt="Fellowship Program" style="width: 100%; height: 120px; object-fit: cover; display: block; border-radius: 8px;">
+                    </div>
+                    <h4 style="font-size: 1.05rem; color: #0b1e33; margin-bottom: 8px; font-weight: 700;">Fellowship Program</h4>
                     <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">Training the next generation of African AI researchers.</p>
                 </div>
 
                 <!-- Card 3 -->
-                <div style="background: #fff; padding: 25px 20px; border-radius: 12px; border: 1px solid #eaeef3; text-align: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" 
+                <div style="background: #fff; padding: 30px 20px; border-radius: 12px; border: 1px solid #eaeef3; text-align: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05); width: 100%; max-width: 240px; margin: 0 auto;" 
                      onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 28px rgba(0,0,0,0.08)';" 
                      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.05)';">
-                    <img src="images/icons/incubator.png" alt="Startup Incubator" style="width: 45px; height: 45px; object-fit: contain; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto;">
-                    <h4 style="font-size: 1rem; color: #0b1e33; font-weight: 700;">Startup Incubator</h4>
+                    <div style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 200px; min-height: 120px; margin: 0 auto 12px; background: #f0f4f8; border-radius: 12px; padding: 10px;">
+                        <img src="images/icons/incubator.png" alt="Startup Incubator" style="width: 100%; height: 120px; object-fit: cover; display: block; border-radius: 8px;">
+                    </div>
+                    <h4 style="font-size: 1.05rem; color: #0b1e33; margin-bottom: 8px; font-weight: 700;">Startup Incubator</h4>
                     <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">Supporting AI startups building on our verified data.</p>
                 </div>
 
                 <!-- Card 4 -->
-                <div style="background: #fff; padding: 25px 20px; border-radius: 12px; border: 1px solid #eaeef3; text-align: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" 
+                <div style="background: #fff; padding: 30px 20px; border-radius: 12px; border: 1px solid #eaeef3; text-align: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05); width: 100%; max-width: 240px; margin: 0 auto;" 
                      onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 28px rgba(0,0,0,0.08)';" 
                      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.05)';">
-                    <img src="images/icons/global-partnerships.png" alt="Global Research Partnerships" style="width: 45px; height: 45px; object-fit: contain; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto;">
-                    <h4 style="font-size: 1rem; color: #0b1e33; font-weight: 700;">Global Research Partnerships</h4>
+                    <div style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 200px; min-height: 120px; margin: 0 auto 12px; background: #f0f4f8; border-radius: 12px; padding: 10px;">
+                        <img src="images/icons/global-partnerships.png" alt="Global Research Partnerships" style="width: 100%; height: 120px; object-fit: cover; display: block; border-radius: 8px;">
+                    </div>
+                    <h4 style="font-size: 1.05rem; color: #0b1e33; margin-bottom: 8px; font-weight: 700;">Global Research Partnerships</h4>
                     <p style="font-size: 0.85rem; color: #4a5b6e; line-height: 1.5;">Collaborating with universities and institutions worldwide.</p>
                 </div>
             </div>
 
             <!-- Explore Innovation Hub -->
-            <div style="text-align: center; margin-top: 30px;">
+            <div style="text-align: center; margin-top: 35px;">
                 <a href="vision.html" style="background: #4a7ab5; color: #fff; padding: 14px 45px; font-size: 1rem; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-block; box-shadow: 0 4px 20px rgba(74, 122, 181, 0.3); transition: all 0.3s;" 
                    onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(74, 122, 181, 0.4)';" 
                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(74, 122, 181, 0.3)';">Explore Our Vision →</a>
