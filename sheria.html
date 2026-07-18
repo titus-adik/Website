@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Bill Compliance Readiness Scorecard – Scire Research</title>
+
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cline x1='62' y1='62' x2='82' y2='82' stroke='%23e67e22' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='28' fill='none' stroke='%231a5276' stroke-width='5'/%3E%3Cpath d='M35,25 Q45,35 35,45 Q25,55 35,65' fill='none' stroke='%23e67e22' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M55,25 Q45,35 55,45 Q65,55 55,65' fill='none' stroke='%23148f8f' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='3' fill='%23e67e22'/%3E%3C/svg%3E">
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7fa;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: #0b1e33;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #b0c4de;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 8px auto 0;
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-container {
+            background: #fff;
+            padding: 16px 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-bar .fill {
+            height: 100%;
+            background: #1e3c72;
+            border-radius: 4px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #4a5b6e;
+        }
+
+        /* ===== QUESTION CARD ===== */
+        .question-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            display: none;
+        }
+
+        .question-card.active {
+            display: block;
+        }
+
+        .question-card .q-number {
+            display: inline-block;
+            background: #1e3c72;
+            color: #fff;
+            padding: 2px 12px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .question-card .q-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #0b1e33;
+        }
+
+        .question-card .q-help {
+            font-size: 0.85rem;
+            color: #4a5b6e;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .options label:hover {
+            border-color: #1e3c72;
+            background: #f8fafc;
+        }
+
+        .options label.selected {
+            border-color: #1e3c72;
+            background: #eef4ff;
+        }
+
+        .options input[type="radio"],
+        .options input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            accent-color: #1e3c72;
+        }
+
+        .options .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .options .checkbox-group label {
+            flex: 1 1 calc(50% - 8px);
+            min-width: 140px;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: #1e3c72;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #2a5298;
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #1e2a3a;
+        }
+
+        .btn-secondary:hover {
+            background: #d0d7de;
+        }
+
+        .btn-success {
+            background: #22c55e;
+            color: #fff;
+        }
+
+        .btn-success:hover {
+            background: #16a34a;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* ===== RESULTS ===== */
+        #results {
+            display: none;
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        #results.visible {
+            display: block;
+        }
+
+        /* ===== REPORT STYLES ===== */
+        .report-header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #1e3c72;
+            margin-bottom: 24px;
+        }
+
+        .report-header .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0b1e33;
+        }
+
+        .report-header .logo span {
+            color: #4a7ab5;
+        }
+
+        .report-header .subtitle {
+            color: #4a5b6e;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .report-header .report-date {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .report-footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 24px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .result-badge {
+            text-align: center;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .result-badge .score {
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+
+        .result-badge .label {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .result-badge.low {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .result-badge.medium {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .result-badge.high {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .result-badge.critical {
+            background: #fef2f2;
+            color: #7f1d1d;
+            border: 2px solid #dc2626;
+        }
+
+        .result-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .result-section h3 {
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            color: #0b1e33;
+        }
+
+        .result-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .result-section ul li {
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 6px;
+            background: #f8fafc;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .result-section ul li .icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .result-section ul li .action {
+            color: #1e3c72;
+            font-weight: 600;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: #1e3c72;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            text-align: center;
+            margin-top: 8px;
+            width: 100%;
+        }
+
+        .btn-download:hover {
+            background: #2a5298;
+            transform: translateY(-2px);
+        }
+
+        .lead-capture {
+            margin-top: 24px;
+            padding: 24px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .lead-capture h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .lead-capture p {
+            font-size: 0.9rem;
+            color: #4a5b6e;
+            margin-bottom: 16px;
+        }
+
+        .lead-capture .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .lead-capture input,
+        .lead-capture select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #d0d7de;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .lead-capture input:focus,
+        .lead-capture select:focus {
+            outline: none;
+            border-color: #1e3c72;
+        }
+
+        .lead-capture .btn {
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        .disclaimer {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            text-align: center;
+            margin-top: 16px;
+            font-style: italic;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .question-card {
+                padding: 20px;
+            }
+
+            .lead-capture .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .options .checkbox-group label {
+                flex: 1 1 100%;
+            }
+
+            .nav-buttons {
+                flex-wrap: wrap;
+            }
+
+            .nav-buttons .btn {
+                flex: 1 1 calc(50% - 6px);
+                text-align: center;
+            }
+
+            .result-badge .score {
+                font-size: 2.5rem;
+            }
+
+            .report-header .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.4rem;
+            }
+
+            .question-card .q-text {
+                font-size: 1rem;
+            }
+
+            .options label {
+                font-size: 0.85rem;
+                padding: 10px 14px;
+            }
+        }
+
+        /* ===== PRINT/PDF STYLES ===== */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .header {
+                display: none !important;
+            }
+
+            #progressContainer {
+                display: none !important;
+            }
+
+            #scorecardForm {
+                display: none !important;
+            }
+
+            #results {
+                display: block !important;
+                box-shadow: none !important;
+                border: none !important;
+                padding: 30px !important;
+                border-radius: 0 !important;
+                background: #fff !important;
+            }
+
+            .report-header {
+                border-bottom: 2px solid #1e3c72 !important;
+            }
+
+            .result-badge {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                break-inside: avoid !important;
+            }
+
+            .result-section ul li {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background: #f8fafc !important;
+            }
+
+            body {
+                background: #fff !important;
+            }
+
+            .container {
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+
+            .btn-download {
+                display: none !important;
+            }
+
+            .lead-capture {
+                display: none !important;
+            }
+
+            .disclaimer {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="container">
+            <h1>🇰🇪 AI Bill Compliance Readiness Scorecard</h1>
+            <p>Find out if your organization is ready for Kenya's AI Bill, 2026. 5 minutes. 15 questions. Free report.
+            </p>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="container">
+
+        <!-- ===== PROGRESS ===== -->
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-text">
+                <span id="questionCounter">Question 1 of 15</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <!-- ===== QUESTION FORM ===== -->
+        <form id="scorecardForm" novalidate>
+
+            <!-- Q1 -->
+            <div class="question-card active" data-q="1">
+                <span class="q-number">Question 1</span>
+                <div class="q-text">Does your organization currently use any artificial intelligence (AI) or machine
+                    learning (ML) systems?</div>
+                <div class="q-help">This includes chatbots, recommendation engines, fraud detection, generative AI, and
+                    any automated decision-making tools.</div>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="5" /> Yes, multiple systems</label>
+                    <label><input type="radio" name="q1" value="4" /> Yes, one or two systems</label>
+                    <label><input type="radio" name="q1" value="2" /> We're exploring AI but haven't deployed anything
+                        yet</label>
+                    <label><input type="radio" name="q1" value="0" /> No, we don't use AI</label>
+                </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="question-card" data-q="2">
+                <span class="q-number">Question 2</span>
+                <div class="q-text">How many AI systems does your organization currently have in production?</div>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="0" /> 0</label>
+                    <label><input type="radio" name="q2" value="2" /> 1-2</label>
+                    <label><input type="radio" name="q2" value="3" /> 3-5</label>
+                    <label><input type="radio" name="q2" value="4" /> 6-10</label>
+                    <label><input type="radio" name="q2" value="5" /> More than 10</label>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="question-card" data-q="3">
+                <span class="q-number">Question 3</span>
+                <div class="q-text">Are you aware of all AI systems being used within your organization?</div>
+                <div class="q-help">This includes ChatGPT, Copilot, or other tools employees may use without formal
+                    approval.</div>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="5" /> Yes, we have complete visibility</label>
+                    <label><input type="radio" name="q3" value="3" /> We have visibility over most, but not all</label>
+                    <label><input type="radio" name="q3" value="1" /> We suspect there may be unapproved AI use</label>
+                    <label><input type="radio" name="q3" value="0" /> We have no visibility into AI usage</label>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="question-card" data-q="4">
+                <span class="q-number">Question 4</span>
+                <div class="q-text">Are employees using AI tools (e.g., ChatGPT, Copilot, Gemini, Claude) in their daily
+                    work?</div>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="5" /> Yes, widely used across the organization</label>
+                    <label><input type="radio" name="q4" value="3" /> Yes, but only in specific departments</label>
+                    <label><input type="radio" name="q4" value="2" /> Limited use, mostly experimental</label>
+                    <label><input type="radio" name="q4" value="1" /> No, we prohibit or restrict AI use</label>
+                    <label><input type="radio" name="q4" value="0" /> I don't know</label>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="question-card" data-q="5">
+                <span class="q-number">Question 5</span>
+                <div class="q-text">Does your organization process any of the following types of data through AI
+                    systems?</div>
+                <div class="q-help">Select all that apply.</div>
+                <div class="options">
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="q5" value="personal" /> Personal data (names, ID numbers,
+                            contact details)</label>
+                        <label><input type="checkbox" name="q5" value="health" /> Health data (patient records, medical
+                            history)</label>
+                        <label><input type="checkbox" name="q5" value="financial" /> Financial data (banking, credit,
+                            payment)</label>
+                        <label><input type="checkbox" name="q5" value="biometric" /> Biometric data (fingerprints,
+                            facial recognition)</label>
+                        <label><input type="checkbox" name="q5" value="sensitive" /> Sensitive personal data (ethnicity,
+                            religion, politics)</label>
+                        <label><input type="checkbox" name="q5" value="none" /> None of the above</label>
+                        <label><input type="checkbox" name="q5" value="unknown" /> I don't know</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="question-card" data-q="6">
+                <span class="q-number">Question 6</span>
+                <div class="q-text">Are you confident that your AI systems do not transfer personal data outside Kenya?
+                </div>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="5" /> Yes, 100% confident</label>
+                    <label><input type="radio" name="q6" value="3" /> Mostly confident, but not 100% certain</label>
+                    <label><input type="radio" name="q6" value="1" /> Not confident — we suspect data may cross
+                        borders</label>
+                    <label><input type="radio" name="q6" value="0" /> We have no visibility into where data is
+                        processed</label>
+                    <label><input type="radio" name="q6" value="2" /> Not applicable — we don't process personal
+                        data</label>
+                </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="question-card" data-q="7">
+                <span class="q-number">Question 7</span>
+                <div class="q-text">Have you conducted a Data Protection Impact Assessment (DPIA) for any of your AI
+                    systems?</div>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="5" /> Yes, for all AI systems</label>
+                    <label><input type="radio" name="q7" value="3" /> Yes, for some AI systems</label>
+                    <label><input type="radio" name="q7" value="2" /> No, but we plan to</label>
+                    <label><input type="radio" name="q7" value="0" /> No, we haven't</label>
+                    <label><input type="radio" name="q7" value="0" /> I don't know</label>
+                </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="question-card" data-q="8">
+                <span class="q-number">Question 8</span>
+                <div class="q-text">Have you classified any of your AI systems according to the risk tiers defined in
+                    the AI Bill, 2026?</div>
+                <div class="q-help">The Bill defines four tiers: Prohibited, High-Risk, Limited, and Minimal.</div>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="5" /> Yes, all systems are classified</label>
+                    <label><input type="radio" name="q8" value="3" /> Yes, some systems are classified</label>
+                    <label><input type="radio" name="q8" value="2" /> No, but we plan to</label>
+                    <label><input type="radio" name="q8" value="0" /> No, we haven't</label>
+                    <label><input type="radio" name="q8" value="0" /> I don't know</label>
+                </div>
+            </div>
+
+            <!-- Q9 -->
+            <div class="question-card" data-q="9">
+                <span class="q-number">Question 9</span>
+                <div class="q-text">Does your organization use AI in any of the following high-risk areas?</div>
+                <div class="q-help">Select all that apply.</div>
+                <div class="options">
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="q9" value="credit" /> Credit scoring or lending
+                            decisions</label>
+                        <label><input type="checkbox" name="q9" value="hr" /> Recruitment, hiring, or HR
+                            decisions</label>
+                        <label><input type="checkbox" name="q9" value="healthcare" /> Healthcare diagnosis or patient
+                            management</label>
+                        <label><input type="checkbox" name="q9" value="justice" /> Criminal justice or policing</label>
+                        <label><input type="checkbox" name="q9" value="education" /> Education or student
+                            assessment</label>
+                        <label><input type="checkbox" name="q9" value="infrastructure" /> Critical infrastructure
+                            (energy, transport, water)</label>
+                        <label><input type="checkbox" name="q9" value="none" /> None of the above</label>
+                        <label><input type="checkbox" name="q9" value="unknown" /> I don't know</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Q10 -->
+            <div class="question-card" data-q="10">
+                <span class="q-number">Question 10</span>
+                <div class="q-text">Are you aware of what constitutes a "Prohibited" AI system under the Bill?</div>
+                <div class="q-help">Examples include biometric mass surveillance, social scoring, and subliminal
+                    manipulation.</div>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="5" /> Yes, fully aware</label>
+                    <label><input type="radio" name="q10" value="3" /> Somewhat aware</label>
+                    <label><input type="radio" name="q10" value="1" /> Vaguely aware</label>
+                    <label><input type="radio" name="q10" value="0" /> Not at all aware</label>
+                </div>
+            </div>
+
+            <!-- Q11 -->
+            <div class="question-card" data-q="11">
+                <span class="q-number">Question 11</span>
+                <div class="q-text">Does your organization maintain documentation for your AI systems?</div>
+                <div class="options">
+                    <label><input type="radio" name="q11" value="5" /> Yes, comprehensive documentation</label>
+                    <label><input type="radio" name="q11" value="3" /> Yes, basic documentation</label>
+                    <label><input type="radio" name="q11" value="2" /> No, but we plan to</label>
+                    <label><input type="radio" name="q11" value="0" /> No, we don't</label>
+                    <label><input type="radio" name="q11" value="0" /> I don't know</label>
+                </div>
+            </div>
+
+            <!-- Q12 -->
+            <div class="question-card" data-q="12">
+                <span class="q-number">Question 12</span>
+                <div class="q-text">Are you prepared to retain records of your AI system's training data, outputs, and
+                    performance metrics for five years?</div>
+                <div class="q-help">This is a requirement for high-risk AI systems under the Bill.</div>
+                <div class="options">
+                    <label><input type="radio" name="q12" value="5" /> Yes, we have the capability</label>
+                    <label><input type="radio" name="q12" value="3" /> We're working on it</label>
+                    <label><input type="radio" name="q12" value="0" /> No, we're not prepared</label>
+                    <label><input type="radio" name="q12" value="0" /> I don't know</label>
+                </div>
+            </div>
+
+            <!-- Q13 -->
+            <div class="question-card" data-q="13">
+                <span class="q-number">Question 13</span>
+                <div class="q-text">Has your organization ever been audited on its AI usage?</div>
+                <div class="options">
+                    <label><input type="radio" name="q13" value="5" /> Yes, by a regulator or external auditor</label>
+                    <label><input type="radio" name="q13" value="3" /> Yes, by an internal audit team</label>
+                    <label><input type="radio" name="q13" value="0" /> No, never</label>
+                    <label><input type="radio" name="q13" value="0" /> Not applicable</label>
+                </div>
+            </div>
+
+            <!-- Q14 -->
+            <div class="question-card" data-q="14">
+                <span class="q-number">Question 14</span>
+                <div class="q-text">Does your organization have a designated person or team responsible for AI
+                    governance?</div>
+                <div class="options">
+                    <label><input type="radio" name="q14" value="5" /> Yes, a dedicated team</label>
+                    <label><input type="radio" name="q14" value="3" /> Yes, an individual responsible</label>
+                    <label><input type="radio" name="q14" value="2" /> No, but we plan to appoint one</label>
+                    <label><input type="radio" name="q14" value="0" /> No, we don't</label>
+                    <label><input type="radio" name="q14" value="0" /> I don't know</label>
+                </div>
+            </div>
+
+            <!-- Q15 -->
+            <div class="question-card" data-q="15">
+                <span class="q-number">Question 15</span>
+                <div class="q-text">What is your organization's overall readiness level for the AI Bill, 2026?</div>
+                <div class="options">
+                    <label><input type="radio" name="q15" value="5" /> We are fully prepared</label>
+                    <label><input type="radio" name="q15" value="3" /> We are somewhat prepared</label>
+                    <label><input type="radio" name="q15" value="2" /> We are just starting to prepare</label>
+                    <label><input type="radio" name="q15" value="0" /> We have not yet started</label>
+                    <label><input type="radio" name="q15" value="0" /> I don't know</label>
+                </div>
+            </div>
+
+            <!-- ===== NAVIGATION ===== -->
+            <div class="nav-buttons">
+                <button type="button" class="btn btn-secondary" id="prevBtn" style="visibility:hidden;">←
+                    Previous</button>
+                <button type="button" class="btn btn-primary" id="nextBtn">Next →</button>
+            </div>
+
+        </form>
+
+        <!-- ============================================================ -->
+        <!-- RESULTS                                                     -->
+        <!-- ============================================================ -->
+        <div id="results">
+
+            <!-- ===== REPORT HEADER (Branded) ===== -->
+            <div class="report-header">
+                <div class="logo">Scire <span>Research</span></div>
+                <div class="subtitle">The Foundation for Africa's Data-Driven Future</div>
+                <div class="report-date">AI Bill Compliance Readiness Report — <span id="reportDate"></span></div>
+            </div>
+
+            <!-- ===== BADGE ===== -->
+            <div id="resultBadge" class="result-badge">
+                <div class="score" id="resultScore">0%</div>
+                <div class="label" id="resultLabel">Loading...</div>
+            </div>
+
+            <!-- ===== SHADOW AI ===== -->
+            <div class="result-section">
+                <h3>🔍 Shadow AI Risk Assessment</h3>
+                <ul id="shadowAiResults">
+                    <li><span class="icon">⚠️</span> <span>Analysis will appear here</span></li>
+                </ul>
+            </div>
+
+            <!-- ===== GAPS ===== -->
+            <div class="result-section">
+                <h3>📋 Your Biggest Compliance Gaps</h3>
+                <ul id="gapResults">
+                    <li><span class="icon">❌</span> <span>Analysis will appear here</span></li>
+                </ul>
+            </div>
+
+            <!-- ===== ACTION PLAN ===== -->
+            <div class="result-section">
+                <h3>📌 Prioritized Action Plan</h3>
+                <ul id="actionResults">
+                    <li><span class="icon">📌</span> <span>Analysis will appear here</span></li>
+                </ul>
+            </div>
+
+            <!-- ===== PDF BUTTON (Only visible on screen) ===== -->
+            <div style="margin: 20px 0; text-align: center;" class="no-print">
+                <button onclick="window.print()" class="btn-download" id="pdfButton">
+                    📄 Download Full Report (PDF)
+                </button>
+            </div>
+
+            <!-- ===== LEAD CAPTURE (Only visible on screen) ===== -->
+            <div class="lead-capture no-print">
+                <h3>📩 Reserve Your Sovereign AI Audit</h3>
+                <p>Receive an exhaustive, lawyer-reviewed conformity report mapped to the Senate AI Bill 2026. Keep your compliance data secure on Servernah Cloud.</p>
+                <form id="leadForm" onsubmit="event.preventDefault(); alert('Request Received! Titus will contact you shortly.');">
+                    <div class="form-row">
+                        <input type="text" placeholder="Your Name" required />
+                        <input type="email" placeholder="Work Email" required />
+                    </div>
+                    <div class="form-row" style="margin-top:10px;">
+                        <input type="text" placeholder="Organization / Company" required />
+                        <select>
+                            <option>Select Industry</option>
+                            <option>Fintech & Banking</option>
+                            <option>Healthcare & Medicine</option>
+                            <option>Government & Public Sector</option>
+                            <option>Other / Tech Startup</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Request Conformity Consultation</button>
+                </form>
+            </div>
+
+            <!-- ===== FOOTER ===== -->
+            <div class="report-footer">
+                © 2026 Scire Research — Nairobi, Kenya<br>
+                This report provides guidance based on the AI Bill, 2026. Final compliance responsibility rests with your
+                organization.
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- JAVASCRIPT ENGINE                                           -->
+    <!-- ============================================================ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('scorecardForm');
+            const cards = Array.from(document.querySelectorAll('.question-card'));
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const progressFill = document.getElementById('progressFill');
+            const questionCounter = document.getElementById('questionCounter');
+            const progressPercent = document.getElementById('progressPercent');
+            const resultsDiv = document.getElementById('results');
+            const reportDateSpan = document.getElementById('reportDate');
+
+            let currentStep = 0;
+            const totalSteps = cards.length;
+
+            // Initialize Date
+            reportDateSpan.textContent = new Date().toLocaleDateString('en-KE', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Navigation Handling
+            function updateNavigation() {
+                cards.forEach((card, idx) => {
+                    card.classList.toggle('active', idx === currentStep);
+                });
+
+                // Progress Bar calculation
+                const progress = Math.round(((currentStep) / (totalSteps - 1)) * 100);
+                progressFill.style.width = `${progress}%`;
+                progressPercent.textContent = `${progress}%`;
+                questionCounter.textContent = `Question ${currentStep + 1} of ${totalSteps}`;
+
+                // Button Visibility
+                prevBtn.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
+
+                if (currentStep === totalSteps - 1) {
+                    nextBtn.textContent = 'Generate Report';
+                    nextBtn.className = 'btn btn-success';
+                } else {
+                    nextBtn.textContent = 'Next →';
+                    nextBtn.className = 'btn btn-primary';
+                }
+            }
+
+            // ===== MUTUAL EXCLUSIVITY FOR CHECKBOXES (Q5 and Q9) =====
+            function setupMutualExclusivity(container) {
+                const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+                const noneCheckbox = container.querySelector('input[value="none"]');
+                const unknownCheckbox = container.querySelector('input[value="unknown"]');
+
+                checkboxes.forEach(cb => {
+                    cb.addEventListener('change', function() {
+                        // If "none" is checked, uncheck everything else
+                        if (this.value === 'none' && this.checked) {
+                            checkboxes.forEach(other => {
+                                if (other !== this && other.value !== 'unknown') {
+                                    other.checked = false;
+                                    other.closest('label').classList.remove('selected');
+                                }
+                            });
+                            if (unknownCheckbox) {
+                                unknownCheckbox.checked = false;
+                                unknownCheckbox.closest('label').classList.remove('selected');
+                            }
+                        }
+                        // If "unknown" is checked, uncheck everything else
+                        else if (this.value === 'unknown' && this.checked) {
+                            checkboxes.forEach(other => {
+                                if (other !== this && other.value !== 'none') {
+                                    other.checked = false;
+                                    other.closest('label').classList.remove('selected');
+                                }
+                            });
+                            if (noneCheckbox) {
+                                noneCheckbox.checked = false;
+                                noneCheckbox.closest('label').classList.remove('selected');
+                            }
+                        }
+                        // If any other checkbox is checked, uncheck "none" and "unknown"
+                        else if (this.checked && this.value !== 'none' && this.value !== 'unknown') {
+                            if (noneCheckbox) {
+                                noneCheckbox.checked = false;
+                                noneCheckbox.closest('label').classList.remove('selected');
+                            }
+                            if (unknownCheckbox) {
+                                unknownCheckbox.checked = false;
+                                unknownCheckbox.closest('label').classList.remove('selected');
+                            }
+                        }
+
+                        // Update visual selection state
+                        checkboxes.forEach(cb => {
+                            cb.closest('label').classList.toggle('selected', cb.checked);
+                        });
+                    });
+                });
+            }
+
+            // Apply mutual exclusivity to Q5 and Q9
+            const q5Container = document.querySelector('.question-card[data-q="5"] .checkbox-group');
+            const q9Container = document.querySelector('.question-card[data-q="9"] .checkbox-group');
+
+            if (q5Container) setupMutualExclusivity(q5Container);
+            if (q9Container) setupMutualExclusivity(q9Container);
+
+            // Radio/Checkbox Style Sync
+            form.addEventListener('change', (e) => {
+                const target = e.target;
+                if (target.type === 'radio') {
+                    const name = target.name;
+                    document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+                        input.closest('label').classList.toggle('selected', input.checked);
+                    });
+                } else if (target.type === 'checkbox') {
+                    target.closest('label').classList.toggle('selected', target.checked);
+                }
+            });
+
+            // Next/Prev Navigation
+            nextBtn.addEventListener('click', () => {
+                if (currentStep < totalSteps - 1) {
+                    currentStep++;
+                    updateNavigation();
+                } else {
+                    calculateAndShowResults();
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentStep > 0) {
+                    currentStep--;
+                    updateNavigation();
+                }
+            });
+
+            // Helper: Get Radio Value
+            function getRadioValue(name) {
+                const checked = form.querySelector(`input[name="${name}"]:checked`);
+                return checked ? parseInt(checked.value, 10) : 0;
+            }
+
+            // Helper: Get Checkbox Values
+            function getCheckboxValues(name) {
+                const checked = form.querySelectorAll(`input[name="${name}"]:checked`);
+                return Array.from(checked).map(cb => cb.value);
+            }
+
+            // ===== SCORING & RESULTS ENGINE =====
+            function calculateAndShowResults() {
+                let score = 0;
+                let possibleScore = 0;
+
+                // Radio Questions
+                const radioQuestions = ['q1', 'q2', 'q3', 'q4', 'q6', 'q7', 'q8', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15'];
+                radioQuestions.forEach(q => {
+                    score += getRadioValue(q);
+                    possibleScore += 5;
+                });
+
+                // Checkbox Questions
+                const q5Selections = getCheckboxValues('q5');
+                const q9Selections = getCheckboxValues('q9');
+
+                // Calculate percentage
+                let percentage = Math.round((score / possibleScore) * 100);
+
+                // Determine Risk Level
+                const badge = document.getElementById('resultBadge');
+                const scoreDisplay = document.getElementById('resultScore');
+                const labelDisplay = document.getElementById('resultLabel');
+
+                badge.className = 'result-badge';
+                scoreDisplay.textContent = `${percentage}%`;
+
+                if (percentage >= 80) {
+                    badge.classList.add('low');
+                    labelDisplay.textContent = 'Maturity Status: Strong / Low Risk';
+                } else if (percentage >= 50) {
+                    badge.classList.add('medium');
+                    labelDisplay.textContent = 'Maturity Status: Moderate Risk';
+                } else if (percentage >= 30) {
+                    badge.classList.add('high');
+                    labelDisplay.textContent = 'Maturity Status: High Risk';
+                } else {
+                    badge.classList.add('critical');
+                    labelDisplay.textContent = 'Maturity Status: Critical Non-Compliance';
+                }
+
+                // Shadow AI Analysis
+                const shadowAiUl = document.getElementById('shadowAiResults');
+                shadowAiUl.innerHTML = '';
+
+                const q3Val = getRadioValue('q3');
+                const q4Val = getRadioValue('q4');
+
+                if (q3Val <= 1 || q4Val >= 3) {
+                    shadowAiUl.innerHTML += `
+                        <li>
+                            <span class="icon">🔴</span>
+                            <span><strong>Critical Exposure:</strong> High risk of active "Shadow AI." Your employees are regularly interacting with unauthorized tools (e.g., ChatGPT, Claude) while corporate visibility is restricted. This poses severe data leakage risks under Section 28 of the AI Bill.</span>
+                        </li>`;
+                } else {
+                    shadowAiUl.innerHTML += `
+                        <li>
+                            <span class="icon">🟢</span>
+                            <span><strong>Managed Visibility:</strong> Your organization shows structured control over employee AI use, reducing unmonitored model endpoints.</span>
+                        </li>`;
+                }
+
+                // Compliance Gaps
+                const gapsUl = document.getElementById('gapResults');
+                gapsUl.innerHTML = '';
+
+                const isHighRiskSector = q9Selections.length > 0 && !q9Selections.includes('none') && !q9Selections.includes(
+                    'unknown');
+                if (isHighRiskSector) {
+                    gapsUl.innerHTML += `
+                        <li>
+                            <span class="icon">❌</span>
+                            <span><strong>High-Risk Obligation:</strong> Deploying AI in <strong>${q9Selections.join(', ').toUpperCase()}</strong> triggers mandatory compliance under Section 26 of the Bill, requiring structured Human Rights Impact Assessments and registered human-in-the-loop oversight.</span>
+                        </li>`;
+                }
+
+                const processesSensitive = q5Selections.some(v => ['personal', 'health', 'financial', 'biometric', 'sensitive']
+                    .includes(v));
+                const localizationUnsure = getRadioValue('q6') <= 3;
+                if (processesSensitive && localizationUnsure) {
+                    gapsUl.innerHTML += `
+                        <li>
+                            <span class="icon">❌</span>
+                            <span><strong>Data Residency Risk:</strong> You are processing sensitive personal/financial data through AI models without verified domestic residency. This exposes you to severe enforcement actions under both the Data Protection Act 2019 and the emerging AI regulations.</span>
+                        </li>`;
+                }
+
+                if (getRadioValue('q12') === 0) {
+                    gapsUl.innerHTML += `
+                        <li>
+                            <span class="icon">❌</span>
+                            <span><strong>5-Year Record Deficit:</strong> Your system currently lacks the mechanism to archive model metrics, training sets, and output logs for the statutory 5-year retention period.</span>
+                        </li>`;
+                }
+
+                if (gapsUl.innerHTML === '') {
+                    gapsUl.innerHTML =
+                        `<li><span class="icon">✅</span> <span>No critical compliance gaps detected based on your initial self-assessment. Great job!</span></li>`;
+                }
+
+                // Action Plan
+                const actionUl = document.getElementById('actionResults');
+                actionUl.innerHTML = '';
+
+                if (percentage < 50) {
+                    actionUl.innerHTML += `
+                        <li>
+                            <span class="icon">📌</span>
+                            <span><strong>Immediate Priority:</strong> Conduct a formal AI system inventory and risk classification audit. This is the foundation for all compliance activities.</span>
+                        </li>
+                        <li>
+                            <span class="icon">📌</span>
+                            <span><strong>Data Protection:</strong> Review all data processing agreements to ensure PII and sensitive data remain within Kenyan borders.</span>
+                        </li>
+                        <li>
+                            <span class="icon">📌</span>
+                            <span><strong>Documentation:</strong> Begin documenting your AI systems, including purpose, data sources, and outputs. This is required for audits.</span>
+                        </li>
+                    `;
+                } else if (percentage < 80) {
+                    actionUl.innerHTML += `
+                        <li>
+                            <span class="icon">📌</span>
+                            <span><strong>Strengthen Governance:</strong> Appoint a dedicated AI compliance lead or team to oversee ongoing compliance.</span>
+                        </li>
+                        <li>
+                            <span class="icon">📌</span>
+                            <span><strong>Retention Strategy:</strong> Implement a 5-year record retention system for AI system logs and outputs.</span>
+                        </li>
+                        <li>
+                            <span class="icon">📌</span>
+                            <span><strong>Training:</strong> Conduct AI Bill awareness training for your team.</span>
+                        </li>
+                    `;
+                } else {
+                    actionUl.innerHTML += `
+                        <li>
+                            <span class="icon">📌</span>
+                            <span><strong>Maintain Momentum:</strong> Continue monitoring regulatory updates and maintain your compliance documentation.</span>
+                        </li>
+                        <li>
+                            <span class="icon">📌</span>
+                            <span><strong>Lead by Example:</strong> Consider sharing your compliance approach with peers in your industry.</span>
+                        </li>
+                    `;
+                }
+
+                // Swap UI
+                document.getElementById('progressContainer').style.display = 'none';
+                form.style.display = 'none';
+                resultsDiv.classList.add('visible');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // ===== INIT =====
+            updateNavigation();
+        });
+    </script>
+
+</body>
+
+</html>
