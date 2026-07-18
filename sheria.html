@@ -894,313 +894,447 @@
     <!-- ============================================================ -->
     <!-- JAVASCRIPT ENGINE                                           -->
     <!-- ============================================================ -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('scorecardForm');
-            const cards = Array.from(document.querySelectorAll('.question-card'));
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const progressFill = document.getElementById('progressFill');
-            const questionCounter = document.getElementById('questionCounter');
-            const progressPercent = document.getElementById('progressPercent');
-            const resultsDiv = document.getElementById('results');
-            const reportDateSpan = document.getElementById('reportDate');
+<!-- ============================================================ -->
+<!-- JAVASCRIPT ENGINE                                           -->
+<!-- ============================================================ -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('scorecardForm');
+        const cards = Array.from(document.querySelectorAll('.question-card'));
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressFill = document.getElementById('progressFill');
+        const questionCounter = document.getElementById('questionCounter');
+        const progressPercent = document.getElementById('progressPercent');
+        const resultsDiv = document.getElementById('results');
+        const reportDateSpan = document.getElementById('reportDate');
 
-            let currentStep = 0;
-            const totalSteps = cards.length;
+        let currentStep = 0;
+        const totalSteps = cards.length;
 
-            // Initialize Date
-            reportDateSpan.textContent = new Date().toLocaleDateString('en-KE', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
+        // Initialize Date
+        reportDateSpan.textContent = new Date().toLocaleDateString('en-KE', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // ===== CHECK IF CURRENT QUESTION IS ANSWERED =====
+        function isCurrentQuestionAnswered() {
+            const currentCard = cards[currentStep];
+            const inputs = currentCard.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+            let answered = false;
+
+            inputs.forEach(input => {
+                if (input.type === 'radio' && input.checked) {
+                    answered = true;
+                }
+                if (input.type === 'checkbox' && input.checked) {
+                    answered = true;
+                }
             });
 
-            // Navigation Handling
-            function updateNavigation() {
-                cards.forEach((card, idx) => {
-                    card.classList.toggle('active', idx === currentStep);
-                });
+            return answered;
+        }
 
-                // Progress Bar calculation
-                const progress = Math.round(((currentStep) / (totalSteps - 1)) * 100);
-                progressFill.style.width = `${progress}%`;
-                progressPercent.textContent = `${progress}%`;
-                questionCounter.textContent = `Question ${currentStep + 1} of ${totalSteps}`;
+        // ===== HIGHLIGHT UNANSWERED QUESTION =====
+        function highlightUnanswered() {
+            const currentCard = cards[currentStep];
+            // Remove any existing highlight
+            currentCard.style.borderColor = '';
+            currentCard.style.borderWidth = '';
 
-                // Button Visibility
-                prevBtn.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
+            if (!isCurrentQuestionAnswered()) {
+                currentCard.style.borderColor = '#dc2626';
+                currentCard.style.borderWidth = '2px';
+                // Add a subtle shake animation
+                currentCard.style.animation = 'shake 0.4s ease';
+                setTimeout(() => {
+                    currentCard.style.animation = '';
+                }, 500);
+            }
+        }
 
-                if (currentStep === totalSteps - 1) {
-                    nextBtn.textContent = 'Generate Report';
-                    nextBtn.className = 'btn btn-success';
+        // ===== ADD SHAKE KEYFRAMES =====
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-8px); }
+                75% { transform: translateX(8px); }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
+        // Navigation Handling
+        function updateNavigation() {
+            cards.forEach((card, idx) => {
+                card.classList.toggle('active', idx === currentStep);
+                // Reset any highlight when switching
+                if (idx === currentStep) {
+                    card.style.borderColor = '';
+                    card.style.borderWidth = '';
+                }
+            });
+
+            // Progress Bar calculation
+            const progress = Math.round(((currentStep) / (totalSteps - 1)) * 100);
+            progressFill.style.width = `${progress}%`;
+            progressPercent.textContent = `${progress}%`;
+            questionCounter.textContent = `Question ${currentStep + 1} of ${totalSteps}`;
+
+            // Button Visibility
+            prevBtn.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
+
+            // Update Next button based on answer status
+            if (currentStep === totalSteps - 1) {
+                nextBtn.textContent = 'Generate Report';
+                nextBtn.className = 'btn btn-success';
+                // For the final step, check if all questions are answered
+                const allAnswered = checkAllQuestionsAnswered();
+                if (allAnswered) {
+                    nextBtn.disabled = false;
                 } else {
-                    nextBtn.textContent = 'Next →';
-                    nextBtn.className = 'btn btn-primary';
+                    nextBtn.disabled = true;
+                    // Show a subtle hint
+                    nextBtn.textContent = 'Answer all questions first';
+                }
+            } else {
+                nextBtn.textContent = 'Next →';
+                nextBtn.className = 'btn btn-primary';
+                // Disable if current question not answered
+                if (isCurrentQuestionAnswered()) {
+                    nextBtn.disabled = false;
+                } else {
+                    nextBtn.disabled = true;
                 }
             }
+        }
 
-            // ===== MUTUAL EXCLUSIVITY FOR CHECKBOXES (Q5 and Q9) =====
-            function setupMutualExclusivity(container) {
-                const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-                const noneCheckbox = container.querySelector('input[value="none"]');
-                const unknownCheckbox = container.querySelector('input[value="unknown"]');
+        // ===== CHECK IF ALL QUESTIONS ARE ANSWERED =====
+        function checkAllQuestionsAnswered() {
+            for (let i = 0; i < cards.length; i++) {
+                const card = cards[i];
+                const inputs = card.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+                let answered = false;
+                inputs.forEach(input => {
+                    if (input.type === 'radio' && input.checked) {
+                        answered = true;
+                    }
+                    if (input.type === 'checkbox' && input.checked) {
+                        answered = true;
+                    }
+                });
+                if (!answered) {
+                    return false;
+                }
+            }
+            return true;
+        }
 
-                checkboxes.forEach(cb => {
-                    cb.addEventListener('change', function() {
-                        // If "none" is checked, uncheck everything else
-                        if (this.value === 'none' && this.checked) {
-                            checkboxes.forEach(other => {
-                                if (other !== this && other.value !== 'unknown') {
-                                    other.checked = false;
-                                    other.closest('label').classList.remove('selected');
-                                }
-                            });
-                            if (unknownCheckbox) {
-                                unknownCheckbox.checked = false;
-                                unknownCheckbox.closest('label').classList.remove('selected');
-                            }
-                        }
-                        // If "unknown" is checked, uncheck everything else
-                        else if (this.value === 'unknown' && this.checked) {
-                            checkboxes.forEach(other => {
-                                if (other !== this && other.value !== 'none') {
-                                    other.checked = false;
-                                    other.closest('label').classList.remove('selected');
-                                }
-                            });
-                            if (noneCheckbox) {
-                                noneCheckbox.checked = false;
-                                noneCheckbox.closest('label').classList.remove('selected');
-                            }
-                        }
-                        // If any other checkbox is checked, uncheck "none" and "unknown"
-                        else if (this.checked && this.value !== 'none' && this.value !== 'unknown') {
-                            if (noneCheckbox) {
-                                noneCheckbox.checked = false;
-                                noneCheckbox.closest('label').classList.remove('selected');
-                            }
-                            if (unknownCheckbox) {
-                                unknownCheckbox.checked = false;
-                                unknownCheckbox.closest('label').classList.remove('selected');
-                            }
-                        }
+        // ===== MUTUAL EXCLUSIVITY FOR CHECKBOXES (Q5 and Q9) =====
+        function setupMutualExclusivity(container) {
+            const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+            const noneCheckbox = container.querySelector('input[value="none"]');
+            const unknownCheckbox = container.querySelector('input[value="unknown"]');
 
-                        // Update visual selection state
-                        checkboxes.forEach(cb => {
-                            cb.closest('label').classList.toggle('selected', cb.checked);
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', function() {
+                    // If "none" is checked, uncheck everything else
+                    if (this.value === 'none' && this.checked) {
+                        checkboxes.forEach(other => {
+                            if (other !== this && other.value !== 'unknown') {
+                                other.checked = false;
+                                other.closest('label').classList.remove('selected');
+                            }
                         });
+                        if (unknownCheckbox) {
+                            unknownCheckbox.checked = false;
+                            unknownCheckbox.closest('label').classList.remove('selected');
+                        }
+                    }
+                    // If "unknown" is checked, uncheck everything else
+                    else if (this.value === 'unknown' && this.checked) {
+                        checkboxes.forEach(other => {
+                            if (other !== this && other.value !== 'none') {
+                                other.checked = false;
+                                other.closest('label').classList.remove('selected');
+                            }
+                        });
+                        if (noneCheckbox) {
+                            noneCheckbox.checked = false;
+                            noneCheckbox.closest('label').classList.remove('selected');
+                        }
+                    }
+                    // If any other checkbox is checked, uncheck "none" and "unknown"
+                    else if (this.checked && this.value !== 'none' && this.value !== 'unknown') {
+                        if (noneCheckbox) {
+                            noneCheckbox.checked = false;
+                            noneCheckbox.closest('label').classList.remove('selected');
+                        }
+                        if (unknownCheckbox) {
+                            unknownCheckbox.checked = false;
+                            unknownCheckbox.closest('label').classList.remove('selected');
+                        }
+                    }
+
+                    // Update visual selection state
+                    checkboxes.forEach(cb => {
+                        cb.closest('label').classList.toggle('selected', cb.checked);
                     });
-                });
-            }
 
-            // Apply mutual exclusivity to Q5 and Q9
-            const q5Container = document.querySelector('.question-card[data-q="5"] .checkbox-group');
-            const q9Container = document.querySelector('.question-card[data-q="9"] .checkbox-group');
-
-            if (q5Container) setupMutualExclusivity(q5Container);
-            if (q9Container) setupMutualExclusivity(q9Container);
-
-            // Radio/Checkbox Style Sync
-            form.addEventListener('change', (e) => {
-                const target = e.target;
-                if (target.type === 'radio') {
-                    const name = target.name;
-                    document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
-                        input.closest('label').classList.toggle('selected', input.checked);
-                    });
-                } else if (target.type === 'checkbox') {
-                    target.closest('label').classList.toggle('selected', target.checked);
-                }
-            });
-
-            // Next/Prev Navigation
-            nextBtn.addEventListener('click', () => {
-                if (currentStep < totalSteps - 1) {
-                    currentStep++;
+                    // After any change, update navigation
                     updateNavigation();
-                } else {
-                    calculateAndShowResults();
-                }
-            });
-
-            prevBtn.addEventListener('click', () => {
-                if (currentStep > 0) {
-                    currentStep--;
-                    updateNavigation();
-                }
-            });
-
-            // Helper: Get Radio Value
-            function getRadioValue(name) {
-                const checked = form.querySelector(`input[name="${name}"]:checked`);
-                return checked ? parseInt(checked.value, 10) : 0;
-            }
-
-            // Helper: Get Checkbox Values
-            function getCheckboxValues(name) {
-                const checked = form.querySelectorAll(`input[name="${name}"]:checked`);
-                return Array.from(checked).map(cb => cb.value);
-            }
-
-            // ===== SCORING & RESULTS ENGINE =====
-            function calculateAndShowResults() {
-                let score = 0;
-                let possibleScore = 0;
-
-                // Radio Questions
-                const radioQuestions = ['q1', 'q2', 'q3', 'q4', 'q6', 'q7', 'q8', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15'];
-                radioQuestions.forEach(q => {
-                    score += getRadioValue(q);
-                    possibleScore += 5;
                 });
+            });
+        }
 
-                // Checkbox Questions
-                const q5Selections = getCheckboxValues('q5');
-                const q9Selections = getCheckboxValues('q9');
+        // Apply mutual exclusivity to Q5 and Q9
+        const q5Container = document.querySelector('.question-card[data-q="5"] .checkbox-group');
+        const q9Container = document.querySelector('.question-card[data-q="9"] .checkbox-group');
 
-                // Calculate percentage
-                let percentage = Math.round((score / possibleScore) * 100);
+        if (q5Container) setupMutualExclusivity(q5Container);
+        if (q9Container) setupMutualExclusivity(q9Container);
 
-                // Determine Risk Level
-                const badge = document.getElementById('resultBadge');
-                const scoreDisplay = document.getElementById('resultScore');
-                const labelDisplay = document.getElementById('resultLabel');
-
-                badge.className = 'result-badge';
-                scoreDisplay.textContent = `${percentage}%`;
-
-                if (percentage >= 80) {
-                    badge.classList.add('low');
-                    labelDisplay.textContent = 'Maturity Status: Strong / Low Risk';
-                } else if (percentage >= 50) {
-                    badge.classList.add('medium');
-                    labelDisplay.textContent = 'Maturity Status: Moderate Risk';
-                } else if (percentage >= 30) {
-                    badge.classList.add('high');
-                    labelDisplay.textContent = 'Maturity Status: High Risk';
-                } else {
-                    badge.classList.add('critical');
-                    labelDisplay.textContent = 'Maturity Status: Critical Non-Compliance';
-                }
-
-                // Shadow AI Analysis
-                const shadowAiUl = document.getElementById('shadowAiResults');
-                shadowAiUl.innerHTML = '';
-
-                const q3Val = getRadioValue('q3');
-                const q4Val = getRadioValue('q4');
-
-                if (q3Val <= 1 || q4Val >= 3) {
-                    shadowAiUl.innerHTML += `
-                        <li>
-                            <span class="icon">🔴</span>
-                            <span><strong>Critical Exposure:</strong> High risk of active "Shadow AI." Your employees are regularly interacting with unauthorized tools (e.g., ChatGPT, Claude) while corporate visibility is restricted. This poses severe data leakage risks under Section 28 of the AI Bill.</span>
-                        </li>`;
-                } else {
-                    shadowAiUl.innerHTML += `
-                        <li>
-                            <span class="icon">🟢</span>
-                            <span><strong>Managed Visibility:</strong> Your organization shows structured control over employee AI use, reducing unmonitored model endpoints.</span>
-                        </li>`;
-                }
-
-                // Compliance Gaps
-                const gapsUl = document.getElementById('gapResults');
-                gapsUl.innerHTML = '';
-
-                const isHighRiskSector = q9Selections.length > 0 && !q9Selections.includes('none') && !q9Selections.includes(
-                    'unknown');
-                if (isHighRiskSector) {
-                    gapsUl.innerHTML += `
-                        <li>
-                            <span class="icon">❌</span>
-                            <span><strong>High-Risk Obligation:</strong> Deploying AI in <strong>${q9Selections.join(', ').toUpperCase()}</strong> triggers mandatory compliance under Section 26 of the Bill, requiring structured Human Rights Impact Assessments and registered human-in-the-loop oversight.</span>
-                        </li>`;
-                }
-
-                const processesSensitive = q5Selections.some(v => ['personal', 'health', 'financial', 'biometric', 'sensitive']
-                    .includes(v));
-                const localizationUnsure = getRadioValue('q6') <= 3;
-                if (processesSensitive && localizationUnsure) {
-                    gapsUl.innerHTML += `
-                        <li>
-                            <span class="icon">❌</span>
-                            <span><strong>Data Residency Risk:</strong> You are processing sensitive personal/financial data through AI models without verified domestic residency. This exposes you to severe enforcement actions under both the Data Protection Act 2019 and the emerging AI regulations.</span>
-                        </li>`;
-                }
-
-                if (getRadioValue('q12') === 0) {
-                    gapsUl.innerHTML += `
-                        <li>
-                            <span class="icon">❌</span>
-                            <span><strong>5-Year Record Deficit:</strong> Your system currently lacks the mechanism to archive model metrics, training sets, and output logs for the statutory 5-year retention period.</span>
-                        </li>`;
-                }
-
-                if (gapsUl.innerHTML === '') {
-                    gapsUl.innerHTML =
-                        `<li><span class="icon">✅</span> <span>No critical compliance gaps detected based on your initial self-assessment. Great job!</span></li>`;
-                }
-
-                // Action Plan
-                const actionUl = document.getElementById('actionResults');
-                actionUl.innerHTML = '';
-
-                if (percentage < 50) {
-                    actionUl.innerHTML += `
-                        <li>
-                            <span class="icon">📌</span>
-                            <span><strong>Immediate Priority:</strong> Conduct a formal AI system inventory and risk classification audit. This is the foundation for all compliance activities.</span>
-                        </li>
-                        <li>
-                            <span class="icon">📌</span>
-                            <span><strong>Data Protection:</strong> Review all data processing agreements to ensure PII and sensitive data remain within Kenyan borders.</span>
-                        </li>
-                        <li>
-                            <span class="icon">📌</span>
-                            <span><strong>Documentation:</strong> Begin documenting your AI systems, including purpose, data sources, and outputs. This is required for audits.</span>
-                        </li>
-                    `;
-                } else if (percentage < 80) {
-                    actionUl.innerHTML += `
-                        <li>
-                            <span class="icon">📌</span>
-                            <span><strong>Strengthen Governance:</strong> Appoint a dedicated AI compliance lead or team to oversee ongoing compliance.</span>
-                        </li>
-                        <li>
-                            <span class="icon">📌</span>
-                            <span><strong>Retention Strategy:</strong> Implement a 5-year record retention system for AI system logs and outputs.</span>
-                        </li>
-                        <li>
-                            <span class="icon">📌</span>
-                            <span><strong>Training:</strong> Conduct AI Bill awareness training for your team.</span>
-                        </li>
-                    `;
-                } else {
-                    actionUl.innerHTML += `
-                        <li>
-                            <span class="icon">📌</span>
-                            <span><strong>Maintain Momentum:</strong> Continue monitoring regulatory updates and maintain your compliance documentation.</span>
-                        </li>
-                        <li>
-                            <span class="icon">📌</span>
-                            <span><strong>Lead by Example:</strong> Consider sharing your compliance approach with peers in your industry.</span>
-                        </li>
-                    `;
-                }
-
-                // Swap UI
-                document.getElementById('progressContainer').style.display = 'none';
-                form.style.display = 'none';
-                resultsDiv.classList.add('visible');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Radio/Checkbox Style Sync and Navigation Update
+        form.addEventListener('change', (e) => {
+            const target = e.target;
+            if (target.type === 'radio') {
+                const name = target.name;
+                document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+                    input.closest('label').classList.toggle('selected', input.checked);
+                });
+            } else if (target.type === 'checkbox') {
+                target.closest('label').classList.toggle('selected', target.checked);
             }
 
-            // ===== INIT =====
+            // Update navigation after any input change
             updateNavigation();
         });
-    </script>
+
+        // Next/Prev Navigation
+        nextBtn.addEventListener('click', () => {
+            // Check if current question is answered
+            if (!isCurrentQuestionAnswered()) {
+                highlightUnanswered();
+                return;
+            }
+
+            if (currentStep < totalSteps - 1) {
+                currentStep++;
+                updateNavigation();
+            } else {
+                // Check all questions are answered before generating report
+                if (checkAllQuestionsAnswered()) {
+                    calculateAndShowResults();
+                } else {
+                    // Find the first unanswered question and navigate to it
+                    for (let i = 0; i < cards.length; i++) {
+                        const card = cards[i];
+                        const inputs = card.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+                        let answered = false;
+                        inputs.forEach(input => {
+                            if (input.type === 'radio' && input.checked) {
+                                answered = true;
+                            }
+                            if (input.type === 'checkbox' && input.checked) {
+                                answered = true;
+                            }
+                        });
+                        if (!answered) {
+                            currentStep = i;
+                            updateNavigation();
+                            // Highlight the unanswered question
+                            cards[i].style.borderColor = '#dc2626';
+                            cards[i].style.borderWidth = '2px';
+                            setTimeout(() => {
+                                cards[i].style.borderColor = '';
+                                cards[i].style.borderWidth = '';
+                            }, 2000);
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                updateNavigation();
+            }
+        });
+
+        // Helper: Get Radio Value
+        function getRadioValue(name) {
+            const checked = form.querySelector(`input[name="${name}"]:checked`);
+            return checked ? parseInt(checked.value, 10) : 0;
+        }
+
+        // Helper: Get Checkbox Values
+        function getCheckboxValues(name) {
+            const checked = form.querySelectorAll(`input[name="${name}"]:checked`);
+            return Array.from(checked).map(cb => cb.value);
+        }
+
+        // ===== SCORING & RESULTS ENGINE =====
+        function calculateAndShowResults() {
+            let score = 0;
+            let possibleScore = 0;
+
+            // Radio Questions
+            const radioQuestions = ['q1', 'q2', 'q3', 'q4', 'q6', 'q7', 'q8', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15'];
+            radioQuestions.forEach(q => {
+                score += getRadioValue(q);
+                possibleScore += 5;
+            });
+
+            // Checkbox Questions
+            const q5Selections = getCheckboxValues('q5');
+            const q9Selections = getCheckboxValues('q9');
+
+            // Calculate percentage
+            let percentage = Math.round((score / possibleScore) * 100);
+
+            // Determine Risk Level
+            const badge = document.getElementById('resultBadge');
+            const scoreDisplay = document.getElementById('resultScore');
+            const labelDisplay = document.getElementById('resultLabel');
+
+            badge.className = 'result-badge';
+            scoreDisplay.textContent = `${percentage}%`;
+
+            if (percentage >= 80) {
+                badge.classList.add('low');
+                labelDisplay.textContent = 'Maturity Status: Strong / Low Risk';
+            } else if (percentage >= 50) {
+                badge.classList.add('medium');
+                labelDisplay.textContent = 'Maturity Status: Moderate Risk';
+            } else if (percentage >= 30) {
+                badge.classList.add('high');
+                labelDisplay.textContent = 'Maturity Status: High Risk';
+            } else {
+                badge.classList.add('critical');
+                labelDisplay.textContent = 'Maturity Status: Critical Non-Compliance';
+            }
+
+            // Shadow AI Analysis
+            const shadowAiUl = document.getElementById('shadowAiResults');
+            shadowAiUl.innerHTML = '';
+
+            const q3Val = getRadioValue('q3');
+            const q4Val = getRadioValue('q4');
+
+            if (q3Val <= 1 || q4Val >= 3) {
+                shadowAiUl.innerHTML += `
+                    <li>
+                        <span class="icon">🔴</span>
+                        <span><strong>Critical Exposure:</strong> High risk of active "Shadow AI." Your employees are regularly interacting with unauthorized tools (e.g., ChatGPT, Claude) while corporate visibility is restricted. This poses severe data leakage risks under Section 28 of the AI Bill.</span>
+                    </li>`;
+            } else {
+                shadowAiUl.innerHTML += `
+                    <li>
+                        <span class="icon">🟢</span>
+                        <span><strong>Managed Visibility:</strong> Your organization shows structured control over employee AI use, reducing unmonitored model endpoints.</span>
+                    </li>`;
+            }
+
+            // Compliance Gaps
+            const gapsUl = document.getElementById('gapResults');
+            gapsUl.innerHTML = '';
+
+            const isHighRiskSector = q9Selections.length > 0 && !q9Selections.includes('none') && !q9Selections.includes(
+                'unknown');
+            if (isHighRiskSector) {
+                gapsUl.innerHTML += `
+                    <li>
+                        <span class="icon">❌</span>
+                        <span><strong>High-Risk Obligation:</strong> Deploying AI in <strong>${q9Selections.join(', ').toUpperCase()}</strong> triggers mandatory compliance under Section 26 of the Bill, requiring structured Human Rights Impact Assessments and registered human-in-the-loop oversight.</span>
+                    </li>`;
+            }
+
+            const processesSensitive = q5Selections.some(v => ['personal', 'health', 'financial', 'biometric', 'sensitive']
+                .includes(v));
+            const localizationUnsure = getRadioValue('q6') <= 3;
+            if (processesSensitive && localizationUnsure) {
+                gapsUl.innerHTML += `
+                    <li>
+                        <span class="icon">❌</span>
+                        <span><strong>Data Residency Risk:</strong> You are processing sensitive personal/financial data through AI models without verified domestic residency. This exposes you to severe enforcement actions under both the Data Protection Act 2019 and the emerging AI regulations.</span>
+                    </li>`;
+            }
+
+            if (getRadioValue('q12') === 0) {
+                gapsUl.innerHTML += `
+                    <li>
+                        <span class="icon">❌</span>
+                        <span><strong>5-Year Record Deficit:</strong> Your system currently lacks the mechanism to archive model metrics, training sets, and output logs for the statutory 5-year retention period.</span>
+                    </li>`;
+            }
+
+            if (gapsUl.innerHTML === '') {
+                gapsUl.innerHTML =
+                    `<li><span class="icon">✅</span> <span>No critical compliance gaps detected based on your initial self-assessment. Great job!</span></li>`;
+            }
+
+            // Action Plan
+            const actionUl = document.getElementById('actionResults');
+            actionUl.innerHTML = '';
+
+            if (percentage < 50) {
+                actionUl.innerHTML += `
+                    <li>
+                        <span class="icon">📌</span>
+                        <span><strong>Immediate Priority:</strong> Conduct a formal AI system inventory and risk classification audit. This is the foundation for all compliance activities.</span>
+                    </li>
+                    <li>
+                        <span class="icon">📌</span>
+                        <span><strong>Data Protection:</strong> Review all data processing agreements to ensure PII and sensitive data remain within Kenyan borders.</span>
+                    </li>
+                    <li>
+                        <span class="icon">📌</span>
+                        <span><strong>Documentation:</strong> Begin documenting your AI systems, including purpose, data sources, and outputs. This is required for audits.</span>
+                    </li>
+                `;
+            } else if (percentage < 80) {
+                actionUl.innerHTML += `
+                    <li>
+                        <span class="icon">📌</span>
+                        <span><strong>Strengthen Governance:</strong> Appoint a dedicated AI compliance lead or team to oversee ongoing compliance.</span>
+                    </li>
+                    <li>
+                        <span class="icon">📌</span>
+                        <span><strong>Retention Strategy:</strong> Implement a 5-year record retention system for AI system logs and outputs.</span>
+                    </li>
+                    <li>
+                        <span class="icon">📌</span>
+                        <span><strong>Training:</strong> Conduct AI Bill awareness training for your team.</span>
+                    </li>
+                `;
+            } else {
+                actionUl.innerHTML += `
+                    <li>
+                        <span class="icon">📌</span>
+                        <span><strong>Maintain Momentum:</strong> Continue monitoring regulatory updates and maintain your compliance documentation.</span>
+                    </li>
+                    <li>
+                        <span class="icon">📌</span>
+                        <span><strong>Lead by Example:</strong> Consider sharing your compliance approach with peers in your industry.</span>
+                    </li>
+                `;
+            }
+
+            // Swap UI
+            document.getElementById('progressContainer').style.display = 'none';
+            form.style.display = 'none';
+            resultsDiv.classList.add('visible');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== INIT =====
+        updateNavigation();
+    });
+</script>
 
 </body>
 
