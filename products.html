@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Products – Scire Research</title>
     <meta name="description"
-        content="Scire Research builds practical technology products from emerging regulation and real operational needs — starting with Sheria AI, our AI compliance platform for Kenyan organizations.">
+        content="Scire Research builds practical technology products from emerging regulation and real operational needs — starting with Sheria AI, our AI compliance platform for Kenyan organizations." />
 
     <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cline x1='62' y1='62' x2='82' y2='82' stroke='%23e67e22' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='28' fill='none' stroke='%231a5276' stroke-width='5'/%3E%3Cpath d='M35,25 Q45,35 35,45 Q25,55 35,65' fill='none' stroke='%23e67e22' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M55,25 Q45,35 55,45 Q65,55 55,65' fill='none' stroke='%23148f8f' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='3' fill='%23e67e22'/%3E%3C/svg%3E">
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cline x1='62' y1='62' x2='82' y2='82' stroke='%23e67e22' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='28' fill='none' stroke='%231a5276' stroke-width='5'/%3E%3Cpath d='M35,25 Q45,35 35,45 Q25,55 35,65' fill='none' stroke='%23e67e22' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M55,25 Q45,35 55,45 Q65,55 55,65' fill='none' stroke='%23148f8f' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='3' fill='%23e67e22'/%3E%3C/svg%3E" />
 
     <style>
         /* ===== RESET & BASE ===== */
@@ -101,6 +101,15 @@
             transform: translateY(-2px);
         }
 
+        .btn-success {
+            background: #22c55e;
+            color: #fff;
+        }
+
+        .btn-success:hover {
+            background: #16a34a;
+        }
+
         .section-title {
             text-align: center;
             font-size: 2.2rem;
@@ -116,7 +125,7 @@
             margin: 0 auto 50px;
         }
 
-        /* ===== HEADER - ENCLOSED ===== */
+        /* ===== HEADER ===== */
         header {
             position: absolute;
             top: 20px;
@@ -151,7 +160,6 @@
             gap: 10px;
         }
 
-        /* ===== LOGO ===== */
         .logo {
             display: flex;
             align-items: center;
@@ -192,7 +200,6 @@
             white-space: nowrap;
         }
 
-        /* ===== DESKTOP NAV ===== */
         .desktop-nav {
             display: flex;
             align-items: center;
@@ -212,7 +219,6 @@
             color: #fff;
         }
 
-        /* ===== SCROLLED STATE ===== */
         header.scrolled .header-enclosed {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -254,7 +260,6 @@
             background: #1e3c72;
         }
 
-        /* ===== HAMBURGER ===== */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -285,7 +290,6 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
-        /* ===== MOBILE MENU ===== */
         .mobile-menu-overlay {
             position: fixed;
             top: 0;
@@ -393,7 +397,7 @@
             }
         }
 
-        /* ===== HERO ===== */
+        /* ===== HERO WITH BACKGROUND IMAGE ===== */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -401,29 +405,38 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: linear-gradient(135deg, #07111f, #102a4a);
             color: #fff;
+        }
+
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            filter: brightness(1.2) contrast(1.05);
         }
 
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at top, rgba(122, 175, 212, 0.18), transparent 45%),
-                rgba(0, 0, 0, 0.35);
+            background: radial-gradient(circle at 30% 50%, rgba(11, 30, 51, 0.3) 0%, rgba(7, 17, 31, 0.85) 100%);
             z-index: 1;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            text-align: center;
+            text-align: left;
             max-width: 900px;
             padding: 40px 20px;
+            width: 100%;
         }
 
         .hero-badge-row {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
             margin-bottom: 18px;
@@ -440,29 +453,32 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.4rem, 5vw, 4.5rem);
+            font-size: clamp(2.4rem, 5vw, 4rem);
             line-height: 1.05;
             margin-bottom: 18px;
             letter-spacing: -0.04em;
         }
 
+        .hero h1 .highlight {
+            border-bottom: 4px solid #4a7ab5;
+        }
+
         .hero-subtitle {
-            font-size: clamp(1.05rem, 2vw, 1.3rem);
+            font-size: clamp(1.05rem, 2vw, 1.2rem);
             color: #d8e4f2;
-            max-width: 780px;
-            margin: 0 auto 14px;
+            max-width: 600px;
+            margin-bottom: 14px;
         }
 
         .hero-support {
             font-size: 1rem;
             color: #b9cbe0;
-            max-width: 720px;
-            margin: 0 auto 28px;
+            max-width: 550px;
+            margin-bottom: 28px;
         }
 
         .hero-cta {
             display: flex;
-            justify-content: center;
             gap: 14px;
             flex-wrap: wrap;
         }
@@ -470,7 +486,6 @@
         .hero-trust {
             margin-top: 26px;
             display: flex;
-            justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
             color: #a9bfd8;
@@ -490,16 +505,27 @@
         }
 
         @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 120px 0 60px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
             .hero h1 {
                 font-size: clamp(1.8rem, 6vw, 2.8rem);
             }
 
             .hero-subtitle {
                 font-size: 1rem;
+                max-width: 100%;
             }
 
             .hero-support {
                 font-size: 0.92rem;
+                max-width: 100%;
             }
 
             .hero-badge {
@@ -507,7 +533,12 @@
                 padding: 5px 10px;
             }
 
+            .hero-cta {
+                justify-content: center;
+            }
+
             .hero-trust {
+                justify-content: center;
                 font-size: 0.8rem;
                 gap: 12px;
             }
@@ -534,22 +565,35 @@
             background: #f4f7fa;
         }
 
-        /* ===== FEATURED PRODUCT ===== */
-        .product-featured {
-            background: #fff;
-            border-radius: 16px;
-            border: 1px solid #eaeef3;
-            padding: 40px;
-            max-width: 900px;
-            margin: 0 auto;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        .section-dark {
+            background: #0b1e33;
+            color: #f8fafc;
         }
 
-        .product-featured .product-badge {
+        .section-dark .section-title {
+            color: #f8fafc;
+        }
+
+        .section-dark .section-subtitle {
+            color: #94a3b8;
+        }
+
+        /* ===== FLAGSHIP PRODUCT ===== */
+        .flagship {
+            background: #fff;
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid #eaeef3;
+        }
+
+        .flagship .badge {
             display: inline-block;
             background: #1e3c72;
             color: #fff;
-            padding: 4px 14px;
+            padding: 4px 16px;
             border-radius: 999px;
             font-size: 0.75rem;
             font-weight: 700;
@@ -558,207 +602,352 @@
             margin-bottom: 12px;
         }
 
-        .product-featured h2 {
-            font-size: 1.8rem;
+        .flagship h2 {
+            font-size: 2.2rem;
             color: #0b1e33;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
-        .product-featured h2 span {
+        .flagship h2 span {
             color: #4a7ab5;
         }
 
-        .product-featured .product-desc {
+        .flagship .subtitle {
+            font-size: 1.1rem;
+            color: #4a5b6e;
+            margin-bottom: 16px;
+        }
+
+        .flagship .desc {
             color: #4a5b6e;
             font-size: 1rem;
-            max-width: 700px;
-            margin-bottom: 20px;
+            max-width: 750px;
+            margin-bottom: 28px;
         }
 
-        .product-featured .product-grid {
+        .flagship .engine-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin: 24px 0;
+            margin: 28px 0;
         }
 
-        .product-featured .product-grid .item {
+        .flagship .engine-grid .engine {
             background: #f8fafc;
-            padding: 16px 18px;
-            border-radius: 10px;
-            border-left: 3px solid #4a7ab5;
+            padding: 18px 20px;
+            border-radius: 12px;
+            border-left: 4px solid #4a7ab5;
         }
 
-        .product-featured .product-grid .item h4 {
-            font-size: 0.9rem;
+        .flagship .engine-grid .engine h4 {
+            font-size: 0.95rem;
             color: #1e3c72;
             margin-bottom: 2px;
         }
 
-        .product-featured .product-grid .item p {
+        .flagship .engine-grid .engine p {
             font-size: 0.85rem;
             color: #4a5b6e;
         }
 
-        .product-featured .product-cta {
+        .flagship .cta-row {
             display: flex;
             gap: 14px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 8px;
         }
 
-        .product-featured .product-cta .btn {
-            background: #1e3c72;
-            color: #fff;
-        }
-
-        .product-featured .product-cta .btn-outline-dark {
+        .flagship .cta-row .btn-outline-dark {
             background: transparent;
             border: 1.5px solid #1e3c72;
             color: #1e3c72;
         }
 
-        .product-featured .product-cta .btn-outline-dark:hover {
+        .flagship .cta-row .btn-outline-dark:hover {
             background: #1e3c72;
             color: #fff;
         }
 
-        .product-featured .disclaimer {
-            font-size: 0.8rem;
-            color: #94a3b8;
-            margin-top: 16px;
-            font-style: italic;
-        }
-
         @media (max-width: 768px) {
-            .product-featured {
-                padding: 24px;
+            .flagship {
+                padding: 30px 20px;
             }
 
-            .product-featured .product-grid {
+            .flagship .engine-grid {
                 grid-template-columns: 1fr;
             }
 
-            .product-featured h2 {
-                font-size: 1.4rem;
+            .flagship h2 {
+                font-size: 1.7rem;
             }
         }
 
-        /* ===== PRODUCT CARDS ===== */
-        .products-grid {
+        /* ===== SCORECARD WRAPPER ===== */
+        .scorecard-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #eaeef3;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .scorecard-wrapper .intro {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .scorecard-wrapper .intro h3 {
+            font-size: 1.4rem;
+            color: #0b1e33;
+            margin-bottom: 4px;
+        }
+
+        .scorecard-wrapper .intro p {
+            color: #4a5b6e;
+            font-size: 0.95rem;
+        }
+
+        .scorecard-wrapper .intro .highlight-box {
+            background: #f8fafc;
+            border-left: 4px solid #4a7ab5;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-style: italic;
+            color: #1e2a3a;
+        }
+
+        /* ===== SCORECARD EMBED ===== */
+        .scorecard-embed .progress-container {
+            background: #f8fafc;
+            padding: 14px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .scorecard-embed .progress-bar {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+
+        .scorecard-embed .progress-bar .fill {
+            height: 100%;
+            background: #1e3c72;
+            border-radius: 4px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        .scorecard-embed .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #4a5b6e;
+        }
+
+        .scorecard-embed .question-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            display: none;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .scorecard-embed .question-card.active {
+            display: block;
+        }
+
+        .scorecard-embed .question-card .q-number {
+            display: inline-block;
+            background: #1e3c72;
+            color: #fff;
+            padding: 2px 12px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .scorecard-embed .question-card .q-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #0b1e33;
+        }
+
+        .scorecard-embed .question-card .q-help {
+            font-size: 0.8rem;
+            color: #4a5b6e;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .scorecard-embed .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .scorecard-embed .options label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            font-size: 0.9rem;
+            background: #fff;
+        }
+
+        .scorecard-embed .options label:hover {
+            border-color: #1e3c72;
+            background: #f8fafc;
+        }
+
+        .scorecard-embed .options label.selected {
+            border-color: #1e3c72;
+            background: #eef4ff;
+        }
+
+        .scorecard-embed .options input[type="radio"],
+        .scorecard-embed .options input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            accent-color: #1e3c72;
+        }
+
+        .scorecard-embed .options .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .scorecard-embed .options .checkbox-group label {
+            flex: 1 1 calc(50% - 6px);
+            min-width: 120px;
+        }
+
+        .scorecard-embed .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .scorecard-embed .nav-buttons .btn {
+            padding: 10px 24px;
+            font-size: 0.9rem;
+        }
+
+        .scorecard-embed .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .scorecard-embed .btn-secondary {
+            background: #e2e8f0;
+            color: #1e2a3a;
+        }
+
+        .scorecard-embed .btn-secondary:hover {
+            background: #d0d7de;
+        }
+
+        .scorecard-embed .btn-success {
+            background: #22c55e;
+            color: #fff;
+        }
+
+        .scorecard-embed .btn-success:hover {
+            background: #16a34a;
+        }
+
+        .scorecard-embed .results-container {
+            display: none;
+        }
+
+        .scorecard-embed .results-container.visible {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .scorecard-wrapper {
+                padding: 20px;
+            }
+
+            .scorecard-embed .question-card {
+                padding: 16px;
+            }
+
+            .scorecard-embed .options .checkbox-group label {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scorecard-embed .question-card .q-text {
+                font-size: 0.95rem;
+            }
+
+            .scorecard-embed .options label {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+
+            .scorecard-embed .nav-buttons .btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* ===== SOVEREIGN MOAT ===== */
+        .moat-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 24px;
             max-width: 900px;
             margin: 0 auto;
         }
 
-        .product-card {
-            background: #fff;
-            border-radius: 14px;
-            border: 1px solid #eaeef3;
+        .moat-item {
+            background: #1e293b;
             padding: 28px 22px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
             transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
-        .product-card:hover {
+        .moat-item:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
-        .product-card .icon {
+        .moat-item .icon {
             font-size: 2.2rem;
             display: block;
             margin-bottom: 10px;
         }
 
-        .product-card .status {
-            display: inline-block;
-            padding: 2px 12px;
-            border-radius: 999px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            margin-bottom: 8px;
-        }
-
-        .product-card .status.dev {
-            background: #fef3c7;
-            color: #92400e;
-        }
-
-        .product-card .status.live {
-            background: #d1fae5;
-            color: #065f46;
-        }
-
-        .product-card .status.pilot {
-            background: #dbeafe;
-            color: #1e40af;
-        }
-
-        .product-card h3 {
-            font-size: 1.15rem;
-            color: #0b1e33;
+        .moat-item h4 {
+            font-size: 1rem;
+            color: #f8fafc;
             margin-bottom: 4px;
         }
 
-        .product-card p {
-            color: #4a5b6e;
+        .moat-item p {
             font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .product-card .learn-more {
-            display: inline-block;
-            margin-top: 12px;
-            color: #4a7ab5;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .product-card .learn-more:hover {
-            color: #1e3c72;
-        }
-
-        /* ===== SHADOW AI DISCLAIMER ===== */
-        .disclaimer-box {
-            max-width: 800px;
-            margin: 40px auto 0;
-            padding: 24px;
-            background: #f8fafc;
-            border-radius: 12px;
-            border-left: 4px solid #4a7ab5;
-        }
-
-        .disclaimer-box h4 {
-            color: #1e3c72;
-            margin-bottom: 8px;
-        }
-
-        .disclaimer-box p {
-            color: #4a5b6e;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .disclaimer-box ul {
-            color: #4a5b6e;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            padding-left: 20px;
-            margin: 8px 0;
-        }
-
-        .disclaimer-box ul li {
-            margin-bottom: 4px;
-        }
-
-        .disclaimer-box em {
-            font-size: 0.85rem;
-            color: #64748b;
+            color: #94a3b8;
         }
 
         /* ===== CONTACT ===== */
@@ -788,10 +977,6 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 10px;
-        }
-
-        .contact-info-box .detail .icon {
-            font-size: 1.2rem;
         }
 
         .contact-form-box {
@@ -971,6 +1156,31 @@
             width: 18px;
             height: 18px;
         }
+
+        .disclaimer {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            text-align: center;
+            margin-top: 16px;
+            font-style: italic;
+        }
+
+        /* ===== SHAKE ANIMATION ===== */
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-8px);
+            }
+
+            75% {
+                transform: translateX(8px);
+            }
+        }
     </style>
 </head>
 
@@ -998,8 +1208,9 @@
                         </div>
                     </div>
                     <nav class="desktop-nav">
-                        <a href="#products">Products</a>
                         <a href="#sheria-ai">Sheria AI</a>
+                        <a href="#diagnostic">Diagnostic</a>
+                        <a href="#moat">Sovereign Moat</a>
                         <a href="#contact">Contact</a>
                         <a href="https://scireresearch.com/" class="btn-small">Home</a>
                     </nav>
@@ -1017,129 +1228,456 @@
     <div class="mobile-menu-overlay" id="mobileMenu">
         <div class="mobile-menu-close" id="closeMenu">✕</div>
         <nav class="mobile-nav">
-            <a href="#products">Products</a>
             <a href="#sheria-ai">Sheria AI</a>
+            <a href="#diagnostic">Diagnostic</a>
+            <a href="#moat">Sovereign Moat</a>
             <a href="#contact">Contact</a>
-            <a href="https://scireresearch.com/" class="btn">Back to Home</a>
+            <a href="https://scireresearch.com/" class="btn">Home</a>
         </nav>
     </div>
 
     <!-- ============================================================ -->
-    <!-- HERO                                                         -->
+    <!-- HERO WITH BACKGROUND IMAGE                                  -->
     <!-- ============================================================ -->
     <section class="hero">
+
+        <!-- Background Image -->
+        <img class="hero-bg-image"
+            src="https://images/background/sheria.png"
+            alt="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop&crop=center&auto=format"/>
+
+        <!-- Overlay for text readability -->
         <div class="hero-overlay"></div>
-        
+
         <div class="container hero-content">
             <div class="hero-badge-row">
+                <span class="hero-badge">Flagship Product</span>
+                <span class="hero-badge">Sheria AI</span>
+                <span class="hero-badge">Kenya Sovereign</span>
             </div>
-            <h1>Products that turn policy into working software.</h1>
-
+            <h1>The Sovereign AI <br /><span class="highlight">Compliance Operating System</span></h1>
             <p class="hero-subtitle">
-                Scire Research builds practical technology products from emerging regulation and real operational needs
-                —
-                starting with Sheria AI, our AI compliance platform for Kenyan organizations.
+                Operationalize compliance with Kenya's Artificial Intelligence Bill, 2026. Built exclusively on
+                secure domestic cloud infrastructure to safeguard state and corporate data sovereignty.
             </p>
-
             <p class="hero-support">
-                Sheria AI helps teams classify AI systems, prepare compliance records, and manage audit-ready workflows
-                with Kenya-hosted infrastructure and local context built in.
+                Sheria AI provides automated risk classification, continuous auditing, and audit-ready workflows —
+                all hosted on Servernah Cloud within Kenya's borders.
             </p>
-
             <div class="hero-cta">
-                <a href="#sheria-ai" class="btn">Explore Sheria AI</a>
-                <a href="#products" class="btn btn-outline">View Products</a>
+                <a href="#diagnostic" class="btn">Take the Free 5-Minute Diagnostic</a>
+                <a href="#contact" class="btn btn-outline">Request Enterprise Briefing</a>
             </div>
-
             <div class="hero-trust">
-                <span>Research-backed</span>
-                <span>Built for regulated teams</span>
-                <span>Your Regulation Partner</span>
+                <span>Servernah Cloud Powered</span>
+                <span>AI Bill 2026 Native</span>
+                <span>100% Data Localization</span>
             </div>
         </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- PRODUCTS OVERVIEW                                            -->
+    <!-- SHERIA AI FLAGSHIP                                           -->
     <!-- ============================================================ -->
-    <section id="products" class="section-alt">
+    <section id="sheria-ai" style="padding-top:40px;">
         <div class="container">
-            <h2 class="section-title">Our Products</h2>
-            <p class="section-subtitle">Practical technology products built from regulatory insight and operational
-                needs.</p>
-
-            <div class="products-grid">
-                <div class="product-card">
-                    <h3>Sheria AI</h3>
-                    <p>AI compliance platform for Kenya's Artificial Intelligence Bill, 2026. Risk classification,
-                        documentation, and audit-ready workflows.</p>
-                    <a href="#sheria-ai" class="learn-more">Learn More →</a>
-                </div>
-
-                <div class="product-card">
-                    <h3>Data Verification Suite</h3>
-                    <p>Field research and primary data collection tools for NGOs, government agencies, and development
-                        partners. Reduces data errors by 30%+.</p>
-                    <a href="#" class="learn-more">Learn More →</a>
-                </div>
-
-                <div class="product-card">
-                    <h3>AI Research Lab</h3>
-                    <p>Building proprietary AI models trained on African data. Current focus: natural language
-                        processing for African languages.</p>
-                    <a href="#" class="learn-more">Learn More →</a>
-                </div>
-
-                <div class="product-card">
-                    <h3>Fact-Checking Intelligence</h3>
-                    <p>AI-powered verification and fact-checking for media, research, and policy organizations using
-                        verified African data sources.</p>
-                    <a href="#" class="learn-more">Learn More →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- SHERIA AI - FEATURED PRODUCT                                 -->
-    <!-- ============================================================ -->
-    <section id="sheria-ai">
-        <div class="container">
-            <div class="product-featured">
-                <span class="product-badge">Featured Product</span>
-                <h2>Sheria AI — <span>Compliance for Kenya's AI Bill</span></h2>
-                <p class="product-desc">
-                    Sheria AI helps regulated organizations operationalize Kenya's Artificial Intelligence Bill, 2026.
-                    Hosted on Servernah Cloud, it provides tools for risk classification, documentation, audit
-                    preparation, and compliance tracking.
+            <div class="flagship">
+                <span class="badge">Flagship Launch</span>
+                <h2>Sheria AI</h2>
+                <p class="subtitle">The Sovereign AI Compliance Operating System</p>
+                <p class="desc">
+                    Sheria AI is a sovereign compliance platform designed to help regulated organizations operationalize
+                    Kenya's Artificial Intelligence Bill, 2026. Hosted on Servernah Cloud, it provides automated risk
+                    classification, continuous auditing, and audit-ready workflows.
                 </p>
 
-                <div class="product-grid">
-                    <div class="item">
-                        <h4>Kiwango Risk Engine</h4>
-                        <p>Structured questionnaire and scoring to determine your AI system's risk tier.</p>
+                <div class="engine-grid">
+                    <div class="engine">
+                        <h4>1. Discovery Engine – Shadow AI Detection</h4>
+                        <p>Continuous background scans of network traffic and software inventories to reveal unmonitored
+                            third-party AI tools actively processing corporate data.</p>
                     </div>
-                    <div class="item">
-                        <h4>Documentation Manager</h4>
-                        <p>Pre-built templates for impact assessments and transparency disclosures.</p>
+                    <div class="engine">
+                        <h4>2. Kiwango Risk Engine – Statutory Classification</h4>
+                        <p>Automated, clause-by-clause evaluation that maps your ML deployments strictly to the four
+                            statutory risk tiers defined by the AI Commissioner.</p>
                     </div>
-                    <div class="item">
-                        <h4>Ukaguzi Audit Module</h4>
-                        <p>Automated report generation and submission-ready document packages.</p>
+                    <div class="engine">
+                        <h4>3. Ukaguzi Audit Engine – Continuous Verification</h4>
+                        <p>Real-time monitoring of model drift, algorithmic bias, and demographic parity. Automatically
+                            logs system behavior to an immutable ledger for regulatory compliance.</p>
                     </div>
-                    <div class="item">
-                        <h4>Data Sovereignty by Design</h4>
-                        <p>Primary compliance data stored on Servernah Cloud in Nairobi, Kenya.</p>
+                    <div class="engine">
+                        <h4>4. Mshauri Copilot – Proactive AI Advisory</h4>
+                        <p>A conversational compliance assistant trained on the AI Bill 2026 and Data Protection Act
+                            2019
+                            to guide developers and risk managers in plain English and Swahili.</p>
                     </div>
                 </div>
 
-                <div class="product-cta">
-                    <a href="sheria.html" class="btn">Learn More About Sheria AI</a>
-                    <a href="index.html#contact" class="btn btn-outline-dark">Request Demo</a>
+                <div class="cta-row">
+                    <a href="#diagnostic" class="btn">Take the Free 5-Minute Diagnostic</a>
+                    <a href="#contact" class="btn btn-outline-dark">Request Enterprise Briefing</a>
+                </div>
+                <p style="font-size:0.75rem; color:#94a3b8; margin-top:12px; font-style:italic;">
+                    Sheria AI provides guidance and automation. Final compliance responsibility rests with the
+                    organization.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- COMPLIANCE DIAGNOSTIC (EMBEDDED SCORECARD)                    -->
+    <!-- ============================================================ -->
+    <section id="diagnostic" class="section-alt">
+        <div class="container">
+            <div class="scorecard-wrapper">
+                <div class="intro">
+                    <h3>Is your model ready for the AI Commissioner?</h3>
+                    <p>
+                        Use our diagnostic tool below to generate an immediate Compliance Readiness Scorecard based on
+                        your data localization, retention capabilities, and risk profiles.
+                    </p>
+                    <div class="highlight-box">
+                        <strong>5 minutes.</strong> 15 questions. Free, actionable report.
+                    </div>
                 </div>
 
-                <p class="disclaimer">Sheria AI provides guidance and automation. Final compliance responsibility rests
-                    with the organization.</p>
+                <!-- ===== SCORECARD EMBED ===== -->
+                <div class="scorecard-embed" id="scorecardEmbed">
+
+                    <!-- Progress -->
+                    <div class="progress-container" id="progressContainer">
+                        <div class="progress-text">
+                            <span id="questionCounter">Question 1 of 15</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="fill" id="progressFill"></div>
+                        </div>
+                    </div>
+
+                    <!-- Questions -->
+                    <form id="scorecardForm" novalidate>
+
+                        <!-- Q1 -->
+                        <div class="question-card active" data-q="1">
+                            <span class="q-number">Question 1</span>
+                            <div class="q-text">Does your organization currently use any artificial intelligence (AI) or
+                                machine learning (ML) systems?</div>
+                            <div class="q-help">Includes chatbots, recommendation engines, fraud detection, generative
+                                AI, and automated decision-making.</div>
+                            <div class="options">
+                                <label><input type="radio" name="q1" value="5" /> Yes, multiple systems</label>
+                                <label><input type="radio" name="q1" value="4" /> Yes, one or two systems</label>
+                                <label><input type="radio" name="q1" value="2" /> We're exploring AI but haven't
+                                    deployed anything yet</label>
+                                <label><input type="radio" name="q1" value="0" /> No, we don't use AI</label>
+                            </div>
+                        </div>
+
+                        <!-- Q2 -->
+                        <div class="question-card" data-q="2">
+                            <span class="q-number">Question 2</span>
+                            <div class="q-text">How many AI systems does your organization currently have in production?
+                            </div>
+                            <div class="options">
+                                <label><input type="radio" name="q2" value="0" /> 0</label>
+                                <label><input type="radio" name="q2" value="2" /> 1-2</label>
+                                <label><input type="radio" name="q2" value="3" /> 3-5</label>
+                                <label><input type="radio" name="q2" value="4" /> 6-10</label>
+                                <label><input type="radio" name="q2" value="5" /> More than 10</label>
+                            </div>
+                        </div>
+
+                        <!-- Q3 -->
+                        <div class="question-card" data-q="3">
+                            <span class="q-number">Question 3</span>
+                            <div class="q-text">Are you aware of all AI systems being used within your organization?
+                            </div>
+                            <div class="q-help">Includes ChatGPT, Copilot, or other tools employees may use without
+                                formal approval.</div>
+                            <div class="options">
+                                <label><input type="radio" name="q3" value="5" /> Yes, we have complete
+                                    visibility</label>
+                                <label><input type="radio" name="q3" value="3" /> We have visibility over most, but not
+                                    all</label>
+                                <label><input type="radio" name="q3" value="1" /> We suspect there may be unapproved AI
+                                    use</label>
+                                <label><input type="radio" name="q3" value="0" /> We have no visibility into AI
+                                    usage</label>
+                            </div>
+                        </div>
+
+                        <!-- Q4 -->
+                        <div class="question-card" data-q="4">
+                            <span class="q-number">Question 4</span>
+                            <div class="q-text">Are employees using AI tools (e.g., ChatGPT, Copilot, Gemini, Claude) in
+                                their daily work?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q4" value="5" /> Yes, widely used across the
+                                    organization</label>
+                                <label><input type="radio" name="q4" value="3" /> Yes, but only in specific
+                                    departments</label>
+                                <label><input type="radio" name="q4" value="2" /> Limited use, mostly
+                                    experimental</label>
+                                <label><input type="radio" name="q4" value="1" /> No, we prohibit or restrict AI
+                                    use</label>
+                                <label><input type="radio" name="q4" value="0" /> I don't know</label>
+                            </div>
+                        </div>
+
+                        <!-- Q5 -->
+                        <div class="question-card" data-q="5">
+                            <span class="q-number">Question 5</span>
+                            <div class="q-text">Does your organization process any of the following types of data
+                                through AI systems?</div>
+                            <div class="q-help">Select all that apply.</div>
+                            <div class="options">
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" name="q5" value="personal" /> Personal data (names, ID
+                                        numbers)</label>
+                                    <label><input type="checkbox" name="q5" value="health" /> Health data (records,
+                                        history)</label>
+                                    <label><input type="checkbox" name="q5" value="financial" /> Financial data
+                                        (banking,
+                                        payment)</label>
+                                    <label><input type="checkbox" name="q5" value="biometric" /> Biometric data
+                                        (fingerprints, facial)</label>
+                                    <label><input type="checkbox" name="q5" value="sensitive" /> Sensitive personal data
+                                        (ethnicity, religion)</label>
+                                    <label><input type="checkbox" name="q5" value="none" /> None of the above</label>
+                                    <label><input type="checkbox" name="q5" value="unknown" /> I don't know</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q6 -->
+                        <div class="question-card" data-q="6">
+                            <span class="q-number">Question 6</span>
+                            <div class="q-text">Are you confident that your AI systems do not transfer personal data
+                                outside Kenya?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q6" value="5" /> Yes, 100% confident</label>
+                                <label><input type="radio" name="q6" value="3" /> Mostly confident, but not 100%
+                                    certain</label>
+                                <label><input type="radio" name="q6" value="1" /> Not confident — we suspect data may
+                                    cross borders</label>
+                                <label><input type="radio" name="q6" value="0" /> We have no visibility into where data
+                                    is processed</label>
+                                <label><input type="radio" name="q6" value="2" /> Not applicable — we don't process
+                                    personal data</label>
+                            </div>
+                        </div>
+
+                        <!-- Q7 -->
+                        <div class="question-card" data-q="7">
+                            <span class="q-number">Question 7</span>
+                            <div class="q-text">Have you conducted a Data Protection Impact Assessment (DPIA) for any of
+                                your AI systems?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q7" value="5" /> Yes, for all AI systems</label>
+                                <label><input type="radio" name="q7" value="3" /> Yes, for some AI systems</label>
+                                <label><input type="radio" name="q7" value="2" /> No, but we plan to</label>
+                                <label><input type="radio" name="q7" value="0" /> No, we haven't</label>
+                                <label><input type="radio" name="q7" value="0" /> I don't know</label>
+                            </div>
+                        </div>
+
+                        <!-- Q8 -->
+                        <div class="question-card" data-q="8">
+                            <span class="q-number">Question 8</span>
+                            <div class="q-text">Have you classified any of your AI systems according to the risk tiers
+                                defined in the AI Bill, 2026?</div>
+                            <div class="q-help">The Bill defines four tiers: Prohibited, High-Risk, Limited, and
+                                Minimal.</div>
+                            <div class="options">
+                                <label><input type="radio" name="q8" value="5" /> Yes, all systems are
+                                    classified</label>
+                                <label><input type="radio" name="q8" value="3" /> Yes, some systems are
+                                    classified</label>
+                                <label><input type="radio" name="q8" value="2" /> No, but we plan to</label>
+                                <label><input type="radio" name="q8" value="0" /> No, we haven't</label>
+                                <label><input type="radio" name="q8" value="0" /> I don't know</label>
+                            </div>
+                        </div>
+
+                        <!-- Q9 -->
+                        <div class="question-card" data-q="9">
+                            <span class="q-number">Question 9</span>
+                            <div class="q-text">Does your organization use AI in any of the following high-risk areas?
+                            </div>
+                            <div class="q-help">Select all that apply.</div>
+                            <div class="options">
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" name="q9" value="credit" /> Credit scoring or lending
+                                        decisions</label>
+                                    <label><input type="checkbox" name="q9" value="hr" /> Recruitment, hiring, or HR
+                                        decisions</label>
+                                    <label><input type="checkbox" name="q9" value="healthcare" /> Healthcare diagnosis
+                                        or
+                                        management</label>
+                                    <label><input type="checkbox" name="q9" value="justice" /> Criminal justice or
+                                        policing</label>
+                                    <label><input type="checkbox" name="q9" value="education" /> Education or student
+                                        assessment</label>
+                                    <label><input type="checkbox" name="q9" value="infrastructure" /> Critical
+                                        infrastructure</label>
+                                    <label><input type="checkbox" name="q9" value="none" /> None of the above</label>
+                                    <label><input type="checkbox" name="q9" value="unknown" /> I don't know</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Q10 -->
+                        <div class="question-card" data-q="10">
+                            <span class="q-number">Question 10</span>
+                            <div class="q-text">Are you aware of what constitutes a "Prohibited" AI system under the
+                                Bill?</div>
+                            <div class="q-help">Examples: biometric mass surveillance, social scoring, subliminal
+                                manipulation.</div>
+                            <div class="options">
+                                <label><input type="radio" name="q10" value="5" /> Yes, fully aware</label>
+                                <label><input type="radio" name="q10" value="3" /> Somewhat aware</label>
+                                <label><input type="radio" name="q10" value="1" /> Vaguely aware</label>
+                                <label><input type="radio" name="q10" value="0" /> Not at all aware</label>
+                            </div>
+                        </div>
+
+                        <!-- Q11 -->
+                        <div class="question-card" data-q="11">
+                            <span class="q-number">Question 11</span>
+                            <div class="q-text">Does your organization maintain documentation for your AI systems?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q11" value="5" /> Yes, comprehensive
+                                    documentation</label>
+                                <label><input type="radio" name="q11" value="3" /> Yes, basic documentation</label>
+                                <label><input type="radio" name="q11" value="2" /> No, but we plan to</label>
+                                <label><input type="radio" name="q11" value="0" /> No, we don't</label>
+                                <label><input type="radio" name="q11" value="0" /> I don't know</label>
+                            </div>
+                        </div>
+
+                        <!-- Q12 -->
+                        <div class="question-card" data-q="12">
+                            <span class="q-number">Question 12</span>
+                            <div class="q-text">Are you prepared to retain records of your AI system's training data,
+                                outputs, and performance metrics for five years?</div>
+                            <div class="q-help">This is a requirement for high-risk AI systems under the Bill.</div>
+                            <div class="options">
+                                <label><input type="radio" name="q12" value="5" /> Yes, we have the capability</label>
+                                <label><input type="radio" name="q12" value="3" /> We're working on it</label>
+                                <label><input type="radio" name="q12" value="0" /> No, we're not prepared</label>
+                                <label><input type="radio" name="q12" value="0" /> I don't know</label>
+                            </div>
+                        </div>
+
+                        <!-- Q13 -->
+                        <div class="question-card" data-q="13">
+                            <span class="q-number">Question 13</span>
+                            <div class="q-text">Has your organization ever been audited on its AI usage?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q13" value="5" /> Yes, by a regulator or external
+                                    auditor</label>
+                                <label><input type="radio" name="q13" value="3" /> Yes, by an internal audit
+                                    team</label>
+                                <label><input type="radio" name="q13" value="0" /> No, never</label>
+                                <label><input type="radio" name="q13" value="0" /> Not applicable</label>
+                            </div>
+                        </div>
+
+                        <!-- Q14 -->
+                        <div class="question-card" data-q="14">
+                            <span class="q-number">Question 14</span>
+                            <div class="q-text">Does your organization have a designated person or team responsible for
+                                AI governance?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q14" value="5" /> Yes, a dedicated team</label>
+                                <label><input type="radio" name="q14" value="3" /> Yes, an individual
+                                    responsible</label>
+                                <label><input type="radio" name="q14" value="2" /> No, but we plan to appoint
+                                    one</label>
+                                <label><input type="radio" name="q14" value="0" /> No, we don't</label>
+                                <label><input type="radio" name="q14" value="0" /> I don't know</label>
+                            </div>
+                        </div>
+
+                        <!-- Q15 -->
+                        <div class="question-card" data-q="15">
+                            <span class="q-number">Question 15</span>
+                            <div class="q-text">What is your organization's overall readiness level for the AI Bill,
+                                2026?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q15" value="5" /> We are fully prepared</label>
+                                <label><input type="radio" name="q15" value="3" /> We are somewhat prepared</label>
+                                <label><input type="radio" name="q15" value="2" /> We are just starting to
+                                    prepare</label>
+                                <label><input type="radio" name="q15" value="0" /> We have not yet started</label>
+                                <label><input type="radio" name="q15" value="0" /> I don't know</label>
+                            </div>
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="nav-buttons">
+                            <button type="button" class="btn btn-secondary" id="prevBtn" style="visibility:hidden;">←
+                                Previous</button>
+                            <button type="button" class="btn btn-primary" id="nextBtn">Next →</button>
+                        </div>
+
+                    </form>
+
+                    <!-- Results -->
+                    <div class="results-container" id="resultsContainer">
+                        <div id="resultBadge"
+                            style="text-align:center; padding:20px; border-radius:12px; margin-bottom:20px;">
+                            <div style="font-size:3rem; font-weight:800;" id="resultScore">0%</div>
+                            <div style="font-size:1.1rem; font-weight:600;" id="resultLabel">Loading...</div>
+                        </div>
+                        <div id="resultSummary"></div>
+                        <button onclick="resetScorecard()" class="btn" style="margin-top:16px; width:100%;">Start
+                            Over</button>
+                    </div>
+
+                </div>
+                <!-- END scorecard-embed -->
+
+                <p class="disclaimer" style="margin-top:16px;">
+                    Disclaimer: This diagnostic provides guidance based on the AI Bill, 2026. Final compliance
+                    responsibility rests with your organization.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SOVEREIGN MOAT                                              -->
+    <!-- ============================================================ -->
+    <section id="moat" class="section-dark">
+        <div class="container">
+            <h2 class="section-title">The Sovereign Moat</h2>
+            <p class="section-subtitle">
+                Why global GRC platforms fail in Kenya — and how Sheria AI succeeds.
+            </p>
+            <div class="moat-grid">
+                <div class="moat-item">
+                    <span class="icon"></span>
+                    <h4>100% Data Localization</h4>
+                    <p>Every byte of compliance data, model documentation, and audit trail remains securely within
+                        Kenyan borders on Servernah Cloud.</p>
+                </div>
+                <div class="moat-item">
+                    <span class="icon"></span>
+                    <h4>Localized Bias Metrics</h4>
+                    <p>Our drift detection engines track equity and fairness parameters built specifically for Kenya's
+                        socioeconomic demographic landscape.</p>
+                </div>
+                <div class="moat-item">
+                    <span class="icon"></span>
+                    <h4>Verifiable Audit Trail</h4>
+                    <p>Generates machine-verifiable Digital Compliance Certificates that can be delivered straight to
+                        boardrooms and regulators.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1150,59 +1688,47 @@
     <section id="contact" class="section-alt">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Interested in our products? Have a research challenge? Let's start a
-                conversation.</p>
-
+            <p class="section-subtitle">Interested in Sheria AI? Have a research challenge? Let's start a conversation.
+            </p>
             <div class="contact-grid">
                 <div class="contact-info-box">
                     <h3>Contact Details</h3>
                     <div class="detail">
                         <span class="icon"></span>
-                        <div>
-                            <strong>Titus Adik</strong><br>
-                            <a href="tel:+254704813110">+254 704 813110</a>
+                        <div><strong>Titus Adik</strong><br /><a href="tel:+254704813110">+254 704 813110</a></div>
+                    </div>
+                    <div class="detail">
+                        <span class="icon"></span>
+                        <div><strong>Opiyo Adik</strong><br /><a href="tel:+254704244657">+254 704 244657</a></div>
+                    </div>
+                    <div class="detail">
+                        <span class="icon"></span>
+                        <div><strong>Email</strong><br /><a
+                                href="mailto:infoscireresearch@gmail.com">infoscireresearch@gmail.com</a>
                         </div>
                     </div>
                     <div class="detail">
                         <span class="icon"></span>
-                        <div>
-                            <strong>Opiyo Adik</strong><br>
-                            <a href="tel:+254704244657">+254 704 244657</a>
-                        </div>
+                        <div><strong>Location</strong><br />Nairobi, Kenya</div>
                     </div>
-                    <div class="detail">
-                        <span class="icon"></span>
-                        <div>
-                            <strong>Email</strong><br>
-                            <a href="mailto:infoscireresearch@gmail.com">infoscireresearch@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="detail">
-                        <span class="icon"></span>
-                        <div>
-                            <strong>Location</strong><br>
-                            Nairobi, Kenya
-                        </div>
-                    </div>
-                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eaeef3;">
-                        <p style="font-size: 0.85rem; color: #4a5b6e;">⏱️ We typically respond within 24 hours.</p>
+                    <div style="margin-top:15px; padding-top:15px; border-top:1px solid #eaeef3;">
+                        <p style="font-size:0.85rem; color:#4a5b6e;">⏱️ We typically respond within 24 hours.</p>
                     </div>
                 </div>
-
                 <div class="contact-form-box">
                     <h3>Send Us a Message</h3>
                     <form id="contactForm" action="https://formspree.io/f/xreonyro" method="POST">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" required />
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required />
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
+                            <input type="tel" id="phone" name="phone" />
                         </div>
                         <div class="form-group">
                             <label for="service">What would you like to discuss?</label>
@@ -1220,7 +1746,7 @@
                             <textarea id="message" name="message"
                                 placeholder="Tell us about your project, timeline, and budget..." required></textarea>
                         </div>
-                        <input type="text" name="_gotcha" style="display:none">
+                        <input type="text" name="_gotcha" style="display:none" />
                         <button type="submit" class="btn" style="width:100%;" id="submitBtn">Send Message</button>
                         <div id="formStatus" class="form-status"></div>
                     </form>
@@ -1234,9 +1760,9 @@
     <!-- ============================================================ -->
     <section class="cta">
         <div class="container">
-            <h2>Build Kenya's Data-Driven Future With Us.</h2>
-            <p>Whether you're a business, NGO, government, or researcher — we're here to help you turn data into
-                decisions that matter.</p>
+            <h2>Build Kenya's AI Governance Future With Us.</h2>
+            <p>Whether you're a business, government agency, or AI developer — Sheria AI helps you operationalize
+                compliance and build trust.</p>
             <a href="#contact" class="btn">Get in Touch</a>
             <div class="contact-info">
                 <span>+254 704 813110</span>
@@ -1252,63 +1778,36 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 Scire Research. All rights reserved.</p>
-
             <div class="social-links"
-                style="margin: 20px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <a href="https://twitter.com/scire_research" target="_blank" rel="noopener noreferrer"
-                    aria-label="X (Twitter)">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                style="margin:20px 0; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+                <a href="https://twitter.com/scire_research" target="_blank" rel="noopener noreferrer" aria-label="X">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
                         <path
                             d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                     </svg>
                 </a>
                 <a href="https://linkedin.com/in/titus-adik" target="_blank" rel="noopener noreferrer"
                     aria-label="LinkedIn">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
                         <path
                             d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                     </svg>
                 </a>
-                <a href="https://www.facebook.com/profile.php?id=61565875146590&mibextid=rS40aB7S9Ucbxw6v"
-                    target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                    </svg>
-                </a>
-                <a href="https://www.instagram.com/ik_tito_" target="_blank" rel="noopener noreferrer"
-                    aria-label="Instagram">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                    </svg>
-                </a>
                 <a href="https://wa.me/254704813110" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
                         <path
                             d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.057 0C5.495 0 .16 5.335.16 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413A11.812 11.812 0 0012.057 0zm0 2.185c5.36 0 9.707 4.35 9.707 9.707 0 5.358-4.347 9.707-9.707 9.707-2.117 0-4.132-.685-5.792-1.946l-.344-.249-3.72.976.994-3.626-.232-.355a9.64 9.64 0 01-1.47-5.097c0-5.358 4.347-9.707 9.707-9.707z" />
                     </svg>
                 </a>
             </div>
-
-            <!-- Floating WhatsApp Button -->
-            <a href="https://wa.me/254704813110" target="_blank" rel="noopener noreferrer"
-                style="position:fixed; bottom:20px; right:20px; background:#25D366; color:white; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; box-shadow:0 4px 15px rgba(0,0,0,0.3); z-index:1000; text-decoration:none; transition: all 0.3s;"
-                aria-label="Chat on WhatsApp">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="white">
-                    <path
-                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.057 0C5.495 0 .16 5.335.16 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413A11.812 11.812 0 0012.057 0zm0 2.185c5.36 0 9.707 4.35 9.707 9.707 0 5.358-4.347 9.707-9.707 9.707-2.117 0-4.132-.685-5.792-1.946l-.344-.249-3.72.976.994-3.626-.232-.355a9.64 9.64 0 01-1.47-5.097c0-5.358 4.347-9.707 9.707-9.707z" />
-                </svg>
-            </a>
-
             <div class="footer-links">
-                <a href="#products">Products</a>
                 <a href="#sheria-ai">Sheria AI</a>
+                <a href="#diagnostic">Diagnostic</a>
+                <a href="#moat">Sovereign Moat</a>
                 <a href="#contact">Contact</a>
-                <a href="https://scireresearch.com/">Back to Home</a>
+                <a href="https://scireresearch.com/">Home</a>
             </div>
-            <p style="margin-top: 8px; font-size: 0.7rem; opacity: 0.7;">The Foundation for Africa's Data-Driven Future
-            </p>
+            <p style="margin-top:8px; font-size:0.7rem; opacity:0.7;">The Foundation for Africa's Data-Driven Future</p>
         </div>
     </footer>
 
@@ -1316,7 +1815,7 @@
     <!-- SCRIPTS                                                      -->
     <!-- ============================================================ -->
     <script>
-        // ===== TRANSPARENT HEADER =====
+        // ===== HEADER SCROLL =====
         document.addEventListener('DOMContentLoaded', function () {
             const header = document.getElementById('mainHeader');
             window.addEventListener('scroll', function () {
@@ -1340,7 +1839,7 @@
             document.addEventListener('keydown', e => { if (e.key === 'Escape' && m.classList.contains('open')) toggle(); });
         });
 
-        // ===== FORM =====
+        // ===== CONTACT FORM =====
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('contactForm');
             const status = document.getElementById('formStatus');
@@ -1366,7 +1865,340 @@
                     });
             });
         });
+
+        // ============================================================ -->
+        // SCORECARD ENGINE                                             -->
+        // ============================================================ -->
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('scorecardForm');
+            const cards = Array.from(document.querySelectorAll('.question-card'));
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const progressFill = document.getElementById('progressFill');
+            const questionCounter = document.getElementById('questionCounter');
+            const progressPercent = document.getElementById('progressPercent');
+            const resultsContainer = document.getElementById('resultsContainer');
+
+            let currentStep = 0;
+            const totalSteps = cards.length;
+
+            function isCurrentQuestionAnswered() {
+                const currentCard = cards[currentStep];
+                const inputs = currentCard.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+                let answered = false;
+                inputs.forEach(input => {
+                    if ((input.type === 'radio' || input.type === 'checkbox') && input.checked) {
+                        answered = true;
+                    }
+                });
+                return answered;
+            }
+
+            function highlightUnanswered() {
+                const currentCard = cards[currentStep];
+                currentCard.style.borderColor = '';
+                currentCard.style.borderWidth = '';
+                if (!isCurrentQuestionAnswered()) {
+                    currentCard.style.borderColor = '#dc2626';
+                    currentCard.style.borderWidth = '2px';
+                    currentCard.style.animation = 'shake 0.4s ease';
+                    setTimeout(() => {
+                        currentCard.style.animation = '';
+                    }, 500);
+                }
+            }
+
+            function checkAllQuestionsAnswered() {
+                for (let i = 0; i < cards.length; i++) {
+                    const inputs = cards[i].querySelectorAll('input[type="radio"], input[type="checkbox"]');
+                    let answered = false;
+                    inputs.forEach(input => {
+                        if (input.checked) answered = true;
+                    });
+                    if (!answered) return false;
+                }
+                return true;
+            }
+
+            function updateNavigation() {
+                cards.forEach((card, idx) => {
+                    card.classList.toggle('active', idx === currentStep);
+                    if (idx === currentStep) {
+                        card.style.borderColor = '';
+                        card.style.borderWidth = '';
+                    }
+                });
+
+                const progress = Math.round(((currentStep) / (totalSteps - 1)) * 100);
+                progressFill.style.width = progress + '%';
+                progressPercent.textContent = progress + '%';
+                questionCounter.textContent = 'Question ' + (currentStep + 1) + ' of ' + totalSteps;
+
+                prevBtn.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
+
+                if (currentStep === totalSteps - 1) {
+                    nextBtn.textContent = 'Generate Report';
+                    nextBtn.className = 'btn btn-success';
+                    nextBtn.disabled = !checkAllQuestionsAnswered();
+                    if (!checkAllQuestionsAnswered()) {
+                        nextBtn.textContent = 'Answer all questions first';
+                    }
+                } else {
+                    nextBtn.textContent = 'Next →';
+                    nextBtn.className = 'btn btn-primary';
+                    nextBtn.disabled = !isCurrentQuestionAnswered();
+                }
+            }
+
+            // Mutual exclusivity for Q5 and Q9
+            function setupMutualExclusivity(container) {
+                const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+                const noneCheckbox = container.querySelector('input[value="none"]');
+                const unknownCheckbox = container.querySelector('input[value="unknown"]');
+
+                checkboxes.forEach(cb => {
+                    cb.addEventListener('change', function () {
+                        if (this.value === 'none' && this.checked) {
+                            checkboxes.forEach(other => {
+                                if (other !== this && other.value !== 'unknown') {
+                                    other.checked = false;
+                                    other.closest('label').classList.remove('selected');
+                                }
+                            });
+                            if (unknownCheckbox) {
+                                unknownCheckbox.checked = false;
+                                unknownCheckbox.closest('label').classList.remove('selected');
+                            }
+                        } else if (this.value === 'unknown' && this.checked) {
+                            checkboxes.forEach(other => {
+                                if (other !== this && other.value !== 'none') {
+                                    other.checked = false;
+                                    other.closest('label').classList.remove('selected');
+                                }
+                            });
+                            if (noneCheckbox) {
+                                noneCheckbox.checked = false;
+                                noneCheckbox.closest('label').classList.remove('selected');
+                            }
+                        } else if (this.checked && this.value !== 'none' && this.value !== 'unknown') {
+                            if (noneCheckbox) {
+                                noneCheckbox.checked = false;
+                                noneCheckbox.closest('label').classList.remove('selected');
+                            }
+                            if (unknownCheckbox) {
+                                unknownCheckbox.checked = false;
+                                unknownCheckbox.closest('label').classList.remove('selected');
+                            }
+                        }
+                        checkboxes.forEach(cb => {
+                            cb.closest('label').classList.toggle('selected', cb.checked);
+                        });
+                        updateNavigation();
+                    });
+                });
+            }
+
+            const q5Container = document.querySelector('.question-card[data-q="5"] .checkbox-group');
+            const q9Container = document.querySelector('.question-card[data-q="9"] .checkbox-group');
+            if (q5Container) setupMutualExclusivity(q5Container);
+            if (q9Container) setupMutualExclusivity(q9Container);
+
+            // Form change listener
+            form.addEventListener('change', function (e) {
+                const target = e.target;
+                if (target.type === 'radio') {
+                    document.querySelectorAll('input[name="' + target.name + '"]').forEach(input => {
+                        input.closest('label').classList.toggle('selected', input.checked);
+                    });
+                } else if (target.type === 'checkbox') {
+                    target.closest('label').classList.toggle('selected', target.checked);
+                }
+                updateNavigation();
+            });
+
+            // Navigation
+            nextBtn.addEventListener('click', function () {
+                if (!isCurrentQuestionAnswered()) {
+                    highlightUnanswered();
+                    return;
+                }
+                if (currentStep < totalSteps - 1) {
+                    currentStep++;
+                    updateNavigation();
+                } else {
+                    if (checkAllQuestionsAnswered()) {
+                        calculateAndShowResults();
+                    } else {
+                        for (let i = 0; i < cards.length; i++) {
+                            const inputs = cards[i].querySelectorAll('input[type="radio"], input[type="checkbox"]');
+                            let answered = false;
+                            inputs.forEach(input => { if (input.checked) answered = true; });
+                            if (!answered) {
+                                currentStep = i;
+                                updateNavigation();
+                                cards[i].style.borderColor = '#dc2626';
+                                cards[i].style.borderWidth = '2px';
+                                setTimeout(() => {
+                                    cards[i].style.borderColor = '';
+                                    cards[i].style.borderWidth = '';
+                                }, 2000);
+                                break;
+                            }
+                        }
+                    }
+                }
+            });
+
+            prevBtn.addEventListener('click', function () {
+                if (currentStep > 0) {
+                    currentStep--;
+                    updateNavigation();
+                }
+            });
+
+            function getRadioValue(name) {
+                const checked = form.querySelector('input[name="' + name + '"]:checked');
+                return checked ? parseInt(checked.value, 10) : 0;
+            }
+
+            function getCheckboxValues(name) {
+                const checked = form.querySelectorAll('input[name="' + name + '"]:checked');
+                return Array.from(checked).map(cb => cb.value);
+            }
+
+            function calculateAndShowResults() {
+                let score = 0;
+                let possibleScore = 0;
+                const radioQuestions = ['q1', 'q2', 'q3', 'q4', 'q6', 'q7', 'q8', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15'];
+                radioQuestions.forEach(q => {
+                    score += getRadioValue(q);
+                    possibleScore += 5;
+                });
+
+                const q5Selections = getCheckboxValues('q5');
+                const q9Selections = getCheckboxValues('q9');
+                let percentage = Math.round((score / possibleScore) * 100);
+
+                const badge = document.getElementById('resultBadge');
+                const scoreDisplay = document.getElementById('resultScore');
+                const labelDisplay = document.getElementById('resultLabel');
+                const summary = document.getElementById('resultSummary');
+
+                badge.className = '';
+                scoreDisplay.textContent = percentage + '%';
+
+                if (percentage >= 80) {
+                    badge.classList.add('low');
+                    badge.style.background = '#d1fae5';
+                    badge.style.color = '#065f46';
+                    labelDisplay.textContent = 'Maturity Status: Strong / Low Risk';
+                } else if (percentage >= 50) {
+                    badge.classList.add('medium');
+                    badge.style.background = '#fef3c7';
+                    badge.style.color = '#92400e';
+                    labelDisplay.textContent = 'Maturity Status: Moderate Risk';
+                } else if (percentage >= 30) {
+                    badge.classList.add('high');
+                    badge.style.background = '#fee2e2';
+                    badge.style.color = '#991b1b';
+                    labelDisplay.textContent = 'Maturity Status: High Risk';
+                } else {
+                    badge.classList.add('critical');
+                    badge.style.background = '#fef2f2';
+                    badge.style.color = '#7f1d1d';
+                    badge.style.border = '2px solid #dc2626';
+                    labelDisplay.textContent = 'Maturity Status: Critical Non-Compliance';
+                }
+
+                let summaryHTML = '<div style="margin-top:16px;">';
+                summaryHTML += '<h4 style="margin-bottom:8px;">🔍 Shadow AI Risk Assessment</h4><ul style="list-style:none;padding:0;">';
+                const q3Val = getRadioValue('q3');
+                const q4Val = getRadioValue('q4');
+                if (q3Val <= 1 || q4Val >= 3) {
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">🔴 <strong>Critical Exposure:</strong> High risk of active "Shadow AI." Your employees are interacting with unauthorized tools while corporate visibility is restricted.</li>';
+                } else {
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">🟢 <strong>Managed Visibility:</strong> Your organization shows structured control over employee AI use.</li>';
+                }
+                summaryHTML += '</ul>';
+
+                summaryHTML +=
+                    '<h4 style="margin:16px 0 8px;">📋 Your Biggest Compliance Gaps</h4><ul style="list-style:none;padding:0;">';
+                const isHighRiskSector = q9Selections.length > 0 && !q9Selections.includes('none') && !q9Selections
+                    .includes('unknown');
+                if (isHighRiskSector) {
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">❌ <strong>High-Risk Obligation:</strong> Deploying AI in ' +
+                        q9Selections.join(', ').toUpperCase() +
+                        ' triggers mandatory compliance under Section 26 of the Bill.</li>';
+                }
+                const processesSensitive = q5Selections.some(v => ['personal', 'health', 'financial', 'biometric',
+                    'sensitive'
+                ].includes(v));
+                const localizationUnsure = getRadioValue('q6') <= 3;
+                if (processesSensitive && localizationUnsure) {
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">❌ <strong>Data Residency Risk:</strong> Processing sensitive data without verified domestic residency.</li>';
+                }
+                if (getRadioValue('q12') === 0) {
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">❌ <strong>5-Year Record Deficit:</strong> Lacks mechanism to archive model metrics for statutory retention.</li>';
+                }
+                if (!isHighRiskSector && !(processesSensitive && localizationUnsure) && getRadioValue('q12') !== 0) {
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">✅ No critical compliance gaps detected. Great job!</li>';
+                }
+                summaryHTML += '</ul>';
+
+                summaryHTML +=
+                    '<h4 style="margin:16px 0 8px;">📌 Prioritized Action Plan</h4><ul style="list-style:none;padding:0;">';
+                if (percentage < 50) {
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">📌 <strong>Immediate Priority:</strong> Conduct a formal AI system inventory and risk classification audit.</li>';
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">📌 <strong>Data Protection:</strong> Review all data processing agreements to ensure data stays in Kenya.</li>';
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">📌 <strong>Documentation:</strong> Begin documenting your AI systems for audit readiness.</li>';
+                } else if (percentage < 80) {
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">📌 <strong>Strengthen Governance:</strong> Appoint a dedicated AI compliance lead or team.</li>';
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">📌 <strong>Retention Strategy:</strong> Implement a 5-year record retention system.</li>';
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">📌 <strong>Training:</strong> Conduct AI Bill awareness training for your team.</li>';
+                } else {
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">📌 <strong>Maintain Momentum:</strong> Continue monitoring regulatory updates and maintain compliance documentation.</li>';
+                    summaryHTML +=
+                        '<li style="padding:8px 12px;background:#f8fafc;border-radius:6px;margin-bottom:4px;">📌 <strong>Lead by Example:</strong> Consider sharing your compliance approach with peers.</li>';
+                }
+                summaryHTML += '</ul></div>';
+
+                summary.innerHTML = summaryHTML;
+
+                // Show results, hide form
+                form.style.display = 'none';
+                document.getElementById('progressContainer').style.display = 'none';
+                resultsContainer.classList.add('visible');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            window.resetScorecard = function () {
+                form.reset();
+                document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+                resultsContainer.classList.remove('visible');
+                form.style.display = 'block';
+                document.getElementById('progressContainer').style.display = 'block';
+                currentStep = 0;
+                updateNavigation();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            updateNavigation();
+        });
     </script>
+
 </body>
 
 </html>
