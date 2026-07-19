@@ -1928,525 +1928,495 @@
         </div>
     </footer>
 
-    <!-- ============================================================ -->
-    <!-- SCRIPTS                                                      -->
-    <!-- ============================================================ -->
-    <script>
-        // ===== HEADER SCROLL =====
-        document.addEventListener('DOMContentLoaded', function () {
-            const header = document.getElementById('mainHeader');
-            window.addEventListener('scroll', function () {
-                header.classList.toggle('scrolled', window.scrollY > 100);
+   <!-- ============================================================ -->
+<!-- SCRIPTS                                                      -->
+<!-- ============================================================ -->
+<script>
+    // ===== HEADER SCROLL =====
+    document.addEventListener('DOMContentLoaded', function() {
+        const header = document.getElementById('mainHeader');
+        window.addEventListener('scroll', function() {
+            header.classList.toggle('scrolled', window.scrollY > 100);
+        });
+    });
+
+    // ===== MOBILE MENU =====
+    document.addEventListener('DOMContentLoaded', function() {
+        const h = document.getElementById('hamburger'),
+            m = document.getElementById('mobileMenu'),
+            c = document.getElementById('closeMenu');
+        const toggle = () => {
+            h.classList.toggle('active');
+            m.classList.toggle('open');
+            document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+        };
+        h.addEventListener('click', toggle);
+        c.addEventListener('click', toggle);
+        m.querySelectorAll('a').forEach(l => l.addEventListener('click', toggle));
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && m.classList.contains('open')) toggle(); });
+    });
+
+    // ============================================================ -->
+    // SCORECARD ENGINE                                             -->
+    // ============================================================ -->
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('scorecardForm');
+        const cards = Array.from(document.querySelectorAll('.question-card'));
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressFill = document.getElementById('progressFill');
+        const questionCounter = document.getElementById('questionCounter');
+        const progressPercent = document.getElementById('progressPercent');
+        const resultsDashboard = document.getElementById('resultsDashboard');
+        const submitBtn = document.getElementById('submitDiagnosticBtn');
+        const statusDiv = document.getElementById('submissionStatus');
+
+        let currentStep = 0;
+        const totalSteps = cards.length;
+
+        // ===== CHECK IF CURRENT QUESTION IS ANSWERED =====
+        function isCurrentQuestionAnswered() {
+            const currentCard = cards[currentStep];
+            const inputs = currentCard.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+            let answered = false;
+            inputs.forEach(input => {
+                if ((input.type === 'radio' || input.type === 'checkbox') && input.checked) {
+                    answered = true;
+                }
             });
-        });
+            return answered;
+        }
 
-        // ===== MOBILE MENU =====
-        document.addEventListener('DOMContentLoaded', function () {
-            const h = document.getElementById('hamburger'),
-                m = document.getElementById('mobileMenu'),
-                c = document.getElementById('closeMenu');
-            const toggle = () => {
-                h.classList.toggle('active');
-                m.classList.toggle('open');
-                document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
-            };
-            h.addEventListener('click', toggle);
-            c.addEventListener('click', toggle);
-            m.querySelectorAll('a').forEach(l => l.addEventListener('click', toggle));
-            document.addEventListener('keydown', e => { if (e.key === 'Escape' && m.classList.contains('open')) toggle(); });
-        });
+        // ===== HIGHLIGHT UNANSWERED =====
+        function highlightUnanswered() {
+            const currentCard = cards[currentStep];
+            currentCard.style.borderColor = '';
+            currentCard.style.borderWidth = '';
+            if (!isCurrentQuestionAnswered()) {
+                currentCard.style.borderColor = '#dc2626';
+                currentCard.style.borderWidth = '2px';
+                currentCard.style.animation = 'shake 0.4s ease';
+                setTimeout(() => {
+                    currentCard.style.animation = '';
+                }, 500);
+            }
+        }
 
-        // ============================================================ -->
-        // SCORECARD ENGINE                                             -->
-        // ============================================================ -->
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('scorecardForm');
-            const cards = Array.from(document.querySelectorAll('.question-card'));
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const progressFill = document.getElementById('progressFill');
-            const questionCounter = document.getElementById('questionCounter');
-            const progressPercent = document.getElementById('progressPercent');
-            const resultsDashboard = document.getElementById('resultsDashboard');
-            const submitBtn = document.getElementById('submitDiagnosticBtn');
-            const statusDiv = document.getElementById('submissionStatus');
-
-            let currentStep = 0;
-            const totalSteps = cards.length;
-
-            // ===== CHECK IF CURRENT QUESTION IS ANSWERED =====
-            function isCurrentQuestionAnswered() {
-                const currentCard = cards[currentStep];
-                const inputs = currentCard.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+        // ===== CHECK ALL QUESTIONS ANSWERED (excluding step 16) =====
+        function checkAllQuestionsAnswered() {
+            for (let i = 0; i < cards.length - 1; i++) {
+                const inputs = cards[i].querySelectorAll('input[type="radio"], input[type="checkbox"]');
                 let answered = false;
                 inputs.forEach(input => {
-                    if ((input.type === 'radio' || input.type === 'checkbox') && input.checked) {
-                        answered = true;
-                    }
+                    if (input.checked) answered = true;
                 });
-                return answered;
+                if (!answered) return false;
             }
+            return true;
+        }
 
-            // ===== HIGHLIGHT UNANSWERED =====
-            function highlightUnanswered() {
-                const currentCard = cards[currentStep];
-                currentCard.style.borderColor = '';
-                currentCard.style.borderWidth = '';
-                if (!isCurrentQuestionAnswered()) {
-                    currentCard.style.borderColor = '#dc2626';
-                    currentCard.style.borderWidth = '2px';
-                    currentCard.style.animation = 'shake 0.4s ease';
-                    setTimeout(() => {
-                        currentCard.style.animation = '';
-                    }, 500);
+        // ===== UPDATE NAVIGATION =====
+        function updateNavigation() {
+            cards.forEach((card, idx) => {
+                card.classList.toggle('active', idx === currentStep);
+                if (idx === currentStep) {
+                    card.style.borderColor = '';
+                    card.style.borderWidth = '';
                 }
-            }
+            });
 
-            // ===== CHECK ALL QUESTIONS ANSWERED (excluding step 16) =====
-            function checkAllQuestionsAnswered() {
-                for (let i = 0; i < cards.length - 1; i++) {
-                    const inputs = cards[i].querySelectorAll('input[type="radio"], input[type="checkbox"]');
-                    let answered = false;
-                    inputs.forEach(input => {
-                        if (input.checked) answered = true;
-                    });
-                    if (!answered) return false;
-                }
-                return true;
-            }
+            const progress = Math.round(((currentStep) / (totalSteps - 1)) * 100);
+            progressFill.style.width = progress + '%';
+            progressPercent.textContent = progress + '%';
+            questionCounter.textContent = 'Question ' + (currentStep + 1) + ' of ' + (totalSteps);
 
-            // ===== UPDATE NAVIGATION =====
-            function updateNavigation() {
-                cards.forEach((card, idx) => {
-                    card.classList.toggle('active', idx === currentStep);
-                    if (idx === currentStep) {
-                        card.style.borderColor = '';
-                        card.style.borderWidth = '';
-                    }
-                });
+            prevBtn.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
 
-                const progress = Math.round(((currentStep) / (totalSteps - 1)) * 100);
-                progressFill.style.width = progress + '%';
-                progressPercent.textContent = progress + '%';
-                questionCounter.textContent = 'Question ' + (currentStep + 1) + ' of ' + (totalSteps);
-
-                prevBtn.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
-
-                if (currentStep === totalSteps - 1) {
-                    nextBtn.textContent = 'Submit';
-                    nextBtn.className = 'btn btn-success';
-                    if (checkAllQuestionsAnswered()) {
-                        nextBtn.disabled = false;
-                    } else {
-                        nextBtn.disabled = true;
-                        nextBtn.textContent = 'Answer all questions first';
-                    }
+            if (currentStep === totalSteps - 1) {
+                nextBtn.textContent = 'Submit';
+                nextBtn.className = 'btn btn-success';
+                if (checkAllQuestionsAnswered()) {
+                    nextBtn.disabled = false;
                 } else {
-                    nextBtn.textContent = 'Next →';
-                    nextBtn.className = 'btn btn-primary';
-                    nextBtn.disabled = !isCurrentQuestionAnswered();
+                    nextBtn.disabled = true;
+                    nextBtn.textContent = 'Answer all questions first';
                 }
+            } else {
+                nextBtn.textContent = 'Next →';
+                nextBtn.className = 'btn btn-primary';
+                nextBtn.disabled = !isCurrentQuestionAnswered();
             }
+        }
 
-            // ===== MUTUAL EXCLUSIVITY =====
-            function setupMutualExclusivity(container) {
-                const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-                const noneCheckbox = container.querySelector('input[value="none"]');
-                const unknownCheckbox = container.querySelector('input[value="unknown"]');
+        // ===== MUTUAL EXCLUSIVITY =====
+        function setupMutualExclusivity(container) {
+            const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+            const noneCheckbox = container.querySelector('input[value="none"]');
+            const unknownCheckbox = container.querySelector('input[value="unknown"]');
 
-                checkboxes.forEach(cb => {
-                    cb.addEventListener('change', function () {
-                        if (this.value === 'none' && this.checked) {
-                            checkboxes.forEach(other => {
-                                if (other !== this && other.value !== 'unknown') {
-                                    other.checked = false;
-                                    other.closest('label').classList.remove('selected');
-                                }
-                            });
-                            if (unknownCheckbox) {
-                                unknownCheckbox.checked = false;
-                                unknownCheckbox.closest('label').classList.remove('selected');
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', function() {
+                    if (this.value === 'none' && this.checked) {
+                        checkboxes.forEach(other => {
+                            if (other !== this && other.value !== 'unknown') {
+                                other.checked = false;
+                                other.closest('label').classList.remove('selected');
                             }
-                        } else if (this.value === 'unknown' && this.checked) {
-                            checkboxes.forEach(other => {
-                                if (other !== this && other.value !== 'none') {
-                                    other.checked = false;
-                                    other.closest('label').classList.remove('selected');
-                                }
-                            });
-                            if (noneCheckbox) {
-                                noneCheckbox.checked = false;
-                                noneCheckbox.closest('label').classList.remove('selected');
-                            }
-                        } else if (this.checked && this.value !== 'none' && this.value !== 'unknown') {
-                            if (noneCheckbox) {
-                                noneCheckbox.checked = false;
-                                noneCheckbox.closest('label').classList.remove('selected');
-                            }
-                            if (unknownCheckbox) {
-                                unknownCheckbox.checked = false;
-                                unknownCheckbox.closest('label').classList.remove('selected');
-                            }
-                        }
-                        checkboxes.forEach(cb => {
-                            cb.closest('label').classList.toggle('selected', cb.checked);
                         });
-                        updateNavigation();
-                    });
-                });
-            }
-
-            const q5Container = document.querySelector('.question-card[data-q="5"] .checkbox-group');
-            const q9Container = document.querySelector('.question-card[data-q="9"] .checkbox-group');
-            if (q5Container) setupMutualExclusivity(q5Container);
-            if (q9Container) setupMutualExclusivity(q9Container);
-
-            // ===== FORM CHANGE LISTENER =====
-            form.addEventListener('change', function (e) {
-                const target = e.target;
-                if (target.type === 'radio') {
-                    document.querySelectorAll('input[name="' + target.name + '"]').forEach(input => {
-                        input.closest('label').classList.toggle('selected', input.checked);
-                    });
-                } else if (target.type === 'checkbox') {
-                    target.closest('label').classList.toggle('selected', target.checked);
-                }
-                updateNavigation();
-            });
-
-            // ===== NAVIGATION =====
-            nextBtn.addEventListener('click', function () {
-                if (currentStep === totalSteps - 1) {
-                    if (checkAllQuestionsAnswered()) {
-                        submitDiagnostic();
-                    } else {
-                        for (let i = 0; i < cards.length - 1; i++) {
-                            const inputs = cards[i].querySelectorAll('input[type="radio"], input[type="checkbox"]');
-                            let answered = false;
-                            inputs.forEach(input => { if (input.checked) answered = true; });
-                            if (!answered) {
-                                currentStep = i;
-                                updateNavigation();
-                                cards[i].style.borderColor = '#dc2626';
-                                cards[i].style.borderWidth = '2px';
-                                setTimeout(() => {
-                                    cards[i].style.borderColor = '';
-                                    cards[i].style.borderWidth = '';
-                                }, 2000);
-                                break;
+                        if (unknownCheckbox) {
+                            unknownCheckbox.checked = false;
+                            unknownCheckbox.closest('label').classList.remove('selected');
+                        }
+                    } else if (this.value === 'unknown' && this.checked) {
+                        checkboxes.forEach(other => {
+                            if (other !== this && other.value !== 'none') {
+                                other.checked = false;
+                                other.closest('label').classList.remove('selected');
                             }
+                        });
+                        if (noneCheckbox) {
+                            noneCheckbox.checked = false;
+                            noneCheckbox.closest('label').classList.remove('selected');
+                        }
+                    } else if (this.checked && this.value !== 'none' && this.value !== 'unknown') {
+                        if (noneCheckbox) {
+                            noneCheckbox.checked = false;
+                            noneCheckbox.closest('label').classList.remove('selected');
+                        }
+                        if (unknownCheckbox) {
+                            unknownCheckbox.checked = false;
+                            unknownCheckbox.closest('label').classList.remove('selected');
                         }
                     }
-                    return;
-                }
-
-                if (!isCurrentQuestionAnswered()) {
-                    highlightUnanswered();
-                    return;
-                }
-
-                if (currentStep < totalSteps - 1) {
-                    currentStep++;
-                    updateNavigation();
-                }
-            });
-
-            prevBtn.addEventListener('click', function () {
-                if (currentStep > 0) {
-                    currentStep--;
-                    updateNavigation();
-                }
-            });
-
-            // ===== HELPER FUNCTIONS =====
-            function getRadioValue(name) {
-                const checked = form.querySelector('input[name="' + name + '"]:checked');
-                return checked ? parseInt(checked.value, 10) : 0;
-            }
-
-            function getCheckboxValues(name) {
-                const checked = form.querySelectorAll('input[name="' + name + '"]:checked');
-                return Array.from(checked).map(cb => cb.value);
-            }
-
-            function getUserAnswers() {
-                const answers = {};
-                for (let i = 1; i <= 15; i++) {
-                    const card = document.querySelector('.question-card[data-q="' + i + '"]');
-                    if (!card) continue;
-                    const radios = card.querySelectorAll('input[type="radio"]:checked');
-                    const checkboxes = card.querySelectorAll('input[type="checkbox"]:checked');
-                    if (radios.length > 0) {
-                        answers['q' + i] = parseInt(radios[0].value, 10);
-                    } else if (checkboxes.length > 0) {
-                        answers['q' + i] = Array.from(checkboxes).map(cb => cb.value);
-                    }
-                }
-                return answers;
-            }
-
-            // ===== CALCULATE RESULTS =====
-            function calculateResults(answers) {
-                let score = 0;
-                let possibleScore = 0;
-                const radioQuestions = ['q1', 'q2', 'q3', 'q4', 'q6', 'q7', 'q8', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15'];
-
-                radioQuestions.forEach(q => {
-                    const val = answers[q];
-                    if (typeof val === 'number') {
-                        score += val;
-                        possibleScore += 5;
-                    }
-                });
-
-                const q5Selections = answers.q5 || [];
-                const q9Selections = answers.q9 || [];
-                let percentage = Math.round((score / possibleScore) * 100);
-
-                let tier, label;
-                if (percentage >= 80) {
-                    tier = 'low';
-                    label = 'Maturity Status: Strong / Low Risk';
-                } else if (percentage >= 50) {
-                    tier = 'medium';
-                    label = 'Maturity Status: Moderate Risk';
-                } else if (percentage >= 30) {
-                    tier = 'high';
-                    label = 'Maturity Status: High Risk';
-                } else {
-                    tier = 'critical';
-                    label = 'Maturity Status: Critical Non-Compliance';
-                }
-
-                // Shadow AI analysis
-                const q3Val = answers.q3 || 0;
-                const q4Val = answers.q4 || 0;
-                let shadowAiInsights = [];
-                if (q3Val <= 1 || q4Val >= 3) {
-                    shadowAiInsights.push(
-                        '🔴 Critical Exposure: High risk of active "Shadow AI." Your employees are interacting with unauthorized tools while corporate visibility is restricted.'
-                    );
-                } else {
-                    shadowAiInsights.push(
-                        '🟢 Managed Visibility: Your organization shows structured control over employee AI use.'
-                    );
-                }
-
-                // Gaps analysis
-                let gaps = [];
-                const isHighRiskSector = q9Selections.length > 0 && !q9Selections.includes('none') && !q9Selections
-                    .includes('unknown');
-                if (isHighRiskSector) {
-                    gaps.push('❌ High-Risk Obligation: Deploying AI in ' + q9Selections.join(', ').toUpperCase() +
-                        ' triggers mandatory compliance under Section 26 of the Bill.');
-                }
-                const processesSensitive = q5Selections.some(v => ['personal', 'health', 'financial', 'biometric',
-                    'sensitive'
-                ].includes(v));
-                const localizationUnsure = (answers.q6 || 0) <= 3;
-                if (processesSensitive && localizationUnsure) {
-                    gaps.push(
-                        '❌ Data Residency Risk: Processing sensitive data without verified domestic residency.');
-                }
-                if ((answers.q12 || 0) === 0) {
-                    gaps.push('❌ 5-Year Record Deficit: Lacks mechanism to archive model metrics for statutory retention.'
-                    );
-                }
-                if (gaps.length === 0) {
-                    gaps.push('✅ No critical compliance gaps detected. Great job!');
-                }
-
-                // Action plan
-                let actions = [];
-                if (percentage < 50) {
-                    actions.push('📌 Conduct a formal AI system inventory and risk classification audit.');
-                    actions.push('📌 Review all data processing agreements to ensure data stays in Kenya.');
-                    actions.push('📌 Begin documenting your AI systems for audit readiness.');
-                } else if (percentage < 80) {
-                    actions.push('📌 Appoint a dedicated AI compliance lead or team.');
-                    actions.push('📌 Implement a 5-year record retention system.');
-                    actions.push('📌 Conduct AI Bill awareness training for your team.');
-                } else {
-                    actions.push('📌 Continue monitoring regulatory updates and maintain compliance documentation.');
-                    actions.push('📌 Consider sharing your compliance approach with peers.');
-                }
-
-                return {
-                    score: percentage,
-                    tier: tier,
-                    label: label,
-                    shadowAiInsights: shadowAiInsights,
-                    gaps: gaps,
-                    actions: actions
-                };
-            }
-
-            // ===== SUBMIT DIAGNOSTIC (Using fetch with FormData - works with Formspree) =====
-            function submitDiagnostic() {
-                const name = document.getElementById('leadName').value.trim();
-                const email = document.getElementById('leadEmail').value.trim();
-                const phone = document.getElementById('leadPhone').value.trim();
-                const company = document.getElementById('leadCompany').value.trim();
-
-                if (!name || !email || !company) {
-                    statusDiv.className = 'submission-status error';
-                    statusDiv.textContent = '⚠️ Please fill in all required fields (Name, Email, Organization).';
-                    statusDiv.style.display = 'block';
-                    return;
-                }
-
-                if (!email.includes('@') || !email.includes('.')) {
-                    statusDiv.className = 'submission-status error';
-                    statusDiv.textContent = '⚠️ Please enter a valid email address.';
-                    statusDiv.style.display = 'block';
-                    return;
-                }
-
-                const answers = getUserAnswers();
-                const result = calculateResults(answers);
-
-                // Build FormData
-                const formData = new FormData();
-                formData.append('name', name);
-                formData.append('email', email);
-                formData.append('phone', phone || 'Not provided');
-                formData.append('company', company);
-                formData.append('_subject', 'Sheria AI Diagnostic Results - ' + company);
-                formData.append('score', result.score);
-                formData.append('tier', result.tier);
-                formData.append('label', result.label);
-                formData.append('shadowAi', result.shadowAiInsights.join(' | '));
-                formData.append('gaps', result.gaps.join(' | '));
-                formData.append('actions', result.actions.join(' | '));
-                formData.append('answers', JSON.stringify(answers));
-                formData.append('timestamp', new Date().toISOString());
-
-                // Show loading state
-                statusDiv.className = 'submission-status loading';
-                statusDiv.innerHTML = '<span class="spinner"></span> Submitting your results...';
-                statusDiv.style.display = 'block';
-                submitBtn.disabled = true;
-
-                // Send to Formspree using fetch with FormData (works with Formspree)
-                fetch('https://formspree.io/f/xreonyro', {
-                    method: 'POST',
-                    body: formData,
-                    // No Content-Type header - browser sets it with boundary for FormData
-                })
-                    .then(response => {
-                        if (response.ok) {
-                            statusDiv.className = 'submission-status success';
-                            statusDiv.textContent = '✅ Report sent! We\'ll get back to you within 24 hours.';
-                            setTimeout(() => {
-                                statusDiv.style.display = 'none';
-                                showResultsDashboard(result);
-                            }, 800);
-                        } else {
-                            throw new Error('Submission failed');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Submission error:', error);
-                        // Fallback: mailto
-                        const subject = encodeURIComponent('Sheria AI Diagnostic Results - ' + company);
-                        const body = encodeURIComponent(
-                            'New Sheria AI Diagnostic Submission\n' +
-                            '====================================\n\n' +
-                            'Contact Details:\n' +
-                            '-----------------\n' +
-                            'Name: ' + name + '\n' +
-                            'Email: ' + email + '\n' +
-                            'Phone: ' + (phone || 'Not provided') + '\n' +
-                            'Organization: ' + company + '\n\n' +
-                            'Score: ' + result.score + '%\n' +
-                            'Tier: ' + result.tier + '\n' +
-                            'Label: ' + result.label + '\n\n' +
-                            'Shadow AI: ' + result.shadowAiInsights.join('\n') + '\n\n' +
-                            'Gaps: ' + result.gaps.join('\n') + '\n\n' +
-                            'Actions: ' + result.actions.join('\n') + '\n\n' +
-                            'Full Answers: ' + JSON.stringify(answers, null, 2) + '\n\n' +
-                            'Timestamp: ' + new Date().toISOString()
-                        );
-                        window.open('mailto:infoscireresearch@gmail.com?subject=' + subject + '&body=' + body, '_blank');
-                        statusDiv.className = 'submission-status success';
-                        statusDiv.textContent = '✅ Please send the email that just opened.';
-                        setTimeout(() => {
-                            statusDiv.style.display = 'none';
-                            showResultsDashboard(result);
-                        }, 1000);
-                    })
-                    .finally(() => {
-                        setTimeout(() => {
-                            submitBtn.disabled = false;
-                        }, 3000);
+                    checkboxes.forEach(cb => {
+                        cb.closest('label').classList.toggle('selected', cb.checked);
                     });
-            }
-
-            // ===== SHOW RESULTS DASHBOARD =====
-            function showResultsDashboard(result) {
-                form.style.display = 'none';
-                document.getElementById('progressContainer').style.display = 'none';
-                resultsDashboard.classList.add('visible');
-
-                const badge = document.getElementById('resultBadge');
-                badge.className = 'result-badge ' + result.tier;
-                document.getElementById('resultScore').textContent = result.score + '%';
-                document.getElementById('resultLabel').textContent = result.label;
-
-                document.getElementById('shadowAiResults').innerHTML = result.shadowAiInsights.map(i =>
-                    '<li><span class="icon">🔍</span> <span>' + i + '</span></li>'
-                ).join('');
-
-                document.getElementById('gapResults').innerHTML = result.gaps.map(g =>
-                    '<li><span class="icon">📋</span> <span>' + g + '</span></li>'
-                ).join('');
-
-                document.getElementById('actionResults').innerHTML = result.actions.map(a =>
-                    '<li><span class="icon">📌</span> <span>' + a + '</span></li>'
-                ).join('');
-
-                resultsDashboard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-
-            // ===== RESET SCORECARD =====
-            window.resetScorecard = function () {
-                form.reset();
-                document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
-                resultsDashboard.classList.remove('visible');
-                form.style.display = 'block';
-                document.getElementById('progressContainer').style.display = 'block';
-                document.getElementById('leadName').value = '';
-                document.getElementById('leadEmail').value = '';
-                document.getElementById('leadPhone').value = '';
-                document.getElementById('leadCompany').value = '';
-                currentStep = 0;
-                updateNavigation();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            };
-
-            // ===== SUBMIT BUTTON =====
-            submitBtn.addEventListener('click', function () {
-                submitDiagnostic();
+                    updateNavigation();
+                });
             });
+        }
 
-            // ===== KEYBOARD NAVIGATION =====
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'ArrowRight' || e.key === 'Enter') {
-                    if (!nextBtn.disabled) {
-                        nextBtn.click();
-                    }
-                } else if (e.key === 'ArrowLeft') {
-                    if (currentStep > 0) {
-                        prevBtn.click();
-                    }
-                }
-            });
+        const q5Container = document.querySelector('.question-card[data-q="5"] .checkbox-group');
+        const q9Container = document.querySelector('.question-card[data-q="9"] .checkbox-group');
+        if (q5Container) setupMutualExclusivity(q5Container);
+        if (q9Container) setupMutualExclusivity(q9Container);
 
-            // ===== INIT =====
+        // ===== FORM CHANGE LISTENER =====
+        form.addEventListener('change', function(e) {
+            const target = e.target;
+            if (target.type === 'radio') {
+                document.querySelectorAll('input[name="' + target.name + '"]').forEach(input => {
+                    input.closest('label').classList.toggle('selected', input.checked);
+                });
+            } else if (target.type === 'checkbox') {
+                target.closest('label').classList.toggle('selected', target.checked);
+            }
             updateNavigation();
         });
-    </script>
 
+        // ===== NAVIGATION =====
+        nextBtn.addEventListener('click', function() {
+            if (currentStep === totalSteps - 1) {
+                if (checkAllQuestionsAnswered()) {
+                    submitDiagnostic();
+                } else {
+                    for (let i = 0; i < cards.length - 1; i++) {
+                        const inputs = cards[i].querySelectorAll('input[type="radio"], input[type="checkbox"]');
+                        let answered = false;
+                        inputs.forEach(input => { if (input.checked) answered = true; });
+                        if (!answered) {
+                            currentStep = i;
+                            updateNavigation();
+                            cards[i].style.borderColor = '#dc2626';
+                            cards[i].style.borderWidth = '2px';
+                            setTimeout(() => {
+                                cards[i].style.borderColor = '';
+                                cards[i].style.borderWidth = '';
+                            }, 2000);
+                            break;
+                        }
+                    }
+                }
+                return;
+            }
+
+            if (!isCurrentQuestionAnswered()) {
+                highlightUnanswered();
+                return;
+            }
+
+            if (currentStep < totalSteps - 1) {
+                currentStep++;
+                updateNavigation();
+            }
+        });
+
+        prevBtn.addEventListener('click', function() {
+            if (currentStep > 0) {
+                currentStep--;
+                updateNavigation();
+            }
+        });
+
+        // ===== HELPER FUNCTIONS =====
+        function getRadioValue(name) {
+            const checked = form.querySelector('input[name="' + name + '"]:checked');
+            return checked ? parseInt(checked.value, 10) : 0;
+        }
+
+        function getCheckboxValues(name) {
+            const checked = form.querySelectorAll('input[name="' + name + '"]:checked');
+            return Array.from(checked).map(cb => cb.value);
+        }
+
+        function getUserAnswers() {
+            const answers = {};
+            for (let i = 1; i <= 15; i++) {
+                const card = document.querySelector('.question-card[data-q="' + i + '"]');
+                if (!card) continue;
+                const radios = card.querySelectorAll('input[type="radio"]:checked');
+                const checkboxes = card.querySelectorAll('input[type="checkbox"]:checked');
+                if (radios.length > 0) {
+                    answers['q' + i] = parseInt(radios[0].value, 10);
+                } else if (checkboxes.length > 0) {
+                    answers['q' + i] = Array.from(checkboxes).map(cb => cb.value);
+                }
+            }
+            return answers;
+        }
+
+        // ===== CALCULATE RESULTS =====
+        function calculateResults(answers) {
+            let score = 0;
+            let possibleScore = 0;
+            const radioQuestions = ['q1', 'q2', 'q3', 'q4', 'q6', 'q7', 'q8', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15'];
+
+            radioQuestions.forEach(q => {
+                const val = answers[q];
+                if (typeof val === 'number') {
+                    score += val;
+                    possibleScore += 5;
+                }
+            });
+
+            const q5Selections = answers.q5 || [];
+            const q9Selections = answers.q9 || [];
+            let percentage = Math.round((score / possibleScore) * 100);
+
+            let tier, label;
+            if (percentage >= 80) {
+                tier = 'low';
+                label = 'Maturity Status: Strong / Low Risk';
+            } else if (percentage >= 50) {
+                tier = 'medium';
+                label = 'Maturity Status: Moderate Risk';
+            } else if (percentage >= 30) {
+                tier = 'high';
+                label = 'Maturity Status: High Risk';
+            } else {
+                tier = 'critical';
+                label = 'Maturity Status: Critical Non-Compliance';
+            }
+
+            const q3Val = answers.q3 || 0;
+            const q4Val = answers.q4 || 0;
+            let shadowAiInsights = [];
+            if (q3Val <= 1 || q4Val >= 3) {
+                shadowAiInsights.push(
+                    '🔴 Critical Exposure: High risk of active "Shadow AI." Your employees are interacting with unauthorized tools while corporate visibility is restricted.'
+                );
+            } else {
+                shadowAiInsights.push(
+                    '🟢 Managed Visibility: Your organization shows structured control over employee AI use.'
+                );
+            }
+
+            let gaps = [];
+            const isHighRiskSector = q9Selections.length > 0 && !q9Selections.includes('none') && !q9Selections
+                .includes('unknown');
+            if (isHighRiskSector) {
+                gaps.push('❌ High-Risk Obligation: Deploying AI in ' + q9Selections.join(', ').toUpperCase() +
+                    ' triggers mandatory compliance under Section 26 of the Bill.');
+            }
+            const processesSensitive = q5Selections.some(v => ['personal', 'health', 'financial', 'biometric',
+                'sensitive'
+            ].includes(v));
+            const localizationUnsure = (answers.q6 || 0) <= 3;
+            if (processesSensitive && localizationUnsure) {
+                gaps.push(
+                    '❌ Data Residency Risk: Processing sensitive data without verified domestic residency.');
+            }
+            if ((answers.q12 || 0) === 0) {
+                gaps.push('❌ 5-Year Record Deficit: Lacks mechanism to archive model metrics for statutory retention.');
+            }
+            if (gaps.length === 0) {
+                gaps.push('✅ No critical compliance gaps detected. Great job!');
+            }
+
+            let actions = [];
+            if (percentage < 50) {
+                actions.push('📌 Conduct a formal AI system inventory and risk classification audit.');
+                actions.push('📌 Review all data processing agreements to ensure data stays in Kenya.');
+                actions.push('📌 Begin documenting your AI systems for audit readiness.');
+            } else if (percentage < 80) {
+                actions.push('📌 Appoint a dedicated AI compliance lead or team.');
+                actions.push('📌 Implement a 5-year record retention system.');
+                actions.push('📌 Conduct AI Bill awareness training for your team.');
+            } else {
+                actions.push('📌 Continue monitoring regulatory updates and maintain compliance documentation.');
+                actions.push('📌 Consider sharing your compliance approach with peers.');
+            }
+
+            return {
+                score: percentage,
+                tier: tier,
+                label: label,
+                shadowAiInsights: shadowAiInsights,
+                gaps: gaps,
+                actions: actions
+            };
+        }
+
+        // ===== SUBMIT DIAGNOSTIC =====
+        function submitDiagnostic() {
+            const name = document.getElementById('leadName').value.trim();
+            const email = document.getElementById('leadEmail').value.trim();
+            const phone = document.getElementById('leadPhone').value.trim();
+            const company = document.getElementById('leadCompany').value.trim();
+
+            if (!name || !email || !company) {
+                statusDiv.className = 'submission-status error';
+                statusDiv.textContent = '⚠️ Please fill in all required fields (Name, Email, Organization).';
+                statusDiv.style.display = 'block';
+                return;
+            }
+
+            if (!email.includes('@') || !email.includes('.')) {
+                statusDiv.className = 'submission-status error';
+                statusDiv.textContent = '⚠️ Please enter a valid email address.';
+                statusDiv.style.display = 'block';
+                return;
+            }
+
+            const answers = getUserAnswers();
+            const result = calculateResults(answers);
+
+            statusDiv.className = 'submission-status loading';
+            statusDiv.innerHTML = '<span class="spinner"></span> Submitting your results...';
+            statusDiv.style.display = 'block';
+            submitBtn.disabled = true;
+
+            const emailData = {
+                name: name,
+                email: email,
+                phone: phone || 'Not provided',
+                company: company,
+                score: result.score,
+                tier: result.tier,
+                label: result.label,
+                shadowAi: result.shadowAiInsights.join('\n'),
+                gaps: result.gaps.join('\n'),
+                actions: result.actions.join('\n'),
+                answers: JSON.stringify(answers, null, 2),
+                timestamp: new Date().toLocaleString('en-KE', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
+            };
+
+            // === USING YOUR TEMPLATE IDs ===
+            // ADMIN: template_bl2rvzh (Contact Us)
+            // USER: template_rbi0ygc (Auto-Reply)
+            // SERVICE: service_lg0l2fa
+
+            const adminPromise = emailjs.send('service_lg0l2fa', 'template_bl2rvzh', emailData);
+            const userPromise = emailjs.send('service_lg0l2fa', 'template_rbi0ygc', emailData);
+
+            Promise.all([adminPromise, userPromise])
+                .then(function(responses) {
+                    statusDiv.className = 'submission-status success';
+                    statusDiv.innerHTML = '✅ Report sent to your email! Check your inbox (and spam folder).';
+                    setTimeout(() => {
+                        statusDiv.style.display = 'none';
+                        showResultsDashboard(result);
+                    }, 800);
+                })
+                .catch(function(error) {
+                    console.error('EmailJS error:', error);
+                    statusDiv.className = 'submission-status error';
+                    statusDiv.innerHTML =
+                        '❌ Failed to send report. Please try again or contact us directly at infoscireresearch@gmail.com';
+                    submitBtn.disabled = false;
+                });
+        }
+
+        // ===== SHOW RESULTS DASHBOARD =====
+        function showResultsDashboard(result) {
+            form.style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'none';
+            resultsDashboard.classList.add('visible');
+
+            const badge = document.getElementById('resultBadge');
+            badge.className = 'result-badge ' + result.tier;
+            document.getElementById('resultScore').textContent = result.score + '%';
+            document.getElementById('resultLabel').textContent = result.label;
+
+            document.getElementById('shadowAiResults').innerHTML = result.shadowAiInsights.map(i =>
+                '<li><span class="icon">🔍</span> <span>' + i + '</span></li>'
+            ).join('');
+
+            document.getElementById('gapResults').innerHTML = result.gaps.map(g =>
+                '<li><span class="icon">📋</span> <span>' + g + '</span></li>'
+            ).join('');
+
+            document.getElementById('actionResults').innerHTML = result.actions.map(a =>
+                '<li><span class="icon">📌</span> <span>' + a + '</span></li>'
+            ).join('');
+
+            resultsDashboard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // ===== RESET SCORECARD =====
+        window.resetScorecard = function() {
+            form.reset();
+            document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+            resultsDashboard.classList.remove('visible');
+            form.style.display = 'block';
+            document.getElementById('progressContainer').style.display = 'block';
+            document.getElementById('leadName').value = '';
+            document.getElementById('leadEmail').value = '';
+            document.getElementById('leadPhone').value = '';
+            document.getElementById('leadCompany').value = '';
+            currentStep = 0;
+            updateNavigation();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // ===== SUBMIT BUTTON =====
+        submitBtn.addEventListener('click', function() {
+            submitDiagnostic();
+        });
+
+        // ===== KEYBOARD NAVIGATION =====
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === 'Enter') {
+                if (!nextBtn.disabled) {
+                    nextBtn.click();
+                }
+            } else if (e.key === 'ArrowLeft') {
+                if (currentStep > 0) {
+                    prevBtn.click();
+                }
+            }
+        });
+
+        // ===== INIT =====
+        updateNavigation();
+    });
+</script>
 </body>
 
 </html>
