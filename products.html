@@ -11,10 +11,6 @@
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cline x1='62' y1='62' x2='82' y2='82' stroke='%23e67e22' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='28' fill='none' stroke='%231a5276' stroke-width='5'/%3E%3Cpath d='M35,25 Q45,35 35,45 Q25,55 35,65' fill='none' stroke='%23e67e22' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M55,25 Q45,35 55,45 Q65,55 55,65' fill='none' stroke='%23148f8f' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='3' fill='%23e67e22'/%3E%3C/svg%3E" />
 
-    <!-- ===== EMAILJS CDN ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-    </script>
-
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -1309,11 +1305,6 @@
             vertical-align: middle;
             margin-right: 8px;
         }
-
-        /* ===== HIDDEN FORM ===== */
-        .hidden-form {
-            display: none;
-        }
     </style>
 </head>
 
@@ -1935,16 +1926,6 @@
     <!-- SCRIPTS                                                      -->
     <!-- ============================================================ -->
     <script>
-        // ===== EMAILJS CONFIGURATION =====
-        // REPLACE WITH YOUR ACTUAL CREDENTIALS FROM EMAILJS DASHBOARD
-        const EMAILJS_USER_ID = '4vXMop9x_nabItBR7'; // Get from Dashboard → Account → API Keys
-        const EMAILJS_SERVICE_ID = 'service_lg0l2fa';
-        const TEMPLATE_ADMIN = 'template_bl2rvzh';
-        const TEMPLATE_USER = 'template_rbi0ygc';
-
-        // Initialize EmailJS
-        emailjs.init(EMAILJS_USER_ID);
-
         // ===== HEADER SCROLL =====
         document.addEventListener('DOMContentLoaded', function() {
             const header = document.getElementById('mainHeader');
@@ -2320,52 +2301,86 @@
                 statusDiv.style.display = 'block';
                 submitBtn.disabled = true;
 
-                const emailData = {
-                    name: name,
-                    email: email,
-                    phone: phone || 'Not provided',
-                    company: company,
-                    score: result.score,
-                    tier: result.tier,
-                    label: result.label,
-                    shadowAi: result.shadowAiInsights.join('\n'),
-                    gaps: result.gaps.join('\n'),
-                    actions: result.actions.join('\n'),
-                    answers: JSON.stringify(answers, null, 2),
-                    timestamp: new Date().toLocaleString('en-KE', {
+                // Build the email body as plain text
+                const emailSubject = 'Sheria AI Diagnostic Results - ' + company;
+                const emailBody =
+                    'New Sheria AI Diagnostic Submission\n' +
+                    '====================================\n\n' +
+                    'Contact Details:\n' +
+                    '-----------------\n' +
+                    'Name: ' + name + '\n' +
+                    'Email: ' + email + '\n' +
+                    'Phone: ' + (phone || 'Not provided') + '\n' +
+                    'Organization: ' + company + '\n\n' +
+                    'Results:\n' +
+                    '--------\n' +
+                    'Score: ' + result.score + '%\n' +
+                    'Tier: ' + result.tier + '\n' +
+                    'Label: ' + result.label + '\n\n' +
+                    'Shadow AI Risk:\n' +
+                    result.shadowAiInsights.join('\n') + '\n\n' +
+                    'Compliance Gaps:\n' +
+                    result.gaps.join('\n') + '\n\n' +
+                    'Action Plan:\n' +
+                    result.actions.join('\n') + '\n\n' +
+                    'Full Answers:\n' +
+                    JSON.stringify(answers, null, 2) + '\n\n' +
+                    'Timestamp: ' + new Date().toLocaleString('en-KE', {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric',
                         hour: '2-digit',
                         minute: '2-digit'
-                    })
-                };
-
-                // === USING YOUR TEMPLATE IDs ===
-                // ADMIN: template_bl2rvzh (Contact Us)
-                // USER: template_rbi0ygc (Auto-Reply)
-                // SERVICE: service_lg0l2fa
-
-                const adminPromise = emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_ADMIN, emailData);
-                const userPromise = emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_USER, emailData);
-
-                Promise.all([adminPromise, userPromise])
-                    .then(function(responses) {
-                        statusDiv.className = 'submission-status success';
-                        statusDiv.innerHTML = '✅ Report sent to your email! Check your inbox (and spam folder).';
-                        setTimeout(() => {
-                            statusDiv.style.display = 'none';
-                            showResultsDashboard(result);
-                        }, 800);
-                    })
-                    .catch(function(error) {
-                        console.error('EmailJS error:', error);
-                        statusDiv.className = 'submission-status error';
-                        statusDiv.innerHTML =
-                            '❌ Failed to send report. Please try again or contact us directly at infoscireresearch@gmail.com';
-                        submitBtn.disabled = false;
                     });
+
+                // Send email using mailto: (opens default email client)
+                const mailtoLink = 'mailto:infoscireresearch@gmail.com?subject=' +
+                    encodeURIComponent(emailSubject) +
+                    '&body=' +
+                    encodeURIComponent(emailBody);
+
+                // Open mail client
+                const win = window.open(mailtoLink, '_blank');
+
+                if (win) {
+                    statusDiv.className = 'submission-status success';
+                    statusDiv.textContent = '✅ Please send the email that just opened. We\'ll get back to you within 24 hours.';
+                    setTimeout(() => {
+                        statusDiv.style.display = 'none';
+                        showResultsDashboard(result);
+                    }, 1000);
+                } else {
+                    // If mailto fails, show the email content so they can copy it
+                    statusDiv.className = 'submission-status error';
+                    statusDiv.innerHTML =
+                        '⚠️ Please copy the email below and send it to <strong>infoscireresearch@gmail.com</strong>:<br><br>' +
+                        '<div style="background:#f8fafc; padding:12px; border-radius:8px; text-align:left; font-size:0.85rem; max-height:200px; overflow:auto; border:1px solid #e2e8f0;">' +
+                        emailBody.replace(/\n/g, '<br>') +
+                        '</div>' +
+                        '<br><button onclick="copyEmailToClipboard()" class="btn btn-small" style="background:#1e3c72; color:#fff;">Copy Email</button>';
+                    submitBtn.disabled = false;
+                }
             }
+
+            // ===== COPY EMAIL TO CLIPBOARD =====
+            window.copyEmailToClipboard = function() {
+                const emailText = document.querySelector('.submission-status .pre-wrap') ||
+                    document.querySelector('.submission-status div[style*="background:#f8fafc"]');
+                if (emailText) {
+                    const text = emailText.textContent;
+                    navigator.clipboard.writeText(text).then(() => {
+                        alert('Email copied to clipboard! Please paste it into your email client and send to infoscireresearch@gmail.com');
+                    }).catch(() => {
+                        // Fallback
+                        const range = document.createRange();
+                        range.selectNode(emailText);
+                        window.getSelection().removeAllRanges();
+                        window.getSelection().addRange(range);
+                        document.execCommand('copy');
+                        alert('Email copied to clipboard!');
+                    });
+                }
+            };
 
             // ===== SHOW RESULTS DASHBOARD =====
             function showResultsDashboard(result) {
