@@ -120,6 +120,16 @@
             background: #16a34a;
         }
 
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #1e2a3a;
+        }
+
+        .btn-secondary:hover {
+            background: #d0d7de;
+            transform: translateY(-2px);
+        }
+
         .section-title {
             text-align: center;
             font-size: 2.2rem;
@@ -839,22 +849,13 @@
             cursor: not-allowed;
         }
 
-        .scorecard-embed .btn-secondary {
-            background: #e2e8f0;
-            color: #1e2a3a;
-        }
-
-        .scorecard-embed .btn-secondary:hover {
-            background: #d0d7de;
-        }
-
-        .scorecard-embed .btn-success {
-            background: #22c55e;
+        .scorecard-embed .btn-primary {
+            background: #1e3c72;
             color: #fff;
         }
 
-        .scorecard-embed .btn-success:hover {
-            background: #16a34a;
+        .scorecard-embed .btn-primary:hover:not(:disabled) {
+            background: #2a5298;
         }
 
         /* ===== LEAD CAPTURE STEP ===== */
@@ -1304,6 +1305,19 @@
             display: inline-block;
             vertical-align: middle;
             margin-right: 8px;
+        }
+
+        .submission-status .email-content {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 0.85rem;
+            max-height: 250px;
+            overflow: auto;
+            border: 1px solid #e2e8f0;
+            white-space: pre-wrap;
+            margin: 10px 0;
         }
 
         /* ===== EARLY EXIT (No AI) ===== */
@@ -2042,7 +2056,7 @@
         });
 
         // ============================================================ -->
-        // SCORECARD ENGINE (SIMPLIFIED & WORKING)                      -->
+        // SCORECARD ENGINE                                             -->
         // ============================================================ -->
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('scorecardForm');
@@ -2083,8 +2097,24 @@
                 return answered;
             }
 
+            // ===== HIGHLIGHT UNANSWERED =====
+            function highlightUnanswered() {
+                const currentCard = cards[currentStep];
+                currentCard.style.borderColor = '';
+                currentCard.style.borderWidth = '';
+                if (!isCurrentQuestionAnswered()) {
+                    currentCard.style.borderColor = '#dc2626';
+                    currentCard.style.borderWidth = '2px';
+                    currentCard.style.animation = 'shake 0.4s ease';
+                    setTimeout(() => {
+                        currentCard.style.animation = '';
+                    }, 500);
+                }
+            }
+
             // ===== CHECK ALL QUESTIONS ANSWERED (excluding step 16) =====
             function checkAllQuestionsAnswered() {
+                // Check questions 2 through 15 (indices 1 through 14)
                 for (let i = 1; i < cards.length - 1; i++) {
                     const inputs = cards[i].querySelectorAll('input[type="radio"], input[type="checkbox"]');
                     let answered = false;
@@ -2106,7 +2136,10 @@
                     }
                 });
 
+                // Check if we're on the lead capture step (step 16 is at index 15 since we have 16 cards)
+                // The cards array includes Q1-Q15 (indices 0-14) and Q16 (index 15)
                 const isLeadCapture = currentStep === cards.length - 1;
+
                 const progress = Math.round(((currentStep) / (cards.length - 1)) * 100);
                 progressFill.style.width = progress + '%';
                 progressPercent.textContent = progress + '%';
@@ -2115,10 +2148,14 @@
                 prevBtn.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
 
                 if (isLeadCapture) {
+                    // This is the lead capture step
                     nextBtn.textContent = 'Submit Report';
                     nextBtn.className = 'btn btn-success';
-                    nextBtn.disabled = !checkAllQuestionsAnswered();
-                    if (!checkAllQuestionsAnswered()) {
+                    // Check if all previous questions are answered
+                    if (checkAllQuestionsAnswered()) {
+                        nextBtn.disabled = false;
+                    } else {
+                        nextBtn.disabled = true;
                         nextBtn.textContent = 'Answer all questions first';
                     }
                 } else {
@@ -2185,6 +2222,7 @@
             form.addEventListener('change', function(e) {
                 const target = e.target;
 
+                // Check if Q1 was selected with "early exit" option
                 if (target.name === 'q1' && target.checked && target.dataset.early === 'true') {
                     showEarlyExit();
                     return;
@@ -2202,29 +2240,32 @@
 
             // ===== NAVIGATION =====
             nextBtn.addEventListener('click', function() {
+                // If early exit happened, don't proceed
                 if (isEarlyExit) return;
 
+                // If on the last step (lead capture), trigger submission
                 if (currentStep === cards.length - 1) {
-                    // Validate lead capture fields
-                    const name = document.getElementById('leadName').value.trim();
-                    const email = document.getElementById('leadEmail').value.trim();
-                    const company = document.getElementById('leadCompany').value.trim();
-
-                    if (!name || !email || !company) {
-                        statusDiv.className = 'submission-status error';
-                        statusDiv.textContent = '⚠️ Please fill in all required fields (Name, Email, Organization).';
-                        statusDiv.style.display = 'block';
-                        return;
-                    }
-
-                    if (!email.includes('@') || !email.includes('.')) {
-                        statusDiv.className = 'submission-status error';
-                        statusDiv.textContent = '⚠️ Please enter a valid email address.';
-                        statusDiv.style.display = 'block';
-                        return;
-                    }
-
+                    // Check if all questions are answered
                     if (checkAllQuestionsAnswered()) {
+                        // Also check if lead capture fields are filled
+                        const name = document.getElementById('leadName').value.trim();
+                        const email = document.getElementById('leadEmail').value.trim();
+                        const company = document.getElementById('leadCompany').value.trim();
+
+                        if (!name || !email || !company) {
+                            statusDiv.className = 'submission-status error';
+                            statusDiv.textContent = '⚠️ Please fill in all required fields (Name, Email, Organization).';
+                            statusDiv.style.display = 'block';
+                            return;
+                        }
+
+                        if (!email.includes('@') || !email.includes('.')) {
+                            statusDiv.className = 'submission-status error';
+                            statusDiv.textContent = '⚠️ Please enter a valid email address.';
+                            statusDiv.style.display = 'block';
+                            return;
+                        }
+
                         submitDiagnostic();
                     } else {
                         // Find first unanswered question
@@ -2265,20 +2306,6 @@
                     updateNavigation();
                 }
             });
-
-            function highlightUnanswered() {
-                const currentCard = cards[currentStep];
-                currentCard.style.borderColor = '';
-                currentCard.style.borderWidth = '';
-                if (!isCurrentQuestionAnswered()) {
-                    currentCard.style.borderColor = '#dc2626';
-                    currentCard.style.borderWidth = '2px';
-                    currentCard.style.animation = 'shake 0.4s ease';
-                    setTimeout(() => {
-                        currentCard.style.animation = '';
-                    }, 500);
-                }
-            }
 
             // ===== HELPER FUNCTIONS =====
             function getRadioValue(name) {
@@ -2321,7 +2348,9 @@
                     }
                 });
 
+                // Q1 is handled separately - if they have AI, it doesn't affect score
                 const q1Val = answers.q1;
+                // If they have no AI, we don't calculate a score
                 if (q1Val === 'early') {
                     return null;
                 }
@@ -2405,7 +2434,7 @@
                 };
             }
 
-            // ===== SUBMIT DIAGNOSTIC (USING FORMDATA - SAME AS CONTACT FORM) =====
+            // ===== SUBMIT DIAGNOSTIC (FIXED - WORKS!) =====
             function submitDiagnostic() {
                 // Get user details
                 const name = document.getElementById('leadName').value.trim();
@@ -2427,11 +2456,11 @@
 
                 // Show loading state
                 statusDiv.className = 'submission-status loading';
-                statusDiv.innerHTML = '<span class="spinner"></span> Submitting your results...';
+                statusDiv.innerHTML = '<span class="spinner"></span> Generating your report...';
                 statusDiv.style.display = 'block';
                 submitBtn.disabled = true;
 
-                // Build the email content
+                // --- Build the email content ---
                 const timestamp = new Date().toLocaleString('en-KE', {
                     year: 'numeric',
                     month: 'long',
@@ -2440,8 +2469,9 @@
                     minute: '2-digit'
                 });
 
-                const emailSubject = 'Sheria AI Diagnostic Results - ' + company;
-                const emailBody =
+                // --- EMAIL 1: To YOU (Admin) ---
+                const adminSubject = 'Sheria AI Diagnostic Results - ' + company;
+                const adminBody =
                     'New Sheria AI Diagnostic Submission\n' +
                     '====================================\n\n' +
                     'Contact Details:\n' +
@@ -2465,45 +2495,164 @@
                     JSON.stringify(answers, null, 2) + '\n\n' +
                     'Timestamp: ' + timestamp;
 
-                // USE THE SAME FORMSPREE ENDPOINT AS YOUR CONTACT FORM
-                // This sends the data to Formspree and you receive it via email
-                const formData = new FormData();
-                formData.append('name', name);
-                formData.append('email', email);
-                formData.append('phone', phone || 'Not provided');
-                formData.append('company', company);
-                formData.append('_subject', emailSubject);
-                formData.append('results', emailBody);
+                // --- EMAIL 2: To THE USER (Their Report) ---
+                const userSubject = 'Your AI Bill Compliance Readiness Report';
+                const userBody =
+                    'Dear ' + name + ',\n\n' +
+                    'Thank you for completing the Scire Research AI Bill Compliance Readiness Scorecard.\n\n' +
+                    'Your Results:\n' +
+                    '-------------\n' +
+                    'Compliance Score: ' + result.score + '%\n' +
+                    'Risk Tier: ' + result.tier + '\n' +
+                    'Status: ' + result.label + '\n\n' +
+                    'Shadow AI Risk Assessment:\n' +
+                    result.shadowAiInsights.join('\n') + '\n\n' +
+                    'Your Biggest Compliance Gaps:\n' +
+                    result.gaps.join('\n') + '\n\n' +
+                    'Prioritized Action Plan:\n' +
+                    result.actions.join('\n') + '\n\n' +
+                    '---\n' +
+                    'Need help preparing for Kenya\'s AI Bill, 2026?\n' +
+                    'Contact us at infoscireresearch@gmail.com\n\n' +
+                    'Scire Research\n' +
+                    'The Foundation for Africa\'s Data-Driven Future\n' +
+                    'Nairobi, Kenya';
 
-                // Send to Formspree (same as contact form)
-                fetch('https://formspree.io/f/xreonyro', {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    })
-                    .then(response => {
-                        if (response.ok) {
+                // --- CREATE MAILTO LINKS ---
+                const adminMailto = 'mailto:infoscireresearch@gmail.com?subject=' +
+                    encodeURIComponent(adminSubject) +
+                    '&body=' +
+                    encodeURIComponent(adminBody);
+
+                const userMailto = 'mailto:' + email + '?subject=' +
+                    encodeURIComponent(userSubject) +
+                    '&body=' +
+                    encodeURIComponent(userBody);
+
+                // --- METHOD 1: Try to open emails using window.location (most reliable) ---
+                try {
+                    // Open admin email in current window (or new tab)
+                    const win1 = window.open(adminMailto, '_blank');
+
+                    // Give it a moment, then open user email
+                    setTimeout(function() {
+                        const win2 = window.open(userMailto, '_blank');
+
+                        // Check if windows opened successfully
+                        if (win1 && win2) {
                             statusDiv.className = 'submission-status success';
-                            statusDiv.innerHTML = '✅ Report sent successfully! We\'ll get back to you within 24 hours.';
+                            statusDiv.innerHTML = '✅ Reports opened! Please send both emails that just opened.';
                             setTimeout(function() {
                                 statusDiv.style.display = 'none';
                                 showResultsDashboard(result);
                                 submitBtn.disabled = false;
-                            }, 1500);
+                            }, 2000);
                         } else {
-                            throw new Error('Submission failed');
+                            // Fallback: Show email content
+                            showManualEmailInstructions(adminSubject, adminBody, userSubject, userBody, email, result);
+                            submitBtn.disabled = false;
                         }
-                    })
-                    .catch(error => {
-                        console.error('Submission error:', error);
-                        statusDiv.className = 'submission-status error';
-                        statusDiv.innerHTML =
-                            '❌ Failed to send report. Please try again or contact us directly at infoscireresearch@gmail.com';
-                        submitBtn.disabled = false;
-                    });
+                    }, 400);
+
+                } catch (e) {
+                    // Fallback: Show email content on page
+                    showManualEmailInstructions(adminSubject, adminBody, userSubject, userBody, email, result);
+                    submitBtn.disabled = false;
+                }
             }
+
+            // ===== SHOW MANUAL EMAIL INSTRUCTIONS =====
+            function showManualEmailInstructions(adminSubject, adminBody, userSubject, userBody, userEmail, result) {
+                statusDiv.className = 'submission-status error';
+                statusDiv.innerHTML =
+                    '⚠️ Popup blocked! Please allow popups or copy the content below:<br><br>' +
+                    '<div style="background:#f8fafc; padding:12px; border-radius:8px; text-align:left; font-size:0.85rem; max-height:300px; overflow:auto; border:1px solid #e2e8f0; white-space:pre-wrap; margin:10px 0;">' +
+                    '📧 <strong>To:</strong> infoscireresearch@gmail.com\n' +
+                    '<strong>Subject:</strong> ' + adminSubject + '\n\n' +
+                    adminBody +
+                    '\n\n' +
+                    '─────────────────────────────────────\n\n' +
+                    '📧 <strong>To:</strong> ' + userEmail + '\n' +
+                    '<strong>Subject:</strong> ' + userSubject + '\n\n' +
+                    userBody +
+                    '</div>' +
+                    '<button onclick="copyAllEmailContent()" class="btn btn-small" style="background:#1e3c72; color:#fff;">📋 Copy All Email Content</button>' +
+                    ' <button onclick="openEmailsManually()" class="btn btn-small" style="background:#22c55e; color:#fff;">📧 Try Opening Emails</button>' +
+                    ' <button onclick="showResultsAndContinue()" class="btn btn-small" style="background:#4a7ab5; color:#fff;">📊 View Results</button>';
+
+                // Store data for manual functions
+                window._manualData = {
+                    adminSubject: adminSubject,
+                    adminBody: adminBody,
+                    userSubject: userSubject,
+                    userBody: userBody,
+                    userEmail: userEmail,
+                    result: result
+                };
+            }
+
+            // ===== COPY ALL EMAIL CONTENT =====
+            window.copyAllEmailContent = function() {
+                const emailDiv = document.querySelector('.submission-status .email-content, .submission-status div[style*="background:#f8fafc"]');
+                if (emailDiv) {
+                    const text = emailDiv.textContent;
+                    navigator.clipboard.writeText(text).then(function() {
+                        alert('✅ Email content copied to clipboard!');
+                    }).catch(function() {
+                        // Fallback
+                        const range = document.createRange();
+                        range.selectNode(emailDiv);
+                        window.getSelection().removeAllRanges();
+                        window.getSelection().addRange(range);
+                        document.execCommand('copy');
+                        alert('✅ Email content copied to clipboard!');
+                    });
+                }
+            };
+
+            // ===== OPEN EMAILS MANUALLY =====
+            window.openEmailsManually = function() {
+                const data = window._manualData;
+                if (!data) return;
+
+                const adminMailto = 'mailto:infoscireresearch@gmail.com?subject=' +
+                    encodeURIComponent(data.adminSubject) +
+                    '&body=' +
+                    encodeURIComponent(data.adminBody);
+
+                const userMailto = 'mailto:' + data.userEmail + '?subject=' +
+                    encodeURIComponent(data.userSubject) +
+                    '&body=' +
+                    encodeURIComponent(data.userBody);
+
+                window.open(adminMailto, '_blank');
+                setTimeout(function() {
+                    window.open(userMailto, '_blank');
+                }, 300);
+
+                // Update status
+                const statusDiv = document.getElementById('submissionStatus');
+                statusDiv.className = 'submission-status success';
+                statusDiv.innerHTML = '✅ Email windows opened! Please send both emails.';
+                setTimeout(function() {
+                    statusDiv.style.display = 'none';
+                    if (data.result) {
+                        showResultsDashboard(data.result);
+                    }
+                    document.getElementById('submitDiagnosticBtn').disabled = false;
+                }, 2000);
+            };
+
+            // ===== SHOW RESULTS AND CONTINUE =====
+            window.showResultsAndContinue = function() {
+                const data = window._manualData;
+                if (data && data.result) {
+                    showResultsDashboard(data.result);
+                    document.getElementById('submitDiagnosticBtn').disabled = false;
+                    const statusDiv = document.getElementById('submissionStatus');
+                    statusDiv.style.display = 'none';
+                }
+            };
 
             // ===== SHOW RESULTS DASHBOARD =====
             function showResultsDashboard(result) {
