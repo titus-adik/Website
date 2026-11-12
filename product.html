@@ -2558,6 +2558,61 @@ if (emailNote) {
                 }, 200);
             };
 
+    // ===== SEND REPORT TO SCIRE VIA FORMSPREE =====
+window.sendReportToScire = function () {
+    const btn = document.getElementById('emailTeamBtn');
+    const note = document.getElementById('emailSendNote');
+
+    // Build answer list
+    const answerLines = [];
+    for (let i = 1; i <= 15; i++) {
+        const key = `Question_${i}`;
+        const ans = collectedAnswers[key] || 'Not answered';
+        answerLines.push(`Q${i}: ${ans}`);
+    }
+
+    const payload = {
+        _subject: 'Sovryn AI Diagnostic Report — Client Requested Follow-up',
+        form_origin: 'Sovryn AI Results Dashboard',
+        timestamp: new Date().toLocaleString('en-KE', { timeZone: 'Africa/Nairobi' }),
+        score: document.getElementById('resultScore').textContent,
+        tier: document.getElementById('resultLabel').textContent,
+        discovery_findings: document.querySelector('#shadowAiResults li span')?.innerText || 'No data',
+        unverified_risk_points: Array.from(document.querySelectorAll('#gapResults li span')).map(el => el.innerText).join('\n') || 'No data',
+        evidence_gaps: Array.from(document.querySelectorAll('#actionResults li span')).map(el => el.innerText).join('\n') || 'No data',
+        questionnaire_answers: answerLines.join('\n')
+    };
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    note.style.display = 'none';
+
+    fetch('https://formspree.io/f/xreonyro', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+        .then(response => {
+            if (response.ok) {
+                btn.style.display = 'none';
+                note.textContent = 'Report Sent!';
+                note.style.color = '#065f46';
+                note.style.display = 'inline';
+            } else {
+                throw new Error('Send failed');
+            }
+        })
+        .catch(() => {
+            btn.disabled = false;
+            btn.textContent = '📧 Email Our Team';
+            note.textContent = 'Not sent — try again';
+            note.style.color = '#991b1b';
+            note.style.display = 'inline';
+        });
+};
             // ============================================================ -->
             // LEAD CAPTURE - SUBMIT TO FORMPREE                            -->
             // ============================================================ -->
@@ -2637,61 +2692,6 @@ if (emailNote) {
             // ===== INIT =====
             updateWizardUI();
         });
-    // ===== SEND REPORT TO SCIRE VIA FORMSPREE =====
-window.sendReportToScire = function () {
-    const btn = document.getElementById('emailTeamBtn');
-    const note = document.getElementById('emailSendNote');
-
-    // Build answer list
-    const answerLines = [];
-    for (let i = 1; i <= 15; i++) {
-        const key = `Question_${i}`;
-        const ans = collectedAnswers[key] || 'Not answered';
-        answerLines.push(`Q${i}: ${ans}`);
-    }
-
-    const payload = {
-        _subject: 'Sovryn AI Diagnostic Report — Client Requested Follow-up',
-        form_origin: 'Sovryn AI Results Dashboard',
-        timestamp: new Date().toLocaleString('en-KE', { timeZone: 'Africa/Nairobi' }),
-        score: document.getElementById('resultScore').textContent,
-        tier: document.getElementById('resultLabel').textContent,
-        discovery_findings: document.querySelector('#shadowAiResults li span')?.innerText || 'No data',
-        unverified_risk_points: Array.from(document.querySelectorAll('#gapResults li span')).map(el => el.innerText).join('\n') || 'No data',
-        evidence_gaps: Array.from(document.querySelectorAll('#actionResults li span')).map(el => el.innerText).join('\n') || 'No data',
-        questionnaire_answers: answerLines.join('\n')
-    };
-
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-    note.style.display = 'none';
-
-    fetch('https://formspree.io/f/xreonyro', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
-        .then(response => {
-            if (response.ok) {
-                btn.style.display = 'none';
-                note.textContent = 'Report Sent!';
-                note.style.color = '#065f46';
-                note.style.display = 'inline';
-            } else {
-                throw new Error('Send failed');
-            }
-        })
-        .catch(() => {
-            btn.disabled = false;
-            btn.textContent = '📧 Email Our Team';
-            note.textContent = 'Not sent — try again';
-            note.style.color = '#991b1b';
-            note.style.display = 'inline';
-        });
-};
 </script>
 
 </body>
