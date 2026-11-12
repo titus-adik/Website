@@ -1,0 +1,2699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products – Scire Research</title>
+    <meta name="description"
+        content="Sovryn AI detects where your organization is exposed to Kenya's evolving AI and data rules—before a regulator does. Continuous regulatory exposure detection for AI systems." />
+
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cline x1='62' y1='62' x2='82' y2='82' stroke='%23e67e22' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='28' fill='none' stroke='%231a5276' stroke-width='5'/%3E%3Cpath d='M35,25 Q45,35 35,45 Q25,55 35,65' fill='none' stroke='%23e67e22' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M55,25 Q45,35 55,45 Q65,55 55,65' fill='none' stroke='%23148f8f' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='45' cy='45' r='3' fill='%23e67e22'/%3E%3C/svg%3E" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1e2a3a;
+            line-height: 1.6;
+            background: #fafbfc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            color: #1e3c72;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #4a7ab5;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #1e3c72;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #2a5298;
+            transform: translateY(-2px);
+        }
+
+        .btn-small {
+            padding: 6px 18px;
+            font-size: 0.8rem;
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .btn-small:hover {
+            background: #fff;
+            color: #1e3c72;
+            border-color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: #fff;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-dark {
+            background: transparent;
+            border: 1.5px solid #1e3c72;
+            color: #1e3c72;
+        }
+
+        .btn-outline-dark:hover {
+            background: #1e3c72;
+            color: #fff;
+        }
+
+        .btn-success {
+            background: #22c55e;
+            color: #fff;
+        }
+
+        .btn-success:hover {
+            background: #16a34a;
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #1e2a3a;
+        }
+
+        .btn-secondary:hover {
+            background: #d0d7de;
+            transform: translateY(-2px);
+        }
+
+        .btn-email {
+            background: #ea4335;
+            color: #fff;
+        }
+
+        .btn-email:hover {
+            background: #d33426;
+            transform: translateY(-2px);
+        }
+
+        .btn-email-outline {
+            background: transparent;
+            border: 1.5px solid #ea4335;
+            color: #ea4335;
+        }
+
+        .btn-email-outline:hover {
+            background: #ea4335;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            color: #0b1e33;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #4a5b6e;
+            max-width: 650px;
+            margin: 0 auto 50px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 0;
+        }
+
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-enclosed {
+            background: rgba(11, 30, 51, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 10px 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .logo svg {
+            height: 35px;
+            width: auto;
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .logo-text .main {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        .logo-text .main span {
+            color: #7aafd4;
+        }
+
+        .logo-text .tagline {
+            font-size: 0.5rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .desktop-nav a {
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.85rem;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .desktop-nav a:hover {
+            color: #fff;
+        }
+
+        header.scrolled .header-enclosed {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid #eaeef3;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        header.scrolled .logo-text .main {
+            color: #1e3c72;
+        }
+
+        header.scrolled .logo-text .main span {
+            color: #4a7ab5;
+        }
+
+        header.scrolled .logo-text .tagline {
+            color: #4a5b6e;
+        }
+
+        header.scrolled .desktop-nav a {
+            color: #2c3e50;
+        }
+
+        header.scrolled .desktop-nav a:hover {
+            color: #1e3c72;
+        }
+
+        header.scrolled .desktop-nav .btn-small {
+            color: #1e3c72;
+            border: 2px solid #1e3c72;
+        }
+
+        header.scrolled .desktop-nav .btn-small:hover {
+            background: #1e3c72;
+            color: #fff;
+        }
+
+        header.scrolled .hamburger .bar {
+            background: #1e3c72;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 101;
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #fff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 350px;
+            height: 100%;
+            background: #1e3c72;
+            z-index: 1000;
+            transition: right 0.4s ease;
+            padding: 60px 30px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+        }
+
+        .mobile-menu-overlay.open {
+            right: 0;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-menu-close:hover {
+            opacity: 1;
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .mobile-nav a {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            color: #4a7ab5;
+        }
+
+        .mobile-nav .btn {
+            display: inline-block;
+            margin-top: 10px;
+            text-align: center;
+            background: #fff;
+            color: #1e3c72;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .mobile-nav .btn:hover {
+            background: #eaeef3;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .header-enclosed {
+                padding: 8px 16px;
+                border-radius: 30px;
+            }
+
+            .logo-text .main {
+                font-size: 1rem;
+            }
+
+            .logo-text .tagline {
+                font-size: 0.4rem;
+            }
+
+            .logo svg {
+                height: 28px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+
+            .mobile-menu-overlay {
+                display: none;
+            }
+        }
+
+        /* ===== BRAND INTEGRATION HERO ===== */
+        .innovations-hero {
+            background: #0b1e33;
+            color: #fff;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .innovations-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #e67e22, #4a7ab5, #148f8f);
+        }
+
+        .innovations-hero .badge {
+            color: #e67e22;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+
+        .innovations-hero h1 {
+            font-size: 2.5rem;
+            margin-top: 10px;
+            font-weight: 800;
+        }
+
+        .innovations-hero p {
+            color: #b0c4de;
+            max-width: 700px;
+            margin: 15px auto 0;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .innovations-hero {
+                padding: 120px 0 40px;
+            }
+
+            .innovations-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .innovations-hero p {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* ===== FLAGSHIP PRODUCT ===== */
+        .product-featured {
+            padding: 60px 0;
+            background: #fff;
+        }
+
+        .product-featured .flagship-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .product-featured .flagship-content {
+            flex: 1 1 500px;
+        }
+
+        .product-featured .flagship-content .product-badge {
+            background: #eef4ff;
+            color: #1e3c72;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+
+        .product-featured .flagship-content h2 {
+            font-size: 2rem;
+            color: #0b1e33;
+            margin-top: 15px;
+            font-weight: 700;
+        }
+
+        .product-featured .flagship-content h2 span {
+            color: #4a7ab5;
+        }
+
+        .product-featured .flagship-content .subtitle {
+            font-size: 1.1rem;
+            color: #4a5b6e;
+            margin-top: 10px;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .product-featured .flagship-content .desc {
+            margin-top: 15px;
+            color: #1e2a3a;
+        }
+
+        .product-featured .flagship-content .desc strong {
+            color: #1e3c72;
+        }
+
+        .product-featured .flagship-content .cta-row {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .product-featured .moat-box {
+            flex: 1 1 350px;
+            background: #f8fafc;
+            border-left: 4px solid #e67e22;
+            padding: 30px;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .product-featured .moat-box h4 {
+            color: #0b1e33;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .product-featured .moat-box ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .product-featured .moat-box ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        /* ===== ENGINE GRID ===== */
+        .engine-section {
+            margin-top: 60px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 40px;
+        }
+
+        .engine-section h3 {
+            text-align: center;
+            color: #0b1e33;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        .engine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .engine-item {
+            background: #f8fafc;
+            padding: 24px;
+            border-radius: 8px;
+            border-left: 3px solid #4a7ab5;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .engine-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .engine-item h5 {
+            color: #1e3c72;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .engine-item p {
+            font-size: 0.85rem;
+            color: #4a5b6e;
+        }
+
+        @media (max-width: 768px) {
+            .product-featured .flagship-layout {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .product-featured .moat-box {
+                flex: 1 1 100%;
+                border-left: 4px solid #e67e22;
+                border-radius: 0 8px 8px 0;
+            }
+
+            .product-featured .flagship-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .engine-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .engine-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-featured .flagship-content .cta-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .product-featured .flagship-content .cta-row a {
+                text-align: center;
+            }
+        }
+
+        /* ===== SCORECARD ANCHOR ===== */
+        .scorecard-anchor {
+            background: #eef4ff;
+            padding: 40px 0;
+            border-top: 1px solid #d0d7de;
+            border-bottom: 1px solid #d0d7de;
+            scroll-margin-top: 100px;
+        }
+
+        .scorecard-anchor .intro {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .scorecard-anchor .intro h3 {
+            color: #0b1e33;
+            font-weight: 700;
+        }
+
+        .scorecard-anchor .intro p {
+            color: #4a5b6e;
+            font-size: 0.95rem;
+            margin-top: 8px;
+            margin-bottom: 24px;
+        }
+
+        /* ===== SCORECARD WRAPPER ===== */
+        .scorecard-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #eaeef3;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .scorecard-wrapper .intro-text {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .scorecard-wrapper .intro-text h3 {
+            font-size: 1.4rem;
+            color: #0b1e33;
+            margin-bottom: 4px;
+        }
+
+        .scorecard-wrapper .intro-text p {
+            color: #4a5b6e;
+            font-size: 0.95rem;
+        }
+
+        .scorecard-wrapper .intro-text .highlight-box {
+            background: #f8fafc;
+            border-left: 4px solid #4a7ab5;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-style: italic;
+            color: #1e2a3a;
+        }
+
+        /* ===== SCORECARD EMBED ===== */
+        .scorecard-embed .progress-container {
+            background: #f8fafc;
+            padding: 14px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .scorecard-embed .progress-bar {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+
+        .scorecard-embed .progress-bar .fill {
+            height: 100%;
+            background: #1e3c72;
+            border-radius: 4px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        .scorecard-embed .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #4a5b6e;
+        }
+
+        .scorecard-embed .question-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            display: none;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .scorecard-embed .question-card.active {
+            display: block;
+        }
+
+        .scorecard-embed .question-card .q-number {
+            display: inline-block;
+            background: #1e3c72;
+            color: #fff;
+            padding: 2px 12px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .scorecard-embed .question-card .q-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #0b1e33;
+        }
+
+        .scorecard-embed .question-card .q-help {
+            font-size: 0.8rem;
+            color: #4a5b6e;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .scorecard-embed .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .scorecard-embed .options label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            font-size: 0.9rem;
+            background: #fff;
+        }
+
+        .scorecard-embed .options label:hover {
+            border-color: #1e3c72;
+            background: #f8fafc;
+        }
+
+        .scorecard-embed .options label.selected {
+            border-color: #1e3c72;
+            background: #eef4ff;
+        }
+
+        .scorecard-embed .options input[type="radio"],
+        .scorecard-embed .options input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            accent-color: #1e3c72;
+        }
+
+        .scorecard-embed .options .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .scorecard-embed .options .checkbox-group label {
+            flex: 1 1 calc(50% - 6px);
+            min-width: 120px;
+        }
+
+        .scorecard-embed .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .scorecard-embed .nav-buttons .btn {
+            padding: 10px 24px;
+            font-size: 0.9rem;
+        }
+
+        .scorecard-embed .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .scorecard-embed .btn-primary {
+            background: #1e3c72;
+            color: #fff;
+        }
+
+        .scorecard-embed .btn-primary:hover:not(:disabled) {
+            background: #2a5298;
+        }
+
+        /* ===== RESULTS DASHBOARD ===== */
+        .results-dashboard {
+            display: none;
+        }
+
+        .results-dashboard.visible {
+            display: block;
+        }
+
+        .results-dashboard .result-badge {
+            text-align: center;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .results-dashboard .result-badge .score {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .results-dashboard .result-badge .label {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .results-dashboard .result-badge.critical {
+            background: #fef2f2;
+            color: #7f1d1d;
+            border: 2px solid #dc2626;
+        }
+
+        .results-dashboard .result-badge.high {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .results-dashboard .result-badge.medium {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .results-dashboard .result-badge.low {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .results-dashboard .result-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .results-dashboard .result-section h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #0b1e33;
+        }
+
+        .results-dashboard .result-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .results-dashboard .result-section ul li {
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 6px;
+            background: #f8fafc;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .results-dashboard .result-section ul li .icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .results-dashboard .action-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .results-dashboard .action-row .btn {
+            flex: 1 1 200px;
+            text-align: center;
+        }
+
+        /* ===== LEAD CAPTURE ===== */
+        .lead-capture {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(30, 60, 114, 0.05);
+            border-left: 4px solid #1e3c72;
+            border-radius: 4px;
+        }
+
+        .lead-capture h4 {
+            margin: 0 0 8px 0;
+            color: #0b1e33;
+            font-size: 1.05rem;
+        }
+
+        .lead-capture p {
+            font-size: 0.85rem;
+            color: #4a5b6e;
+            margin-bottom: 12px;
+        }
+
+        .lead-capture .capture-row {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .lead-capture .capture-row input {
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            width: 100%;
+        }
+
+        .lead-capture .capture-row input:focus {
+            outline: none;
+            border-color: #1e3c72;
+        }
+
+        .lead-capture .capture-row button {
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .lead-capture .capture-row button:hover {
+            background: #2a5298;
+        }
+
+        .lead-capture .capture-row button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .lead-capture .success-message {
+            display: none;
+            text-align: center;
+            color: #155724;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .lead-capture .success-message.show {
+            display: block;
+        }
+
+        .lead-capture .success-message span {
+            font-size: 0.85rem;
+            font-weight: 400;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* ===== EARLY EXIT (No AI) ===== */
+        .early-exit {
+            display: none;
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #f59e0b;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .early-exit.visible {
+            display: block;
+        }
+
+        .early-exit h4 {
+            color: #0b1e33;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .early-exit p {
+            color: #4a5b6e;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-info-box {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #eaeef3;
+        }
+
+        .contact-info-box h3 {
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            color: #0b1e33;
+        }
+
+        .contact-info-box .detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .contact-form-box {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #eaeef3;
+        }
+
+        .contact-form-box h3 {
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            color: #0b1e33;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d0d7de;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #1e3c72;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-status {
+            margin-top: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .form-status.success {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-status.error {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .form-status.loading {
+            display: block;
+            background: #e2e8f0;
+            color: #1e2a3a;
+            border: 1px solid #cbd5e1;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                max-width: 100%;
+            }
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            background: linear-gradient(135deg, #0b1e33, #1e3c72);
+            color: #fff;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+        }
+
+        .cta p {
+            font-size: 1.05rem;
+            margin: 10px 0 25px;
+            opacity: 0.9;
+        }
+
+        .cta .btn {
+            background: #fff;
+            color: #1e3c72;
+        }
+
+        .cta .btn:hover {
+            background: #eaeef3;
+        }
+
+        .cta .contact-info {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .cta .contact-info a {
+            color: #b0c4de;
+        }
+
+        .cta .contact-info a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .cta h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta .contact-info {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0b1e33;
+            color: #b0c4de;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #b0c4de;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        footer .footer-links {
+            margin-top: 8px;
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .social-links a:hover {
+            background: #4a7ab5;
+            transform: translateY(-3px);
+        }
+
+        .social-links svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .disclaimer {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            text-align: center;
+            margin-top: 16px;
+            font-style: italic;
+        }
+
+        /* ===== SPINNER ===== */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #e2e8f0;
+            border-top-color: #1e3c72;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ===== EMAIL FALLBACK MODAL ===== */
+        .email-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .email-modal.active {
+            display: flex;
+        }
+
+        .email-modal-content {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .email-modal-content h3 {
+            color: #0b1e33;
+            margin-bottom: 10px;
+        }
+
+        .email-modal-content p {
+            color: #4a5b6e;
+            margin-bottom: 20px;
+        }
+
+        .email-modal-content .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #94a3b8;
+            background: none;
+            border: none;
+        }
+
+        .email-modal-content .modal-close:hover {
+            color: #1e2a3a;
+        }
+
+        .email-modal-content .email-body {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            white-space: pre-wrap;
+            font-size: 0.85rem;
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 15px 0;
+        }
+
+        .email-modal-content .modal-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .email-modal-content .modal-buttons .btn {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .email-modal-content {
+                padding: 25px;
+            }
+
+            .email-modal-content .modal-buttons .btn {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== EMAIL FALLBACK MODAL ===== -->
+    <div class="email-modal" id="emailModal">
+        <div class="email-modal-content">
+            <button class="modal-close" id="emailModalClose">✕</button>
+            <h3 id="emailModalTitle">📧 Send Email</h3>
+            <p id="emailModalDesc">Your email client didn't open. Please copy the email below and send it manually.</p>
+            <div class="email-body" id="emailModalBody">Email content will appear here.</div>
+            <div class="modal-buttons">
+                <button class="btn btn-primary" id="emailModalCopy">📋 Copy Email</button>
+                <button class="btn btn-email" id="emailModalTryAgain">📧 Try Again</button>
+                <button class="btn btn-secondary" id="emailModalCloseBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header id="mainHeader">
+        <div class="container">
+            <div class="header-enclosed">
+                <div class="header-content">
+                    <div class="logo">
+                        <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="62" y1="62" x2="82" y2="82" stroke="#e67e22" stroke-width="6"
+                                stroke-linecap="round" />
+                            <circle cx="45" cy="45" r="28" fill="none" stroke="#1a5276" stroke-width="5" />
+                            <path d="M35,25 Q45,35 35,45 Q25,55 35,65" fill="none" stroke="#e67e22" stroke-width="2.5"
+                                stroke-linecap="round" />
+                            <path d="M55,25 Q45,35 55,45 Q65,55 55,65" fill="none" stroke="#148f8f" stroke-width="2.5"
+                                stroke-linecap="round" />
+                            <circle cx="45" cy="45" r="3" fill="#e67e22" />
+                        </svg>
+                        <div class="logo-text">
+                            <span class="main">Scire <span>Research</span></span>
+                            <span class="tagline">The Foundation for Africa's Data-Driven Future</span>
+                        </div>
+                    </div>
+                    <nav class="desktop-nav">
+                        <a href="#sovryn-ai">Sovryn AI</a>
+                        <a href="#diagnostic">Diagnostic</a>
+                        <a href="#contact">Contact</a>
+                        <a href="https://scireresearch.com/" class="btn-small">Home</a>
+                    </nav>
+                    <div class="hamburger" id="hamburger" role="button" aria-label="Toggle menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MOBILE MENU ===== -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="mobile-menu-close" id="closeMenu">✕</div>
+        <nav class="mobile-nav">
+            <a href="#sovryn-ai">Sovryn AI</a>
+            <a href="#diagnostic">Diagnostic</a>
+            <a href="#contact">Contact</a>
+            <a href="https://scireresearch.com/" class="btn">Home</a>
+        </nav>
+    </div>
+
+    <!-- ===== BRAND INTEGRATION HERO ===== -->
+    <section class="innovations-hero">
+        <div class="container">
+            <span class="badge">Scire Innovations</span>
+            <h1>Your AI Systems Don't Wait for Laws. Neither Should Your Risk Detection.</h1>
+            <p>
+                Kenyan rules on AI and data are still being written—and rewritten. Sovryn AI monitors the regulatory
+                surface continuously, so you know which of your systems will be questioned first, and whether you can
+                produce the evidence to answer.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== FLAGSHIP PRODUCT: Sovryn AI ===== -->
+    <section class="product-featured" id="sovryn-ai">
+        <div class="container">
+            <div class="flagship-layout">
+                <div class="flagship-content">
+                    <span class="product-badge">Flagship Product</span>
+                    <h2>Sovryn AI<span></span></h2>
+                    <p class="subtitle">Regulatory Exposure Detection for AI Systems</p>
+                    <p class="desc">
+                        Other tools tell you what AI you're running. Sovryn tells you what it will cost you when a
+                        regulator asks. Built on domestic infrastructure, it turns an unstable regulatory environment
+                        into a continuously updated exposure surface—so you're never the last to know.
+                    </p>
+                    <div class="cta-row">
+                        <a href="#diagnostic" class="btn">Run Exposure Diagnostic</a>
+                        <button
+                            onclick="openEmailModal('Sovryn AI Enterprise Briefing', 'info@scireresearch.com', 'Sovryn AI Architecture Briefing', 'I would like to request an architecture briefing for Sovryn AI.\n\nPlease provide me with details on:\n- Technical architecture overview\n- Deployment options\n- Pricing and licensing\n- Implementation timeline\n\nThank you.')"
+                            class="btn btn-outline-dark">📧 Request Architecture Briefing</button>
+                    </div>
+                </div>
+
+                <!-- Moat Callout Box -->
+                <div class="moat-box">
+                    <h4>Why Sovryn, Not a Scanner</h4>
+                    <ul>
+                        <li><strong>Discovery is the starting point, not the answer:</strong> Finding your AI is a scan. Producing evidence when a regulator asks is an engine.</li>
+                        <li><strong>Continuous, not one-time:</strong> Rules change, models drift. Your exposure surface updates with both.</li>
+                        <li><strong>Evidence stays in-country:</strong> Your compliance records don't create a cross-border risk surface just by existing.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4-Engine Architecture -->
+            <div class="engine-section">
+                <h3>Under the Hood: Integrated Functional Engines</h3>
+                <div class="engine-grid">
+                    <div class="engine-item">
+                        <h5>1. Discovery Engine</h5>
+                        <p>Continuous network and license tracking to surface unmonitored AI instances—the ones you
+                            didn't know were processing corporate data.</p>
+                    </div>
+                    <div class="engine-item">
+                        <h5>2. Kiwango Risk Engine</h5>
+                        <p>Classifies every discovered system by exposure level—not by a fixed statute, but by the
+                            questions a regulator is currently asking.</p>
+                    </div>
+                    <div class="engine-item">
+                        <h5>3. Ukaguzi Audit Engine</h5>
+                        <p>Real-time validation of behavioral drift and demographic parity, with an immutable record
+                            trail ready for inspection.</p>
+                    </div>
+                    <div class="engine-item">
+                        <h5>4. Mshauri Copilot</h5>
+                        <p>Conversational guardrails for engineering and legal teams, in English and Swahili, before a
+                            design choice becomes a liability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SOVEREIGN INFRASTRUCTURE ===== -->
+    <div
+        style="margin-top: 60px; padding: 40px 20px; background: #f8fafc; border-radius: 12px; border: 1px solid #eaeef3;">
+        <h3
+            style="text-align: center; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #4a5b6e; margin-bottom: 16px;">
+            Powered by Kenya's Sovereign Infrastructure
+        </h3>
+        <p
+            style="text-align: center; font-size: 0.85rem; color: #4a5b6e; margin-top: 24px; max-width: 600px; margin-left: auto; margin-right: auto; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+            Sovryn AI is built on 100% domestic infrastructure—reducing a cross-border risk surface in itself, and
+            keeping your compliance evidence within reach when it matters.
+        </p>
+    </div>
+    <!-- ===== DIAGNOSTIC ANCHOR + SCORECARD ===== -->
+    <section class="scorecard-anchor" id="diagnostic">
+        <div class="container">
+            <div class="intro" id="diagnostic-intro">
+                <h3>Map Your Exposure Surface</h3>
+                <p>
+                    The rules are moving. Your systems are already running. Use this diagnostic to see where you'd be
+                    exposed if a regulator asked today—and where you'd have no evidence to produce.
+                </p>
+            </div>
+
+            <div class="scorecard-wrapper">
+                <div class="intro-text">
+                    <h3>Exposure Readiness Scorecard</h3>
+                    <p>15 questions. 5 minutes. Free, actionable report.</p>
+                    <div class="highlight-box">
+                        <strong>🔍</strong> Your answers help us assess your exposure surface, data residency risks,
+                        and evidence gaps.
+                    </div>
+                </div>
+
+                <!-- ===== SCORECARD EMBED ===== -->
+                <div class="scorecard-embed" id="scorecardEmbed">
+
+                    <!-- Progress -->
+                    <div class="progress-container" id="progressContainer">
+                        <div class="progress-text">
+                            <span id="questionCounter">Question 1 of 15</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="fill" id="progressFill"></div>
+                        </div>
+                    </div>
+
+                    <!-- Questions -->
+                    <form id="scorecardForm" novalidate>
+
+                        <!-- ===== Q1 ===== -->
+                        <div class="question-card active" data-q="1">
+                            <span class="q-number">Question 1</span>
+                            <div class="q-text">Does your organization currently use any artificial intelligence (AI) or
+                                machine learning (ML) systems?</div>
+                            <div class="q-help">Includes chatbots, recommendation engines, fraud detection, generative
+                                AI, and automated decision-making.</div>
+                            <div class="options">
+                                <label><input type="radio" name="q1" value="High Risk: Multi-system deployment" /> Yes,
+                                    multiple
+                                    systems</label>
+                                <label><input type="radio" name="q1" value="Medium Risk: Single-node deployment" /> Yes,
+                                    one or two
+                                    systems</label>
+                                <label><input type="radio" name="q1" value="Low Risk: Pre-deployment pipeline" /> We're
+                                    exploring
+                                    AI but haven't deployed anything yet</label>
+                                <label><input type="radio" name="q1" value="No Risk: No active implementations" /> No,
+                                    we don't use
+                                    AI</label>
+                            </div>
+                        </div>
+
+                        <!-- Q2 -->
+                        <div class="question-card" data-q="2">
+                            <span class="q-number">Question 2</span>
+                            <div class="q-text">Where is your primary algorithmic processing data and user logs
+                                physically hosted?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q2" value="High Risk: Overseas unlocalized pipeline" />
+                                    Overseas cloud hosting with no localized fallback channels</label>
+                                <label><input type="radio" name="q2" value="Medium Risk: Regional processing matrix" />
+                                    Regional data boundaries within Africa but outside Kenya</label>
+                                <label><input type="radio" name="q2" value="Low Risk: Hybrid local topology" /> Hybrid
+                                    environment using both local databases and foreign processing nodes</label>
+                                <label><input type="radio" name="q2" value="Compliant: Onshore infrastructure" /> 100%
+                                    localized sovereign infrastructure within Kenyan borders</label>
+                            </div>
+                        </div>
+
+                        <!-- Q3 -->
+                        <div class="question-card" data-q="3">
+                            <span class="q-number">Question 3</span>
+                            <div class="q-text">Does your platform run automated data audits to track demographic
+                                disparities or localized bias?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q3"
+                                        value="High Risk: Unmonitored production tracking" /> No, models are evaluated
+                                    purely on validation set accuracy indices</label>
+                                <label><input type="radio" name="q3" value="Medium Risk: Manual profiling intervals" />
+                                    We conduct manual code updates when errors are raised</label>
+                                <label><input type="radio" name="q3" value="Low Risk: Standard drift trackers" />
+                                    Standard drift tracking dashboards are applied but lack demographic parity
+                                    controls</label>
+                                <label><input type="radio" name="q3" value="Compliant: Continual compliance loops" />
+                                    Yes, real-time algorithmic equity tracing is active</label>
+                            </div>
+                        </div>
+
+                        <!-- Q4 -->
+                        <div class="question-card" data-q="4">
+                            <span class="q-number">Question 4</span>
+                            <div class="q-text">Are your data pipelines aligned with the Data Protection Act 2019
+                                retention rules?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q4" value="High Risk: No verification logs" /> No
+                                    system limits, data retention is unmonitored</label>
+                                <label><input type="radio" name="q4" value="Medium Risk: Partial compliance" /> Some
+                                    systems have retention, others don't</label>
+                                <label><input type="radio" name="q4" value="Low Risk: Working towards compliance" />
+                                    We're implementing retention policies now</label>
+                                <label><input type="radio" name="q4" value="Compliant: Automated purging active" />
+                                    Compliant deletion architecture is fully active</label>
+                            </div>
+                        </div>
+
+                        <!-- Q5 -->
+                        <div class="question-card" data-q="5">
+                            <span class="q-number">Question 5</span>
+                            <div class="q-text">Do you have a tracking register for third-party "Shadow AI" tokens (e.g.
+                                OpenAI keys)?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q5" value="High Risk: Unlogged endpoints" />
+                                    Unmonitored API layers with no tracking</label>
+                                <label><input type="radio" name="q5" value="Medium Risk: Partial tracking" /> Some
+                                    tokens are tracked, others are not</label>
+                                <label><input type="radio" name="q5" value="Low Risk: Planning to implement" /> We're
+                                    building a register now</label>
+                                <label><input type="radio" name="q5" value="Compliant: Centralized keys" /> Full
+                                    endpoint monitoring and centralized key management</label>
+                            </div>
+                        </div>
+
+                        <!-- Q6 -->
+                        <div class="question-card" data-q="6">
+                            <span class="q-number">Question 6</span>
+                            <div class="q-text">Is your engineering framework prepared to output a 5-year immutable
+                                system log to regulators?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q6" value="High Risk: Volatile storage limits" />
+                                    Volatile logs only, no long-term retention</label>
+                                <label><input type="radio" name="q6" value="Medium Risk: Partial logging" /> Some logs
+                                    are retained, but not all</label>
+                                <label><input type="radio" name="q6" value="Low Risk: Planning implementation" /> We're
+                                    working on immutable logging</label>
+                                <label><input type="radio" name="q6"
+                                        value="Compliant: Immutable logging architecture" /> Fully compliant immutable
+                                    logging system active</label>
+                            </div>
+                        </div>
+
+                        <!-- Q7 -->
+                        <div class="question-card" data-q="7">
+                            <span class="q-number">Question 7</span>
+                            <div class="q-text">Does your system use automated tracking for predictive algorithmic drift
+                                loops?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q7" value="High Risk: No validation checks" /> No
+                                    validation checks for drift</label>
+                                <label><input type="radio" name="q7" value="Medium Risk: Manual checks" /> We manually
+                                    check for drift periodically</label>
+                                <label><input type="radio" name="q7" value="Low Risk: Basic monitoring" /> Basic
+                                    monitoring is in place</label>
+                                <label><input type="radio" name="q7" value="Compliant: Automated alert states" />
+                                    Real-time automated monitoring with alerts</label>
+                            </div>
+                        </div>
+
+                        <!-- Q8 -->
+                        <div class="question-card" data-q="8">
+                            <span class="q-number">Question 8</span>
+                            <div class="q-text">Are users notified explicitly when automated decision nodes evaluate
+                                their records?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q8" value="High Risk: Silent runtime pipelines" /> No
+                                    notifications, fully silent</label>
+                                <label><input type="radio" name="q8" value="Medium Risk: Partial notification" /> Some
+                                    users are notified, some are not</label>
+                                <label><input type="radio" name="q8" value="Low Risk: Planning implementation" /> We're
+                                    building notification systems</label>
+                                <label><input type="radio" name="q8" value="Compliant: Explicit opt-in channels" />
+                                    Fully transparent notification with opt-in</label>
+                            </div>
+                        </div>
+
+                        <!-- Q9 -->
+                        <div class="question-card" data-q="9">
+                            <span class="q-number">Question 9</span>
+                            <div class="q-text">Do your deployment pipelines include structural model fallback layers?
+                            </div>
+                            <div class="options">
+                                <label><input type="radio" name="q9" value="High Risk: No kill-switches" /> No fallback,
+                                    single point of failure</label>
+                                <label><input type="radio" name="q9" value="Medium Risk: Partial fallback" /> Some
+                                    systems have fallback, others don't</label>
+                                <label><input type="radio" name="q9" value="Low Risk: Planning to implement" /> We're
+                                    designing fallback architecture</label>
+                                <label><input type="radio" name="q9" value="Compliant: Graceful failover loops" /> Full
+                                    fault-tolerant topology with graceful failover</label>
+                            </div>
+                        </div>
+
+                        <!-- Q10 -->
+                        <div class="question-card" data-q="10">
+                            <span class="q-number">Question 10</span>
+                            <div class="q-text">Are training parameters regularly screened for proprietary or protected
+                                IP leaks?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q10" value="High Risk: Unfiltered source datasets" />
+                                    No screening, high liability risk</label>
+                                <label><input type="radio" name="q10" value="Medium Risk: Partial screening" /> Some
+                                    data is screened, some is not</label>
+                                <label><input type="radio" name="q10" value="Low Risk: Planning to implement" /> We're
+                                    building screening processes</label>
+                                <label><input type="radio" name="q10"
+                                        value="Compliant: Structured processing filtering" /> Fully verified ingestion
+                                    with IP protection</label>
+                            </div>
+                        </div>
+
+                        <!-- Q11 -->
+                        <div class="question-card" data-q="11">
+                            <span class="q-number">Question 11</span>
+                            <div class="q-text">Is there a human-in-the-loop validation structure for critical business
+                                decisions?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q11" value="High Risk: Fully autonomous loops" /> No
+                                    human oversight, autonomous decisions</label>
+                                <label><input type="radio" name="q11" value="Medium Risk: Partial oversight" /> Some
+                                    decisions have human review, some don't</label>
+                                <label><input type="radio" name="q11" value="Low Risk: Planning to implement" /> We're
+                                    designing human-in-the-loop systems</label>
+                                <label><input type="radio" name="q11" value="Compliant: Active executive monitoring" />
+                                    Full human oversight with executive monitoring</label>
+                            </div>
+                        </div>
+
+                        <!-- Q12 -->
+                        <div class="question-card" data-q="12">
+                            <span class="q-number">Question 12</span>
+                            <div class="q-text">Are algorithms protected by end-to-end payload encryption at rest?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q12" value="High Risk: Clear text environments" /> No
+                                    encryption, exposed weight files</label>
+                                <label><input type="radio" name="q12" value="Medium Risk: Partial encryption" /> Some
+                                    data is encrypted, some is not</label>
+                                <label><input type="radio" name="q12" value="Low Risk: Planning to implement" /> We're
+                                    implementing encryption now</label>
+                                <label><input type="radio" name="q12"
+                                        value="Compliant: Secure cryptographic enclaves" /> Fully encrypted architecture
+                                    with secure enclaves</label>
+                            </div>
+                        </div>
+
+                        <!-- Q13 -->
+                        <div class="question-card" data-q="13">
+                            <span class="q-number">Question 13</span>
+                            <div class="q-text">Have your technical engineers been briefed on the penalties they could
+                                personally face if a system they built is later found non-compliant?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q13" value="High Risk: No executive alignment" /> No
+                                    briefing, unaligned workflows</label>
+                                <label><input type="radio" name="q13" value="Medium Risk: Partial awareness" /> Some
+                                    engineers are aware, some are not</label>
+                                <label><input type="radio" name="q13" value="Low Risk: Planning training" /> We're
+                                    scheduling briefings</label>
+                                <label><input type="radio" name="q13" value="Compliant: Airtight developer training" />
+                                    Fully aligned pipelines with trained engineers</label>
+                            </div>
+                        </div>
+
+                        <!-- Q14 -->
+                        <div class="question-card" data-q="14">
+                            <span class="q-number">Question 14</span>
+                            <div class="q-text">Does your current cyber architecture include automated adversarial
+                                testing routines?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q14" value="High Risk: No penetration cycles" /> No
+                                    testing, vulnerable nodes</label>
+                                <label><input type="radio" name="q14" value="Medium Risk: Manual testing" /> We manually
+                                    test periodically</label>
+                                <label><input type="radio" name="q14" value="Low Risk: Planning to implement" /> We're
+                                    building automated testing</label>
+                                <label><input type="radio" name="q14" value="Compliant: Continuous sandboxing models" />
+                                    Resilient defensive frameworks with continuous testing</label>
+                            </div>
+                        </div>
+
+                        <!-- Q15 -->
+                        <div class="question-card" data-q="15">
+                            <span class="q-number">Question 15</span>
+                            <div class="q-text">Are automated models cross-checked against localized cultural or
+                                geographical constraints?</div>
+                            <div class="options">
+                                <label><input type="radio" name="q15" value="High Risk: Uncalibrated baseline limits" />
+                                    No localization, global weights only</label>
+                                <label><input type="radio" name="q15" value="Medium Risk: Partial localization" /> Some
+                                    models are localized, some are not</label>
+                                <label><input type="radio" name="q15" value="Low Risk: Planning to implement" /> We're
+                                    building localization checks</label>
+                                <label><input type="radio" name="q15" value="Compliant: Localized parameter testing" />
+                                    Fully domestically verified metrics</label>
+                            </div>
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="nav-buttons" id="navControls">
+                            <button type="button" class="btn btn-secondary" id="prevBtn" style="visibility:hidden;">←
+                                Previous</button>
+                            <button type="button" class="btn btn-primary" id="nextBtn">Next →</button>
+                        </div>
+
+                        <!-- ===== RESULTS DASHBOARD ===== -->
+                        <div class="results-dashboard" id="resultsDashboard">
+                            <h3 style="margin-bottom: 20px; color: #0b1e33;">Diagnostic Completed Successfully</h3>
+
+                            <div id="resultBadge" class="result-badge">
+                                <div class="score" id="resultScore">0%</div>
+                                <div class="label" id="resultLabel">Loading...</div>
+                            </div>
+
+                            <p style="font-style:italic; font-size:0.9rem; color:#4a5b6e; margin-top:8px;">
+                                Discovery is the starting point, not the answer. What matters is which of these systems,
+                                once questioned by a regulator, you cannot produce documentation for.
+                            </p>
+
+                            <div class="result-section">
+                                <h4>🔍 Discovery Findings</h4>
+                                <ul id="shadowAiResults">
+                                    <li><span>Processing structural risk matrix details...</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="result-section">
+                                <h4>📋 Unverified Risk Points</h4>
+                                <ul id="gapResults">
+                                    <li><span>Identifying friction vectors against current regulatory attention...</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="result-section">
+                                <h4>📌 Evidence Gaps to Close</h4>
+                                <ul id="actionResults">
+                                    <li><span>Compiling architecture steps for local server onboarding...</span></li>
+                                </ul>
+                            </div>
+
+                            <!-- ===== LEAD CAPTURE ===== -->
+                            <div id="diagnostic-lead-capture" class="lead-capture">
+                                <h4>🔒 Save Your Exposure Profile</h4>
+                                <p>Other tools stop at diagnosis. Sovryn keeps the record—so when the next guidance note
+                                    lands, you already know which systems it touches.</p>
+                                <div class="capture-row">
+                                    <input type="text" id="diagName" placeholder="Full Name" required />
+                                    <input type="email" id="diagEmail" placeholder="Corporate Email Address" required />
+                                    <button type="button" id="btnSubmitDiagnostic">
+                                        Secure & Submit Audit Profile
+                                    </button>
+                                    <div class="success-message" id="successMessage">
+                                        ✅ Compliance Profile Logged Successfully.
+                                        <span>Your metric signature has been routed to the Scire Research team.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="action-row">
+                                <a href="#contact" class="btn">📞 Request Enterprise Briefing</a>
+                                <button id="emailTeamBtn" class="btn btn-email-outline" onclick="sendReportToScire()">📧 Email Our Team</button>
+<span id="emailSendNote" style="display:none; font-size:0.85rem; font-weight:600; align-self:center;"></span>
+                            </div>
+
+                            <button onclick="resetScorecard()" class="btn btn-secondary"
+                                style="margin-top:16px; width:100%;">🔄 Start Over</button>
+                        </div>
+
+                    </form>
+
+                    <!-- ===== EARLY EXIT (No AI) ===== -->
+                    <div class="early-exit" id="earlyExit">
+                        <h4>🔍 Thank You for Your Response</h4>
+                        <p>Based on your answers, your organization does not currently use AI systems. The AI Bill, 2026
+                            primarily applies to organizations deploying AI. However, we recommend staying informed as
+                            regulations evolve.</p>
+                        <p><strong>📞 Need guidance?</strong> Contact us for a free consultation on how to prepare for
+                            future AI governance.</p>
+                        <a href="#contact" class="btn">Schedule a Free Consultation</a>
+                        <br><br>
+                        <button onclick="resetScorecard()" class="btn btn-secondary"
+                            style="background:#e2e8f0; color:#1e2a3a;">🔄 Start Over</button>
+                    </div>
+
+                </div>
+                <!-- END scorecard-embed -->
+
+                <p class="disclaimer" style="margin-top:16px;">
+                    Disclaimer: This diagnostic provides guidance based on current regulatory attention. Final
+                    compliance responsibility rests with your organization.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section-alt" style="padding:60px 0; background:#f4f7fa;">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Interested in Sovryn AI? Have a research challenge? Let's start a conversation.
+            </p>
+            <div class="contact-grid">
+                <div class="contact-info-box">
+                    <h3>Contact Details</h3>
+                    <div class="detail">
+
+                        <div><strong></strong><br /><a href="tel:+254704813110">+254 704 813110</a></div>
+                    </div>
+                    <div class="detail">
+
+                        <div><strong></strong><br /><a href="tel:+254704244657">+254 704 244657</a></div>
+                    </div>
+                    <div class="detail">
+
+                        <div><strong>Email</strong><br /><a
+                                href="mailto:info@scireresearch.com">info@scireresearch.com</a>
+                        </div>
+                    </div>
+                    <div class="detail">
+
+                        <div><strong>Location</strong><br />Nairobi, Kenya</div>
+                    </div>
+                    <div style="margin-top:15px; padding-top:15px; border-top:1px solid #eaeef3;">
+                        <p style="font-size:0.85rem; color:#4a5b6e;">⏱️ We typically respond within 24 hours.</p>
+                    </div>
+                </div>
+                <div class="contact-form-box">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm" action="https://formspree.io/f/xreonyro" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" />
+                        </div>
+                        <div class="form-group">
+                            <label for="service">What would you like to discuss?</label>
+                            <select id="service" name="service">
+                                <option value="">Choose an option...</option>
+                                <option value="sovryn-ai">Sovryn AI exposure detection</option>
+                                <option value="research">Research or data project</option>
+                                <option value="partnership">Partnership or collaboration</option>
+                                <option value="data-products">Data infrastructure or AI products</option>
+                                <option value="general">General inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message"
+                                placeholder="Tell us about your project, timeline, and budget..." required></textarea>
+                        </div>
+                        <input type="text" name="_gotcha" style="display:none" />
+                        <input type="hidden" name="_subject" value="New Contact Form Submission - Scire Research" />
+                        <button type="submit" class="btn" style="width:100%;" id="contactSubmitBtn">Send
+                            Message</button>
+                        <div id="contactFormStatus" class="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta">
+        <div class="container">
+            <h2>Build Kenya's AI Governance Future With Us.</h2>
+            <p>Whether you're a business, government agency, or AI developer — Sovryn AI helps you detect exposure
+                before it becomes a problem.</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+            <div class="contact-info">
+                <span>+254 704 813110</span>
+                <span><a href="mailto:info@scireresearch.com">info@scireresearch.com</a></span>
+                <span>Nairobi, Kenya</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Scire Research. All rights reserved.</p>
+            <div class="social-links"
+                style="margin:20px 0; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+                <a href="https://twitter.com/scire_research" target="_blank" rel="noopener noreferrer" aria-label="X">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/company/133264080/admin/dashboard/" target="_blank"
+                    rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                </a>
+                <a href="https://wa.me/254704813110" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.057 0C5.495 0 .16 5.335.16 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413A11.812 11.812 0 0012.057 0zm0 2.185c5.36 0 9.707 4.35 9.707 9.707 0 5.358-4.347 9.707-9.707 9.707-2.117 0-4.132-.685-5.792-1.946l-.344-.249-3.72.976.994-3.626-.232-.355a9.64 9.64 0 01-1.47-5.097c0-5.358 4.347-9.707 9.707-9.707z" />
+                    </svg>
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="#sovryn-ai">Sovryn AI</a>
+                <a href="#diagnostic">Diagnostic</a>
+                <a href="#contact">Contact</a>
+                <a href="https://scireresearch.com/">Home</a>
+            </div>
+            <p style="margin-top:8px; font-size:0.7rem; opacity:0.7;">The Foundation for Africa's Data-Driven Future</p>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
+    <script>
+        // ===== HEADER SCROLL =====
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.getElementById('mainHeader');
+            window.addEventListener('scroll', function () {
+                header.classList.toggle('scrolled', window.scrollY > 100);
+            });
+        });
+
+        // ===== MOBILE MENU =====
+        document.addEventListener('DOMContentLoaded', function () {
+            const h = document.getElementById('hamburger'),
+                m = document.getElementById('mobileMenu'),
+                c = document.getElementById('closeMenu');
+            const toggle = () => {
+                h.classList.toggle('active');
+                m.classList.toggle('open');
+                document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+            };
+            h.addEventListener('click', toggle);
+            c.addEventListener('click', toggle);
+            m.querySelectorAll('a').forEach(l => l.addEventListener('click', toggle));
+            document.addEventListener('keydown', e => { if (e.key === 'Escape' && m.classList.contains('open')) toggle(); });
+        });
+
+        // ===== CONTACT FORM (AJAX - No Redirect) =====
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('contactForm');
+            const status = document.getElementById('contactFormStatus');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const btn = document.getElementById('contactSubmitBtn');
+                btn.disabled = true;
+                btn.textContent = 'Sending...';
+
+                status.className = 'form-status loading';
+                status.textContent = 'Sending your message...';
+                status.style.display = 'block';
+
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            status.className = 'form-status success';
+                            status.textContent = '✅ Thank you! We\'ll get back to you within 24 hours.';
+                            form.reset();
+                            btn.disabled = false;
+                            btn.textContent = 'Send Message';
+                        } else {
+                            throw new Error('Submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Form error:', error);
+                        status.className = 'form-status error';
+                        status.textContent = '❌ Something went wrong. Please try again.';
+                        btn.disabled = false;
+                        btn.textContent = 'Send Message';
+                    });
+            });
+        });
+
+        // ===== EMAIL MODAL SYSTEM =====
+        function openEmailModal(title, toEmail, subject, body) {
+            const modal = document.getElementById('emailModal');
+            const modalTitle = document.getElementById('emailModalTitle');
+            const modalDesc = document.getElementById('emailModalDesc');
+            const modalBody = document.getElementById('emailModalBody');
+
+            modalTitle.textContent = '📧 ' + title;
+            modalBody.textContent = 'To: ' + toEmail + '\nSubject: ' + subject + '\n\n' + body;
+
+            // Store for copy and retry
+            modal._emailData = { toEmail, subject, body };
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEmailModal() {
+            const modal = document.getElementById('emailModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Modal close handlers
+        document.getElementById('emailModalClose').addEventListener('click', closeEmailModal);
+        document.getElementById('emailModalCloseBtn').addEventListener('click', closeEmailModal);
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeEmailModal();
+            }
+        });
+        document.getElementById('emailModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeEmailModal();
+            }
+        });
+
+        // Copy email content
+        document.getElementById('emailModalCopy').addEventListener('click', function () {
+            const modal = document.getElementById('emailModal');
+            const fullText = modal.querySelector('.email-body').textContent;
+            navigator.clipboard.writeText(fullText).then(function () {
+                alert('✅ Email content copied to clipboard!');
+            }).catch(function () {
+                // Fallback
+                const range = document.createRange();
+                range.selectNode(modal.querySelector('.email-body'));
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                alert('✅ Email content copied to clipboard!');
+            });
+        });
+
+        // Try opening email again
+        document.getElementById('emailModalTryAgain').addEventListener('click', function () {
+            const modal = document.getElementById('emailModal');
+            const data = modal._emailData || {};
+            if (data.toEmail && data.subject) {
+                const mailtoLink = 'mailto:' + data.toEmail + '?subject=' + encodeURIComponent(data.subject) + '&body=' + encodeURIComponent(data.body);
+                const win = window.open(mailtoLink, '_blank');
+                if (win) {
+                    closeEmailModal();
+                } else {
+                    alert('⚠️ Still unable to open email. Please copy the content manually.');
+                }
+            }
+        });
+
+        // ============================================================ -->
+        // SCORECARD ENGINE                                             -->
+        // ============================================================ -->
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('scorecardForm');
+            const cards = Array.from(document.querySelectorAll('.question-card'));
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const progressFill = document.getElementById('progressFill');
+            const questionCounter = document.getElementById('questionCounter');
+            const progressPercent = document.getElementById('progressPercent');
+            const resultsDashboard = document.getElementById('resultsDashboard');
+            const navControls = document.getElementById('navControls');
+            const earlyExit = document.getElementById('earlyExit');
+            const diagnosticIntro = document.getElementById('diagnostic-intro');
+
+            let currentStep = 0;
+            const totalQuestions = cards.length;
+            let isEarlyExit = false;
+            let collectedAnswers = {};
+            let storedResult = null;
+
+            // ===== SHOW EARLY EXIT - STAY ON PAGE =====
+            function showEarlyExit() {
+                isEarlyExit = true;
+                document.getElementById('progressContainer').style.display = 'none';
+                form.style.display = 'none';
+                earlyExit.classList.add('visible');
+
+                // Scroll to the early exit message (stay in diagnostic section)
+                setTimeout(function () {
+                    earlyExit.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
+
+            // ===== CHECK IF CURRENT QUESTION IS ANSWERED =====
+            function isCurrentQuestionAnswered() {
+                const currentCard = cards[currentStep];
+                const inputs = currentCard.querySelectorAll('input[type="radio"]');
+                let answered = false;
+                inputs.forEach(input => {
+                    if (input.checked) {
+                        answered = true;
+                    }
+                });
+                return answered;
+            }
+
+            // ===== UPDATE NAVIGATION =====
+            function updateWizardUI() {
+                cards.forEach((card, idx) => {
+                    card.classList.toggle('active', idx === currentStep);
+                });
+
+                prevBtn.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
+
+                const progress = Math.round(((currentStep) / totalQuestions) * 100);
+                progressFill.style.width = progress + '%';
+                progressPercent.textContent = progress + '%';
+                questionCounter.textContent = 'Question ' + (currentStep + 1) + ' of ' + totalQuestions;
+
+                if (currentStep < totalQuestions) {
+                    nextBtn.textContent = currentStep === totalQuestions - 1 ? 'Generate Evaluation →' : 'Next →';
+                    nextBtn.className = 'btn btn-primary';
+                    nextBtn.disabled = false;
+                }
+            }
+
+            // ===== FORM CHANGE LISTENER =====
+            form.addEventListener('change', function (e) {
+                const target = e.target;
+
+                // Check if Q1 was selected with "No AI" option
+                if (target.name === 'q1' && target.checked) {
+                    const value = target.value;
+                    if (value === 'No Risk: No active implementations') {
+                        showEarlyExit();
+                        return;
+                    }
+                }
+
+                if (target.type === 'radio') {
+                    document.querySelectorAll('input[name="' + target.name + '"]').forEach(input => {
+                        input.closest('label').classList.toggle('selected', input.checked);
+                    });
+                }
+                updateWizardUI();
+            });
+
+            // ===== NAVIGATION =====
+            nextBtn.addEventListener('click', function () {
+                if (isEarlyExit) return;
+
+                const currentCard = cards[currentStep];
+                const selectedOption = currentCard.querySelector('input[type="radio"]:checked');
+
+                if (!selectedOption) {
+                    alert('Please select an evaluation baseline metric to continue.');
+                    return;
+                }
+
+                // Store the answer
+                collectedAnswers[`Question_${currentStep + 1}`] = selectedOption.value;
+
+                if (currentStep < totalQuestions - 1) {
+                    currentStep++;
+                    updateWizardUI();
+                } else {
+                    // Process metrics and display final scorecard
+                    currentStep = totalQuestions;
+                    navControls.style.display = 'none';
+                    questionCounter.textContent = 'Evaluation Ready';
+                    progressPercent.textContent = '100%';
+                    progressFill.style.width = '100%';
+
+                    // Calculate results
+                    const result = calculateResults(collectedAnswers);
+                    if (result) {
+                        storedResult = result;
+                        showResultsDashboard(result);
+                    }
+
+                    resultsDashboard.classList.add('visible');
+                    resultsDashboard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+
+            prevBtn.addEventListener('click', function () {
+                if (currentStep > 0) {
+                    currentStep--;
+                    updateWizardUI();
+                }
+            });
+
+            // ===== CALCULATE RESULTS =====
+            function calculateResults(answers) {
+                let score = 0;
+                let total = 0;
+                let shadowAiRisk = '';
+                let gaps = [];
+                let actions = [];
+
+                // Map risk levels to scores
+                const riskScores = {
+                    'High Risk': 1,
+                    'Medium Risk': 2,
+                    'Low Risk': 3,
+                    'Compliant': 4,
+                    'No Risk': 5
+                };
+
+                // Process each answer
+                for (let i = 1; i <= 15; i++) {
+                    const key = `Question_${i}`;
+                    const answer = answers[key] || '';
+                    let riskLevel = '';
+
+                    if (answer.includes('High Risk')) riskLevel = 'High Risk';
+                    else if (answer.includes('Medium Risk')) riskLevel = 'Medium Risk';
+                    else if (answer.includes('Low Risk')) riskLevel = 'Low Risk';
+                    else if (answer.includes('Compliant')) riskLevel = 'Compliant';
+                    else if (answer.includes('No Risk')) riskLevel = 'No Risk';
+
+                    if (riskLevel) {
+                        score += (riskScores[riskLevel] || 0);
+                        total += 4;
+                    }
+                }
+
+                const percentage = total > 0 ? Math.round((score / total) * 100) : 0;
+
+                let tier, label;
+                if (percentage >= 75) {
+                    tier = 'low';
+                    label = 'Exposure Surface: Contained';
+                } else if (percentage >= 50) {
+                    tier = 'medium';
+                    label = 'Exposure Surface: Partially Exposed';
+                } else if (percentage >= 30) {
+                    tier = 'high';
+                    label = 'Exposure Surface: Exposed';
+                } else {
+                    tier = 'critical';
+                    label = 'Exposure Surface: Unverified';
+                }
+
+                // Generate insights based on answers
+                const q1 = answers['Question_1'] || '';
+                if (q1.includes('High Risk') || q1.includes('Medium Risk')) {
+                    shadowAiRisk = '🔴 Critical Exposure: High risk of active unmonitored AI. Your organization has multiple AI systems deployed without full visibility.';
+                } else if (q1.includes('Low Risk')) {
+                    shadowAiRisk = '🟡 Moderate Exposure: Your organization is exploring AI but has limited deployment.';
+                } else {
+                    shadowAiRisk = '🟢 Managed Visibility: Your organization shows structured control over AI deployment.';
+                }
+
+                // Check data residency
+                const q2 = answers['Question_2'] || '';
+                if (q2.includes('High Risk')) {
+                    gaps.push('❌ Data Residency Risk: AI systems processing data outside Kenya without localization.');
+                } else if (q2.includes('Medium Risk')) {
+                    gaps.push('⚠️ Data Residency Concern: Some data may be processed outside Kenya.');
+                } else {
+                    gaps.push('✅ Data Residency: Compliant with localization requirements.');
+                }
+
+                // Check bias audits
+                const q3 = answers['Question_3'] || '';
+                if (q3.includes('High Risk') || q3.includes('Medium Risk')) {
+                    gaps.push('❌ Bias Audit Gap: No systematic demographic parity tracking in place.');
+                } else {
+                    gaps.push('✅ Bias Audits: Systematic demographic parity tracking active.');
+                }
+
+                // Check retention
+                const q4 = answers['Question_4'] || '';
+                if (q4.includes('High Risk') || q4.includes('Medium Risk')) {
+                    gaps.push('❌ Data Retention Gap: No or incomplete data retention policies aligned with current requirements.');
+                } else {
+                    gaps.push('✅ Data Retention: Compliant with current retention requirements.');
+                }
+
+                if (gaps.length === 0) {
+                    gaps.push('✅ No critical exposure gaps detected. Great job!');
+                }
+
+                // Generate actions
+                if (percentage < 50) {
+                    actions.push('📌 Conduct a formal AI system inventory and exposure classification audit.');
+                    actions.push('📌 Review all data processing agreements to ensure data stays in Kenya.');
+                    actions.push('📌 Begin documenting your AI systems for audit readiness.');
+                } else if (percentage < 75) {
+                    actions.push('📌 Delegate AI compliance ownership to an individual, and document their responsibilities.');
+                    actions.push('📌 Implement a 5-year record retention system.');
+                    actions.push('📌 Conduct regulatory awareness training for your team.');
+                } else {
+                    actions.push('📌 Continue monitoring regulatory updates and maintain compliance documentation.');
+                    actions.push('📌 Consider sharing your compliance approach with peers.');
+                }
+
+                return {
+                    score: percentage,
+                    tier: tier,
+                    label: label,
+                    shadowAiRisk: shadowAiRisk,
+                    gaps: gaps,
+                    actions: actions
+                };
+            }
+
+            // ===== SHOW RESULTS DASHBOARD - NO DUPLICATE ICONS =====
+            function showResultsDashboard(result) {
+                const badge = document.getElementById('resultBadge');
+                badge.className = 'result-badge ' + result.tier;
+                document.getElementById('resultScore').textContent = result.score + '%';
+                document.getElementById('resultLabel').textContent = result.label;
+
+                // Shadow AI - no extra icon, just the text
+                document.getElementById('shadowAiResults').innerHTML =
+                    '<li><span>' + result.shadowAiRisk + '</span></li>';
+
+                // Gaps - each item has its own icon (❌, ⚠️, ✅)
+                document.getElementById('gapResults').innerHTML = result.gaps.map(g =>
+                    '<li><span>' + g + '</span></li>'
+                ).join('');
+
+                // Actions - each item has its own icon (📌)
+                document.getElementById('actionResults').innerHTML = result.actions.map(a =>
+                    '<li><span>' + a + '</span></li>'
+                ).join('');
+            }
+
+            // ===== RESET SCORECARD - SCROLL TO DIAGNOSTIC INTRO =====
+            window.resetScorecard = function () {
+                isEarlyExit = false;
+                collectedAnswers = {};
+                storedResult = null;
+                form.reset();
+                document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+                resultsDashboard.classList.remove('visible');
+                earlyExit.classList.remove('visible');
+                form.style.display = 'block';
+                document.getElementById('progressContainer').style.display = 'block';
+                navControls.style.display = 'flex';
+                document.getElementById('diagName').value = '';
+                document.getElementById('diagEmail').value = '';
+                document.getElementById('successMessage').classList.remove('show');
+                // Restore Email Our Team button and clear send note
+const emailBtn = document.getElementById('emailTeamBtn');
+if (emailBtn) {
+    emailBtn.style.display = '';
+    emailBtn.disabled = false;
+    emailBtn.textContent = '📧 Email Our Team';
+}
+const emailNote = document.getElementById('emailSendNote');
+if (emailNote) {
+    emailNote.style.display = 'none';
+    emailNote.textContent = '';
+}
+                const captureDiv = document.getElementById('diagnostic-lead-capture');
+                const captureRow = captureDiv.querySelector('.capture-row');
+                if (captureRow) {
+                    captureRow.style.display = 'flex';
+                    const submitBtn = captureRow.querySelector('#btnSubmitDiagnostic');
+                    if (submitBtn) {
+                        submitBtn.style.display = 'block';
+                        submitBtn.innerText = 'Secure & Submit Audit Profile';
+                        submitBtn.disabled = false;
+                    }
+                    const inputs = captureRow.querySelectorAll('input');
+                    inputs.forEach(el => el.style.display = 'block');
+                }
+                currentStep = 0;
+                updateWizardUI();
+
+                // Scroll to the diagnostic intro (Map Your Exposure Surface)
+                setTimeout(function () {
+                    const diagnosticIntro = document.getElementById('diagnostic-intro');
+                    if (diagnosticIntro) {
+                        diagnosticIntro.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 200);
+            };
+
+            // ============================================================ -->
+            // LEAD CAPTURE - SUBMIT TO FORMPREE                            -->
+            // ============================================================ -->
+            const submitBtn = document.getElementById('btnSubmitDiagnostic');
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const clientName = document.getElementById('diagName').value.trim();
+                    const clientEmail = document.getElementById('diagEmail').value.trim();
+
+                    if (!clientName || !clientEmail) {
+                        alert("Please provide your name and business email address to log this report file.");
+                        return;
+                    }
+
+                    this.innerText = "Routing to Scire Vault...";
+                    this.disabled = true;
+
+                    const compiledPayload = {
+                        name: clientName,
+                        email: clientEmail,
+                        form_origin: "Sovryn AI Scorecard Module",
+                        timestamp: new Date().toLocaleString('en-KE', { timeZone: 'Africa/Nairobi' }),
+                        calculated_findings: {
+                            shadow_ai_summary: document.querySelector('#shadowAiResults li span')?.innerText || "No data",
+                            gaps_summary: Array.from(document.querySelectorAll('#gapResults li span')).map(el => el.innerText).join('; ') || "No data",
+                            action_summary: Array.from(document.querySelectorAll('#actionResults li span')).map(el => el.innerText).join('; ') || "No data"
+                        },
+                        score: document.getElementById('resultScore').textContent,
+                        tier: document.getElementById('resultLabel').textContent,
+                        questionnaire_responses: collectedAnswers
+                    };
+
+                    fetch("https://formspree.io/f/xreonyro", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                        },
+                        body: JSON.stringify(compiledPayload)
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                document.getElementById('successMessage').classList.add('show');
+                                this.style.display = 'none';
+                                // Hide the input fields
+                                document.querySelectorAll('#diagnostic-lead-capture .capture-row input').forEach(el => {
+                                    el.style.display = 'none';
+                                });
+                            } else {
+                                throw new Error("API infrastructure response fault");
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Transmission Error:", error);
+                            alert("System busy. Please confirm connection parameters and resubmit.");
+                            this.innerText = "Secure & Submit Audit Profile";
+                            this.disabled = false;
+                        });
+                });
+            }
+
+            // ===== KEYBOARD NAVIGATION =====
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowRight' || e.key === 'Enter') {
+                    if (!nextBtn.disabled && nextBtn.style.visibility !== 'hidden') {
+                        nextBtn.click();
+                    }
+                } else if (e.key === 'ArrowLeft') {
+                    if (currentStep > 0) {
+                        prevBtn.click();
+                    }
+                }
+            });
+
+            // ===== INIT =====
+            updateWizardUI();
+        });
+    // ===== SEND REPORT TO SCIRE VIA FORMSPREE =====
+window.sendReportToScire = function () {
+    const btn = document.getElementById('emailTeamBtn');
+    const note = document.getElementById('emailSendNote');
+
+    // Build answer list
+    const answerLines = [];
+    for (let i = 1; i <= 15; i++) {
+        const key = `Question_${i}`;
+        const ans = collectedAnswers[key] || 'Not answered';
+        answerLines.push(`Q${i}: ${ans}`);
+    }
+
+    const payload = {
+        _subject: 'Sovryn AI Diagnostic Report — Client Requested Follow-up',
+        form_origin: 'Sovryn AI Results Dashboard',
+        timestamp: new Date().toLocaleString('en-KE', { timeZone: 'Africa/Nairobi' }),
+        score: document.getElementById('resultScore').textContent,
+        tier: document.getElementById('resultLabel').textContent,
+        discovery_findings: document.querySelector('#shadowAiResults li span')?.innerText || 'No data',
+        unverified_risk_points: Array.from(document.querySelectorAll('#gapResults li span')).map(el => el.innerText).join('\n') || 'No data',
+        evidence_gaps: Array.from(document.querySelectorAll('#actionResults li span')).map(el => el.innerText).join('\n') || 'No data',
+        questionnaire_answers: answerLines.join('\n')
+    };
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    note.style.display = 'none';
+
+    fetch('https://formspree.io/f/xreonyro', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+        .then(response => {
+            if (response.ok) {
+                btn.style.display = 'none';
+                note.textContent = 'Report Sent!';
+                note.style.color = '#065f46';
+                note.style.display = 'inline';
+            } else {
+                throw new Error('Send failed');
+            }
+        })
+        .catch(() => {
+            btn.disabled = false;
+            btn.textContent = '📧 Email Our Team';
+            note.textContent = 'Not sent — try again';
+            note.style.color = '#991b1b';
+            note.style.display = 'inline';
+        });
+};
+</script>
+
+</body>
+
+</html>
