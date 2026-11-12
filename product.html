@@ -1920,21 +1920,14 @@
                                     <input type="text" id="diagName" placeholder="Full Name" required />
                                     <input type="email" id="diagEmail" placeholder="Corporate Email Address" required />
                                     <button type="button" id="btnSubmitDiagnostic">
-                                        Secure & Submit Audit Profile
+                                        Submit Audit Profile
                                     </button>
-                                    <div class="success-message" id="successMessage">
-                                        ✅ Compliance Profile Logged Successfully.
-                                        <span>Your metric signature has been routed to the Scire Research team.</span>
-                                    </div>
+                                   <div class="success-message" id="successMessage">
+    ✅ Audit Profile Submitted
+</div>
                                 </div>
                             </div>
-
-                            <div class="action-row">
-                                <a href="#contact" class="btn">📞 Request Enterprise Briefing</a>
-                                <button type="button" id="emailTeamBtn" class="btn btn-email-outline" onclick="sendReportToScire()">📧 Email Our Team</button>
-<span id="emailSendNote" style="display:none; font-size:0.85rem; font-weight:600; align-self:center;"></span>
-                            </div>
-
+                            
                             <button onclick="resetScorecard()" class="btn btn-secondary"
                                 style="margin-top:16px; width:100%;">🔄 Start Over</button>
                         </div>
@@ -2521,17 +2514,7 @@
                 document.getElementById('diagEmail').value = '';
                 document.getElementById('successMessage').classList.remove('show');
                 // Restore Email Our Team button and clear send note
-const emailBtn = document.getElementById('emailTeamBtn');
-if (emailBtn) {
-    emailBtn.style.display = '';
-    emailBtn.disabled = false;
-    emailBtn.textContent = '📧 Email Our Team';
-}
-const emailNote = document.getElementById('emailSendNote');
-if (emailNote) {
-    emailNote.style.display = 'none';
-    emailNote.textContent = '';
-}
+
                 const captureDiv = document.getElementById('diagnostic-lead-capture');
                 const captureRow = captureDiv.querySelector('.capture-row');
                 if (captureRow) {
@@ -2539,7 +2522,7 @@ if (emailNote) {
                     const submitBtn = captureRow.querySelector('#btnSubmitDiagnostic');
                     if (submitBtn) {
                         submitBtn.style.display = 'block';
-                        submitBtn.innerText = 'Secure & Submit Audit Profile';
+                        submitBtn.innerText = 'Submit Audit Profile';
                         submitBtn.disabled = false;
                     }
                     const inputs = captureRow.querySelectorAll('input');
@@ -2643,7 +2626,14 @@ window.sendReportToScire = function () {
                         },
                         score: document.getElementById('resultScore').textContent,
                         tier: document.getElementById('resultLabel').textContent,
-                        questionnaire_responses: collectedAnswers
+                        questionnaire_responses: (function () {
+    const lines = [];
+    for (let i = 1; i <= 15; i++) {
+        const key = `Question_${i}`;
+        lines.push(`Q${i}: ${collectedAnswers[key] || 'Not answered'}`);
+    }
+    return lines.join('\n');
+})()
                     };
 
                     fetch("https://formspree.io/f/xreonyro", {
@@ -2669,7 +2659,7 @@ window.sendReportToScire = function () {
                         .catch(error => {
                             console.error("Transmission Error:", error);
                             alert("System busy. Please confirm connection parameters and resubmit.");
-                            this.innerText = "Secure & Submit Audit Profile";
+                            this.innerText = "Submit Audit Profile";
                             this.disabled = false;
                         });
                 });
